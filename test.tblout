@@ -1,0 +1,100 @@
+# cmsearch :: search CM(s) against a sequence database
+# INFERNAL 1.1.2 (July 2016)
+# Copyright (C) 2016 Howard Hughes Medical Institute.
+# Freely distributed under a BSD open source license.
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# query CM file:                         test.cm
+# target sequence database:              test_seq_db.fasta
+# output directed to file:               /opt/algorithm/RiboSearch/tmpfke_3prk
+# number of worker threads:              24
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+Query:       tmp58zqh6j7  [CLEN=100]
+Hit scores:
+ rank     E-value  score  bias  sequence  start    end   mdl trunc   gc  description
+ ----   --------- ------ -----  -------- ------ ------   --- ----- ----  -----------
+  (1) !   6.8e-27  126.0   0.0  another       2    101 +  cm    no 0.52  target  | this one also a bit strange [with |signs\} and other weirtd
+  (2) !   5.6e-25  117.1   0.0  another     440    538 +  cm    no 0.51  target  | this one also a bit strange [with |signs\} and other weirtd
+  (3) !   1.6e-23  110.5   0.0  target      275    381 +  cm    no 0.49  1 | a really long and intricate description <including> (some) [real
+
+
+Hit alignments:
+>> another  target  | this one also a bit strange [with |signs\} and other weirtd shit
+ rank     E-value  score  bias mdl mdl from   mdl to       seq from      seq to       acc trunc   gc
+ ----   --------- ------ ----- --- -------- --------    ----------- -----------      ---- ----- ----
+  (1) !   6.8e-27  126.0   0.0  cm        1      100 []           2         101 + .. 1.00    no 0.52
+
+                                                                                                                     NC
+                  :(((<<<----<<<<--<<<<<<______>>>>>>>>>>-->>><<<<--<<<<<<<-<_____>->>>>>>>>>>><<<<_____>>>>,,,,))): CS
+  tmp58zqh6j7   1 AGGcCCuAGUGCagCGGGaCuuuUUUUcUaaaGuCGcuGAGaGGaGGaGUCguCagacCAGAUAGcucuGacGuCCuGauCGGAAGGauCGUUGgCCc 98
+                  AGG:CCUAGUGCA:CGGGACUUUUUUUCUAAAGUCG:UGAGAGGAGGAGUC:UCA:ACCAGAUAGCU:UGA:GUCCUGAUCGGAAGGAUCGUUG:CCC
+      another   2 AGGUCCUAGUGCAGCGGGACUUUUUUUCUAAAGUCGUUGAGAGGAGGAGUCGUCAGACCAGAUAGCUUUGAUGUCCUGAUCGGAAGGAUCGUUGGCCC 99
+                  ************************************************************************************************** PP
+
+                     NC
+                  :: CS
+  tmp58zqh6j7  99 cc 100
+                  CC
+      another 100 CC 101
+                  ** PP
+
+>> another  target  | this one also a bit strange [with |signs\} and other weirtd shit
+ rank     E-value  score  bias mdl mdl from   mdl to       seq from      seq to       acc trunc   gc
+ ----   --------- ------ ----- --- -------- --------    ----------- -----------      ---- ----- ----
+  (2) !   5.6e-25  117.1   0.0  cm        1      100 []         440         538 + .. 0.99    no 0.51
+
+                                                                                                                     NC
+                  :(((<<<----<<<<--<<<<<<______>>>>>>>>>>-->>><<<<--<<<<<<<-<_____>->>>>>>>>>>><<<<_____>>>>,,,,))): CS
+  tmp58zqh6j7   1 AGGcCCuAGUGCagCGGGaCuuuUUUUcUaaaGuCGcuGAGaGGaGGaGUCguCagacCAGAUAGcucuGacGuCCuGauCGGAAGGauCGUUGgCCc 98
+                  AGG:CCUA   CA:CGGGACUUUUUUUCUAAAGUCG:UGAGAGGAGGAGUC:UCA:ACCAGAUAGCU:UGA:GUCCUGAUCGGAAGGAUCGUUG:CCC
+      another 440 AGGUCCUAU-UCAGCGGGACUUUUUUUCUAAAGUCGUUGAGAGGAGGAGUCGUCAGACCAGAUAGCUUUGAUGUCCUGAUCGGAAGGAUCGUUGGCCC 536
+                  *******86.5*************************************************************************************** PP
+
+                     NC
+                  :: CS
+  tmp58zqh6j7  99 cc 100
+                  CC
+      another 537 CC 538
+                  ** PP
+
+>> target  1 | a really long and intricate description <including> (some) [real string stuff] | with lines and shit
+ rank     E-value  score  bias mdl mdl from   mdl to       seq from      seq to       acc trunc   gc
+ ----   --------- ------ ----- --- -------- --------    ----------- -----------      ---- ----- ----
+  (3) !   1.6e-23  110.5   0.0  cm        1      100 []         275         381 + .. 0.96    no 0.49
+
+                                                                                                                     NC
+                  :(((<<<--.......--<<<<--<<<<<<______>>>>>>>>>>-->>><<<<--<<<<<<<-<_____>->>>>>>>>>>><<<<_____>>>>, CS
+  tmp58zqh6j7   1 AGGcCCuAG.......UGCagCGGGaCuuuUUUUcUaaaGuCGcuGAGaGGaGGaGUCguCagacCAGAUAGcucuGacGuCCuGauCGGAAGGauCG 91
+                  AGG:CCUAG       UGCA:CGGGACUUUUUUUCUAAAGUCG:UGAGAGGAGGAGUC:UCA:ACCAGAUAGCU:UGA:GUCCUGAUCGGAAGGAUCG
+       target 275 AGGUCCUAGuuuuuuuUGCAGCGGGACUUUUUUUCUAAAGUCGUUGAGAGGAGGAGUCGUCAGACCAGAUAGCUUUGAUGUCCUGAUCGGAAGGAUCG 372
+                  ********944444445********************************************************************************* PP
+
+                            NC
+                  ,,,)))::: CS
+  tmp58zqh6j7  92 UUGgCCccc 100
+                  UUG:CCCCC
+       target 373 UUGGCCCCC 381
+                  ********* PP
+
+
+
+Internal CM pipeline statistics summary:
+----------------------------------------
+Query model(s):                                                  1  (100 consensus positions)
+Target sequences:                                                2  (5398 residues searched)
+Target sequences re-searched for truncated hits:                 2  (1000 residues re-searched)
+Windows   passing  local HMM SSV           filter:              20  (0.4195); expected (0.35)
+Windows   passing  local HMM Viterbi       filter:                  (off)
+Windows   passing  local HMM Viterbi  bias filter:                  (off)
+Windows   passing  local HMM Forward       filter:               9  (0.2216); expected (0.02)
+Windows   passing  local HMM Forward  bias filter:               9  (0.2216); expected (0.02)
+Windows   passing glocal HMM Forward       filter:               7  (0.1693); expected (0.02)
+Windows   passing glocal HMM Forward  bias filter:               7  (0.1693); expected (0.02)
+Envelopes passing glocal HMM envelope defn filter:               7  (0.1254); expected (0.02)
+Envelopes passing  local CM  CYK           filter:               4  (0.06361); expected (0.0001)
+Total CM hits reported:                                          3  (0.04783); includes 0 truncated hit(s)
+
+# CPU time: 0.19u 0.03s 00:00:00.22 Elapsed: 00:00:00.20
+//
+[ok]
+
