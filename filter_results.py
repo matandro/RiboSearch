@@ -13,12 +13,12 @@ def is_novel(sequence, cm_file):
     res = True
     fasta_file = None
     try:
-        fasta_file = NTF(dir='.', delete=False)
+        fasta_file = NTF(dir='.', mode='w', delete=False)
         fasta_file.write('> seq\n')
         for item in map(''.join, itertools.zip_longest(*[iter(sequence)]* 80, fillvalue='')):
             fasta_file.write('{}\n'.format(item))
         fasta_file.close()
-        cm_res = infernal.search_cm(cm_file, fasta_file.name)
+        cm_res = infernal.search_cm(cm_file, fasta_file.name, res_type=infernal.ResType.TLBOUT)
         if cm_res is not None and len(cm_res) > 0:
             res = False
     finally:
@@ -36,7 +36,7 @@ def remove_existing(match_folder, cm_file, filter_score):
             index = def_value
         return index
     def gather_blast(db):
-        short_db = db.rsplit('/', 1)
+        short_db = db.rsplit('/', 1)[1]
         return "/DB/blast_db/{}/{}".format(short_db, short_db)
     def test_info(info_list):
         real_list = [",".join(item.split('\t')) for item in info_list]
@@ -59,17 +59,19 @@ def remove_existing(match_folder, cm_file, filter_score):
                 score = float(values[score_index])
                 database = gather_blast(values[db_index])
                 if score < filter_score and is_novel(sequence, cm_file):
-                    sequence_info = blast_sequence(sequence, database, output_str="6 pident sacc sstart send")
+                    sequence_info = blast_sequence(sequence, database, output_str="6 sacc sstart send", extra_options=['-perc_identity', '100'])
                     # need to decide how to analyze results and what should be added
                     collapsed_info = test_info(sequence_info)
-                    out_file.write("{}\n".format(line))
+                    logging.info("Added line: [{}\t{}\n]".format(line, collapsed_info))
+                    out_file.write("{}\t{}\n".format(line, collapsed_info))
 
 
 def analyze_all(output_folder, cm_file, filter_score):
-    subdirs = [outdir for outdir in os.listdir(output_folder)
-               if os.path.isdir(outdir)]
+    subdirs = [os.path.join(output_folder, outdir) for outdir in os.listdir(output_folder)
+               if os.path.isdir(os.path.join(output_folder, outdir))]
     for outdir in subdirs:
-        remove_existing(outdir, cm_file)
+        logging.info("Running single analysis for {}".format(outdir))
+        remove_existing(outdir, cm_file, filter_score)
 
 
 def get_max_score(seq, struct):
@@ -87,16 +89,14 @@ if __name__ == "__main__":
         structure = sys.argv[4]
         min_score = float(sys.argv[5])
     else:
-        logging.warning("""
-                        No arguments recieved: filter_results.py <output folder> <cm file> <sequence> <structure> <min score%>
-                        Example: python3 filter_results.py '/DB/Output/' 'purine.cm' 'NNNNNNNNUNNNNNNNNNNNNNNNNNNNNNNNNUNNNUNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNN' '((((((((...(.(((((.......))))).)........((((((.......))))))..))))))))' 60.0
-                        Using defaults
-                        """)
+        logging.warning("""No arguments recieved: filter_results.py <output folder> <cm file> <sequence> <structure> <min score%>
+Example: python3 filter_results.py '/DB/Output/' 'purine.cm' 'NNNNNNNNUNNNNNNNNNNNNNNNNNNNNNNNNUNNNUNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNN' '((((((((...(.(((((.......))))).)........((((((.......))))))..))))))))' 85.0
+Using defaults""")
         folder = '/DB/Output/'
         cm_file = 'purine.cm'
         sequence = 'NNNNNNNNUNNNNNNNNNNNNNNNNNNNNNNNNUNNNUNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNN'
         structure = '((((((((...(.(((((.......))))).)........((((((.......))))))..))))))))'
-        min_score =  60.0
+        min_score =  85.0
     max_score = get_max_score(sequence, structure)
     min_score = max_score * (min_score / 100.0)
     analyze_all(folder, cm_file, min_score)

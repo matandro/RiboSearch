@@ -5,6 +5,7 @@ import vienna
 from tempfile import NamedTemporaryFile as NTF
 import re
 from Bio import SeqIO
+from enum import Enum
 
 
 INFENRAL_PATH = "/opt/algorithm/infernal/bin/"
@@ -14,6 +15,7 @@ CMCALIBRATE_EXE = "cmcalibrate"
 SHELL_SEQ_SCRIPT = "/opt/algorithm/RiboSearch/infernal_pull_seq.sh"
 STOCKHOLM_FORMAT = "# STOCKHOLM 1.0"
 MAX_THREADS = 4
+
 
 
 def generate_stockholm(sequence):
@@ -153,8 +155,13 @@ def is_calibrated(cm_file_path):
     return calibrated
 
 
+class ResType(Enum):
+    ERIC = 1
+    TLBOUT = 2
+    MANUAL = 3
 
-def search_cm(cm_file_path, seqdb_path, debug=False):
+
+def search_cm(cm_file_path, seqdb_path, debug=False, res_type=ResType.ERIC):
     results = None
     temp_out = None
     try:
@@ -174,10 +181,13 @@ def search_cm(cm_file_path, seqdb_path, debug=False):
                 for line in output_file:
                     results += line
             tlbout_results = output_search_analyze(results)
-            # getting actual results (sequnces)
-            results = fetch_seq_tlbout(temp_out.name, seqdb_path)
-            if len(tlbout_results) != len(results):
-                logging.warning("Something strange in infernal result analysis. tlbout lines = {}, esl_sfetch lines = {}".format(len(tlbout_results), len(results)))
+            if res_type == ResType.ERIC:
+                # getting actual results (sequnces)
+                results = fetch_seq_tlbout(temp_out.name, seqdb_path)
+                if len(tlbout_results) != len(results):
+                    logging.warning("Something strange in infernal result analysis. tlbout lines = {}, esl_sfetch lines = {}".format(len(tlbout_results), len(results)))
+            elif res_type == ResType.TLBOUT:
+                results = tlbout_results
             logging.info("Finisied cm search {} results".format(len(results)))
     except Exception as e:
         logging.error("Failed to search cm file {} on sequence db {}. ERROR: {}"
