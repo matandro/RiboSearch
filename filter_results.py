@@ -15,10 +15,10 @@ def is_novel(sequence, cm_file):
     try:
         fasta_file = NTF(dir='.', delete=False)
         fasta_file.write('> seq\n')
-        for item in map(''.join, itertools.zip_longest(*[iter(s)]* 80, fillvalue='')):
+        for item in map(''.join, itertools.zip_longest(*[iter(sequence)]* 80, fillvalue='')):
             fasta_file.write('{}\n'.format(item))
         fasta_file.close()
-        cm_res = infernal.search_cm(cm_file, fasta_file.name))
+        cm_res = infernal.search_cm(cm_file, fasta_file.name)
         if cm_res is not None and len(cm_res) > 0:
             res = False
     finally:
@@ -39,27 +39,27 @@ def remove_existing(match_folder, cm_file, filter_score):
         short_db = db.rsplit('/', 1)
         return "/DB/blast_db/{}/{}".format(short_db, short_db)
     def test_info(info_list):
-        real_list = [item.split('\t') for item in info_list]
+        real_list = [",".join(item.split('\t')) for item in info_list]
+        return ";".join(real_list)
     match_file_path = os.path.join(match_folder, "match_log")
     if not os.path.exists(match_file_path):
         logging.warning("No match_log file in {}".format(match_folder))
     else:
-        with open("{}_nocm".format(match_file_path), 'w') as out_file,
-             open(match_file_path, 'r') as in_file:
+        with open("{}_nocm".format(match_file_path), 'w') as out_file, open(match_file_path, 'r') as in_file:
             header = [item.strip() for item in in_file.readline().strip().split('\t')]
-            sequence_index = get_inedx(header, "target sequence", 3)
+            sequence_index = get_index(header, "target sequence", 3)
             score_index = get_index(header, "distance centroid", 8)
             db_index = get_index(header, "db", 2)
             out_file.write("{}\n".format(header))
             for line in in_file:
-                if line.strip() == '' or line[:1] == '#'
+                if line.strip() == '' or line[:1] == '#':
                     continue
                 values = [value.strip() for value in line.strip().split('\t')]
                 sequence = values[sequence_index]
                 score = float(values[score_index])
                 database = gather_blast(values[db_index])
                 if score < filter_score and is_novel(sequence, cm_file):
-                    sequence_info = blast_sequence(sequence, database, application='blastn', evalue=10, output_str= "6 pident sacc sstart send")
+                    sequence_info = blast_sequence(sequence, database, output_str="6 pident sacc sstart send")
                     # need to decide how to analyze results and what should be added
                     collapsed_info = test_info(sequence_info)
                     out_file.write("{}\n".format(line))
@@ -79,7 +79,7 @@ def get_max_score(seq, struct):
 
 
 if __name__ == "__main__":
-    logging.basicConfig(level=Logging.INFO)
+    logging.basicConfig(level=logging.INFO)
     if len(sys.argv) > 5:
         folder = sys.argv[1]
         cm_file = sys.argv[2]

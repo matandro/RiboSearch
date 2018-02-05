@@ -26,7 +26,7 @@ def output_blast_analyze(output_file):
     return result
 
 
-def blast_sequence(sequence, database, query_name='Test', application='blastn', evalue=10, output_str= "6 sseq"):
+def blast_sequence(sequence, database, query_name='Test', application='blastn', evalue=10, output_str="6 sseq"):
     results = None
     output_file = None
     sequence_file = None
