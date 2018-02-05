@@ -1,0 +1,16 @@
+# STOCKHOLM 1.0
+#=GF AU Infernal 1.1.2
+
+#=GS another/2-101   DE target  | this one also a bit strange [with |signs\} and other weirtd shit
+#=GS another/440-538 DE target  | this one also a bit strange [with |signs\} and other weirtd shit
+#=GS target/275-381  DE 1 | a really long and intricate description <including> (some) [real string stuff] | with lines and shit
+
+another/2-101           AGGUCCUAG.......UGCAGCGGGACUUUUUUUCUAAAGUCGUUGAGAGGAGGAGUCGUCAGACCAGAUAGCUUUGAUGUCCUGAUCGGAAGGAUCGUUGGCCCCC
+#=GR another/2-101   PP *********.......*******************************************************************************************
+another/440-538         AGGUCCUAU.......-UCAGCGGGACUUUUUUUCUAAAGUCGUUGAGAGGAGGAGUCGUCAGACCAGAUAGCUUUGAUGUCCUGAUCGGAAGGAUCGUUGGCCCCC
+#=GR another/440-538 PP *******86........5*****************************************************************************************
+target/275-381          AGGUCCUAGuuuuuuuUGCAGCGGGACUUUUUUUCUAAAGUCGUUGAGAGGAGGAGUCGUCAGACCAGAUAGCUUUGAUGUCCUGAUCGGAAGGAUCGUUGGCCCCC
+#=GR target/275-381  PP ********944444445******************************************************************************************
+#=GC SS_cons            :(((<<<--.......--<<<<--<<<<<<______>>>>>>>>>>-->>><<<<--<<<<<<<-<_____>->>>>>>>>>>><<<<_____>>>>,,,,))):::
+#=GC RF                 AGGcCCuAG.......UGCagCGGGaCuuuUUUUcUaaaGuCGcuGAGaGGaGGaGUCguCagacCAGAUAGcucuGacGuCCuGauCGGAAGGauCGUUGgCCccc
+//

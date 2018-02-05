@@ -6,7 +6,7 @@ import sys
 import random
 from concurrent import futures
 
-from Bio import SeqIO
+from Bio import Seq
 
 import shapiro_tree_aligner
 import incaRNAtion
@@ -16,7 +16,26 @@ import infernal
 import blast_sequence
 
 
-MAX_WORKER = 1
+MAX_WORKER = 8
+
+
+def index_single(index_file_path):
+    index_map = {}
+    with open(index_file_path, 'r') as index_file:
+        for line in index_file:
+            index, name = line.split(" ",1)
+            index_map[name] = index
+    return index_map
+
+
+def index_all(base_folder):
+    fasta_index_map = {}
+    for db_dir in [a_dir for a_dir in os.listdir(base_folder)
+                   if os.path.isdir(os.path.join(base_folder, a_dir))]:
+        target_file = os.path.join(base_folder, db_dir, "{}.idx".format(db_dir))
+        logging.info("Starting to index {}".format(target_file))
+        fasta_index_map[db_dir] = index_single(target_file)
+    return fasta_index_map
 
 
 def gather_fasta_dbs():
@@ -26,30 +45,41 @@ def gather_fasta_dbs():
     return [os.path.join(one_db, one_db.rsplit('/', 1)[1]) for one_db in all_dbs]
 
 
-def recover_infernal_sequence(result_map, fasta_file):
-    results = []
-    if len(result_map) == 0:
-        return results
-    with open(fasta_file, "rU") as handle:
-        for record in SeqIO.parse(handle, "fasta"):
-            key = (record.name, record.description[len(record.name):].strip())
-            result_list = result_map.get(key, [])
-            logging.info('KEY {} result_map list {}'.format(key, result_map.keys()))
-            for res in result_list:
-                if res['strand'] == '-':
-                    seq_object = record.seq[res['seq to']:res['seq from']].reverse_complement()
-                else:
-                    seq_object = record.seq[res['seq from']:res['seq to']]
-                rna_seq = seq_object.transcribe()
-                res['sequence'] = str(rna_seq)
-                results.append(res)
-    for key, value_list in result_map:
-        for res in value_list:
-            if res['sequence'] != '':
-                break
+def recover_infernal_sequence(result, fasta_file_path):
+    sequence = ''
+    db_name = os.path.basename(fasta_file_path)
+    key = "{} {}".format(result['target name'], result['description'])
+    file_index = indexed_fasta_map.get(db_name)
+    if file_index is not None:
+        file_index = file_index.get(key)
+    if file_index is None:
+        # even in error we dont want to lose information
+        sequence = '{}_{}_{}({})'.format(key, result['seq from'], result['seq to'], result['strand'])
+        logging.warning("Failed to retrieve sequence, key: {}, info: {}".format(key, sequence))
+    else:
+        with open(fasta_file_path, "r") as fasta_file:
+            fasta_file.seek(file_index)
+            if result['strand'] == '-':
+                start_index = result['seq to']
+                end_index = result['seq from']
             else:
-                results.append(res)            
-    return results
+                start_index = result['seq from']
+                end_index = result['seq to']
+            run_to = start_index
+            while run_to > 0:
+                c = fasta_file.read(1)
+                if not c.isspace():
+                    run_to -= 1
+            run_to = end_index - start_index
+            while run_to > 0:
+                c = fasta_file.read(1)
+                if not c.isspace():
+                    sequence += c
+                    run_to -= 1
+            if result['strand'] == '-':
+               seq = Seq(sequence)
+               sequence = "{}".format(seq.reverse_complement())
+    return sequence
 
 
 def analyze_res(sequence):
@@ -66,9 +96,12 @@ def analyze_res(sequence):
 
 
 def add_search_run(source_seq, sequence, seq_code, search_method, db):
-    if sequence != '':
-        distance_tuple = analyze_res(sequence)
-    else:
+    try:
+        if sequence != '':
+            distance_tuple = analyze_res(sequence)
+        else:
+            distance_tuple = None, None, None, None, None, None
+    except Exception as exc:
         distance_tuple = None, None, None, None, None, None
     result_logger.info("{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t".format(seq_code, source_seq, db, sequence,
                                                                              *distance_tuple, search_method))
@@ -90,25 +123,13 @@ def cm_search(sequence, seq_code, fasta_list=None):
     infernal.generate_cm(sequence, cm_path)
     # search fasta files
     for fasta_file in fasta_dbs:
-        result_single_fasta = infernal.search_cm(cm_path, fasta_file)
-        # recover sequence
-        result_map = {}
-        for res in result_single_fasta:
-            target_name = (res.get('target name'), res.get('description'))
-            res_list = result_map.get(target_name, [])
-            res['sequence'] = ''
-            res['file'] = fasta_file
-            res_list.append(res)
-            result_map[target_name] = res_list
-        logging.info("cm_search - reterieving sequences {}".format(seq_code))
-        results += recover_infernal_sequence(result_map, fasta_file)
+        single_fasta_res = infernal.search_cm(cm_path, fasta_file)
+        for res in single_fasta_res:
+            res['file'] = fasta_file 
+            #res['sequence'] = recover_infernal_sequence(res, fasta_file)
+        results += single_fasta_res
     for res in results:
-        if res['sequence'] == '':
-            logging.error("Failed to retrieve seuqence for: {} {}".format((res.get('target name'), res.get('description')), res['file']))
-            result_logger.info("{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t".format(seq_code, sequence, res['file'], "Failed on [{}]".format((res.get('target name'), res.get('description'))),
-                                                                                     *(None, None ,None, None, None, None), 'cm'))
-        else:
-            add_search_run(sequence, res['sequence'], seq_code, 'cm', res['file'])
+        add_search_run(sequence, res['sequence'], seq_code, 'cm', res['file'])
     # return results list
     return results
 
@@ -163,13 +184,13 @@ def single_search(run_no, seq_no, sequence):
     seq_code = "{}_{}".format(run_no, seq_no)
     logging.info("Search - start - seq_code {}".format(seq_code))
     cm_search(sequence, seq_code)
-    #blast_search(sequence, seq_code)
+    blast_search(sequence, seq_code)
     logging.info("Search - end - seq_code {}".format(seq_code))
     return True
 
 
 # Creates a new batch of seeds
-def multiple_design(run_no, seeds_per_run):
+def multiple_design(run_no, seeds_per_run, design_per_seed):
     logging.info("Generate seeds run {}".format(run_no))
     # generate seeds
     seeds = incaRNAtion.run_incaRNAtion(target_structure, seeds_per_run, sequence_constraints=target_sequence)
@@ -178,10 +199,13 @@ def multiple_design(run_no, seeds_per_run):
         # generate single task for each sequence
         future_sequences = []
         seq_no = 1
+        seed_no = 1
         for seed in seeds:
-            future_sequences.append(executor.submit(single_design, run_no, seed, seq_no))
-            seq_no += 1
-            if seq_no > seeds_per_run:
+            for design_no in range(0, design_per_seed):
+                future_sequences.append(executor.submit(single_design, run_no, seed, seq_no))
+                seq_no += 1
+            seed_no +=1
+            if seed_no > seeds_per_run:
                 break
         for future in futures.as_completed(future_sequences):
             seq_no, designed_sequence = future.result()
@@ -211,13 +235,17 @@ def setup_logger(logger_name, folder, formatter=logging.Formatter('%(message)s')
     return logger
 
 
-def gather_sequences(design_file_path, match_log_path):
+def gather_sequences(design_file_path, match_log_path=None):
     res = None
     searched_sequences = set()
-    with open(match_log_path, 'r') as match_file:
-        match_file.readline()
-        for line in match_file:
-            searched_sequences.add(line.split('\t', 1)[0].strip())
+    if match_log_path is not None:
+        try:
+            with open(match_log_path, 'r') as match_file:
+                match_file.readline()
+                for line in match_file:
+                    searched_sequences.add(line.split('\t', 1)[0].strip())
+        except FileNotFoundError:
+            pass
     with open(design_file_path, 'r') as design_file:
         res = []
         design_file.readline()
@@ -232,7 +260,7 @@ def gather_sequences(design_file_path, match_log_path):
 if __name__ == "__main__":
     folder = "/DB/"
     if len(sys.argv) < 4:
-        print("Usage: search_runner.py <input sequence> <input structure> <<<amount of runs> <seeds per run>> | <sequence list>>")
+        print("Usage: search_runner.py <input sequence> <input structure> <<<amount of runs> <seeds per run> <designed sequence per seed>> | <sequence list>>")
         sys.exit(-1)
     # gather parameters
     target_sequence = sys.argv[1]
@@ -244,8 +272,10 @@ if __name__ == "__main__":
     target_score = shapiro_tree_aligner.align_trees(target_tree, target_tree)
     logging.basicConfig(level=logging.INFO, format='%(levelname)s:%(asctime)s:Name[%(name)s]:Thread[%(thread)d] - %(message)s')
     output_dir = os.path.join(folder, "Output")
-  # Start runs
-    if len(sys.argv) == 5:
+    # new method infernal has it's out index
+    #indexed_fasta_map = index_all(os.path.join(folder, "fasta_db"))
+    # Start runs
+    if len(sys.argv) == 6:
         # init log (result) files
         run_time_stamp = datetime.datetime.fromtimestamp(time.time()).strftime("%Y_%m_%d_%H_%M_%S")
         output_dir = os.path.join(output_dir, run_time_stamp)
@@ -256,11 +286,18 @@ if __name__ == "__main__":
         design_logger = setup_logger("design_log", output_dir)
         design_logger.info("run\tseq no\tseed\tsequence\tTree MFE\tdistance MFE\talign tree MFE"
                            "\tTree centroid\tdistance centroid\talign tree centroid")
-        for i in range(1, sys.argv[3] + 1):
-            multiple_design(i, sys.argv[4])
+        for i in range(1, int(sys.argv[3]) + 1):
+            multiple_design(i, int(sys.argv[4]), int(sys.argv[5]))
     else:
         design_logger = logging.getLogger('dummy') # dummy logger for design since we might no need one
         output_dir = os.path.dirname(sys.argv[3])
-        sequence_list = gather_sequences(sys.argv[3], os.path.join(output_dir, "match_log"))
+        match_log_path = os.path.join(output_dir, "match_log")
+        if not os.path.exists(match_log_path):
+            match_log_path = None
+        sequence_list = gather_sequences(sys.argv[3], match_log_path)
         result_logger = setup_logger("match_log", output_dir) # appending to exising file
+        if match_log_path is None:
+            result_logger.info("seq code\tdesign sequencei\tdb\ttarget sequence\tTree MFE\tdistance MFE\talign tree MFE"
+                               "\tTree centroid\tdistance centroid\talign tree centroid\tmethod")
         multiple_search(sequence_list)
+

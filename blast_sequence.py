@@ -26,7 +26,7 @@ def output_blast_analyze(output_file):
     return result
 
 
-def blast_sequence(sequence, database, query_name='Test', application='blastn', evalue=10):
+def blast_sequence(sequence, database, query_name='Test', application='blastn', evalue=10, output_str= "6 sseq"):
     results = None
     output_file = None
     sequence_file = None
@@ -35,7 +35,7 @@ def blast_sequence(sequence, database, query_name='Test', application='blastn', 
         output_file = NTF(dir='.', delete=False)
         param_list = [os.path.join(BLAST_PATH, application), '-db', database,
                       '-query', sequence_file.name, '-evalue', str(evalue), 
-                      '-out', output_file.name, '-outfmt', '6 sseq']
+                      '-out', output_file.name, '-outfmt', output_str]
         logging.info("starting blast run: {}".format(param_list))
         with Popen(param_list,  stdout=PIPE, stdin=PIPE) as proc:
             proc.communicate()
