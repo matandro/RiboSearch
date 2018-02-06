@@ -56,10 +56,10 @@ def remove_existing(match_folder, cm_file, filter_score):
                     continue
                 values = [value.strip() for value in line.strip().split('\t')]
                 sequence = values[sequence_index]
-                score = float(values[score_index])
+                score = max(float(values[score_index]), 0.0)
                 database = gather_blast(values[db_index])
                 if score < filter_score and is_novel(sequence, cm_file):
-                    sequence_info = blast_sequence(sequence, database, output_str="6 sacc sstart send", extra_options=['-perc_identity', '100'])
+                    sequence_info = blast_sequence(sequence, database, output_str="6 sacc sstart send sstrand", extra_options=['-perc_identity', '100'])
                     # need to decide how to analyze results and what should be added
                     collapsed_info = test_info(sequence_info)
                     logging.info("Added line: [{}\t{}\n]".format(line, collapsed_info))
@@ -96,8 +96,9 @@ Using defaults""")
         cm_file = 'purine.cm'
         sequence = 'NNNNNNNNUNNNNNNNNNNNNNNNNNNNNNNNNUNNNUNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNN'
         structure = '((((((((...(.(((((.......))))).)........((((((.......))))))..))))))))'
-        min_score =  85.0
+        min_score =  95.0
     max_score = get_max_score(sequence, structure)
+    logging.info("Optimal score is: {}".format(max_score))
     min_score = max_score * (min_score / 100.0)
     analyze_all(folder, cm_file, min_score)
 

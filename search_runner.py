@@ -269,8 +269,9 @@ if __name__ == "__main__":
     random_gen = random.Random()
     # find maximum match
     target_tree = shapiro_tree_aligner.get_tree(target_structure, target_sequence)
-    target_score = shapiro_tree_aligner.align_trees(target_tree, target_tree)
+    _, target_score = shapiro_tree_aligner.align_trees(target_tree, target_tree)
     logging.basicConfig(level=logging.INFO, format='%(levelname)s:%(asctime)s:Name[%(name)s]:Thread[%(thread)d] - %(message)s')
+    logging.info("Target score: {}. Target tree: {}".format(target_score, target_tree))
     output_dir = os.path.join(folder, "Output")
     # new method infernal has it's out index
     #indexed_fasta_map = index_all(os.path.join(folder, "fasta_db"))

@@ -7,7 +7,7 @@ import IUPAC
 
 
 def align_sequences(value_one, value_two):
-    score_matrix = IUPAC.align_iupac_dna_sequence(value_one.sequence, value_two.sequence)
+    score_matrix = IUPAC.align_iupac_dna_sequence(value_one.sequence, value_two.sequence, mismatch_penalty=-5)
     return IUPAC.get_best_score(score_matrix)
 
 
@@ -20,7 +20,8 @@ def cmp_shapiro_tree_values(value_one, value_two):
                 0] == 'H') and
              (value_two_name[0] == 'M' or value_two_name[0] == 'I' or value_two_name[0] == 'B' or value_two_name[
                  0] == 'H')):
-        result += 1 + (align_sequences(value_one, value_two) / max(len(value_one.sequence), len(value_two.sequence)) if value_one_name != 'R' else 1)
+        #result += 1 + (align_sequences(value_one, value_two) / max(len(value_one.sequence), len(value_two.sequence)) if value_one_name != 'R' else 0)
+        result += 1 + (min(align_sequences(value_one, value_two), 1) if value_one_name != 'R' else 0)
     return result
 
 
@@ -38,8 +39,8 @@ def insert_shapiro_func(value):
 
 
 def delete_shapiro_func(value):
-    sequence_false = (sum([(1 if char != 'N' else 0) for char in value.sequence]) / len(value.sequence) if len(value.sequence) > 0 else 0)
-    return -0.125 - sequence_false
+    sequence_false = (sum([(5 if char != 'N' else 0) for char in value.sequence]) / len(value.sequence) if len(value.sequence) > 0 else 0)
+    return -5.0 - sequence_false
 
 
 # recursively turn a shapiro string into a tree
