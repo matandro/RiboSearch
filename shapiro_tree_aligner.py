@@ -93,7 +93,11 @@ def shapiro_to_tree(shapiro_str, shapiro_index, sequence):
 class ShapiroTreeValue:
     def __init__(self, shapiro_str_name, shapiro_index, sequence):
         self.name = shapiro_str_name[0]
-        self.size = (int(shapiro_str_name[1:]) if shapiro_str_name[1:] != '' else 0)
+        try:
+            self.size = (int(shapiro_str_name[1:]) if shapiro_str_name[1:] != '' else 0)
+        except ValueError:
+            self.size = 0
+            logging.error("ShapiroTreeValue.__init__ error parsing ShapiroTreeValue({}, {}, {})".format(shapiro_str_name, shapiro_index, sequence))
         if self.size == 0:
             self.index_list = []
             self.sequence = ''
@@ -155,10 +159,10 @@ def align_shapiro(shapiro_source, sequence_source, shapiro_target, sequence_targ
 
 if __name__ == "__main__":
     # shapiro_one = shapiro_generator.get_shapiro("(((...(((...)))...(((...)))...(((...(((...)))...(((...)))...)))...)))")
-    shapiro_two = shapiro_generator.get_shapiro("((((((((.....(((((.......)))))..........(((((((.....)))))))..))))))))")
+    #:shapiro_two = shapiro_generator.get_shapiro("((((((((.....(((((.......)))))..........(((((((.....)))))))..))))))))")
     #"(((...(((...)))...(((...)))...(((...(((...)))...(((...)))...)))...)))")
     shapiro_one = shapiro_generator.get_shapiro("(.(.).(.).(.(..(..(...)..).)).)")
-    # shapiro_two = shapiro_generator.get_shapiro("(.(.).(.).(.).)")
+    shapiro_two = shapiro_generator.get_shapiro("(((((((((.(.((.((((.......)))).)).).)))(((((((((.....)))))))))))))))")
     tree_one = shapiro_to_tree(shapiro_one.shapiro, shapiro_one.shapiro_indexes, 'N' * len(shapiro_one.structure))
     tree_two = shapiro_to_tree(shapiro_two.shapiro, shapiro_two.shapiro_indexes, 'N' * len(shapiro_two.structure))
     print("Shapiro one: {}\nTree one: {}".format(shapiro_one.shapiro, tree_one))

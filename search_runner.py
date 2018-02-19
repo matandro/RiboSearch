@@ -82,7 +82,7 @@ def recover_infernal_sequence(result, fasta_file_path):
     return sequence
 
 
-def analyze_res(sequence):
+def analyze_res(sequence, target_tree):
     structure_map = vienna.fold(sequence)
     # generate information from MFE
     structure_mfe = structure_map.get('MFE')
@@ -98,7 +98,7 @@ def analyze_res(sequence):
 def add_search_run(source_seq, sequence, seq_code, search_method, db):
     try:
         if sequence != '':
-            distance_tuple = analyze_res(sequence)
+            distance_tuple = analyze_res(sequence, target_tree)
         else:
             distance_tuple = None, None, None, None, None, None
     except Exception as exc:
@@ -282,7 +282,7 @@ if __name__ == "__main__":
         output_dir = os.path.join(output_dir, run_time_stamp)
         os.mkdir(output_dir)
         result_logger = setup_logger("match_log", output_dir)
-        result_logger.info("seq code\tdesign sequencei\tdb\ttarget sequence\tTree MFE\tdistance MFE\talign tree MFE"
+        result_logger.info("seq code\tdesign sequence\tdb\ttarget sequence\tTree MFE\tdistance MFE\talign tree MFE"
                        "\tTree centroid\tdistance centroid\talign tree centroid\tmethod")
         design_logger = setup_logger("design_log", output_dir)
         design_logger.info("run\tseq no\tseed\tsequence\tTree MFE\tdistance MFE\talign tree MFE"
@@ -298,7 +298,7 @@ if __name__ == "__main__":
         sequence_list = gather_sequences(sys.argv[3], match_log_path)
         result_logger = setup_logger("match_log", output_dir) # appending to exising file
         if match_log_path is None:
-            result_logger.info("seq code\tdesign sequencei\tdb\ttarget sequence\tTree MFE\tdistance MFE\talign tree MFE"
+            result_logger.info("seq code\tdesign sequence\tdb\ttarget sequence\tTree MFE\tdistance MFE\talign tree MFE"
                                "\tTree centroid\tdistance centroid\talign tree centroid\tmethod")
         multiple_search(sequence_list)
 

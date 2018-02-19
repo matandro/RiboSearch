@@ -18,8 +18,9 @@ MAX_THREADS = 4
 
 
 
-def generate_stockholm(sequence):
-    structure = vienna.fold(sequence)['MFE']
+def generate_stockholm(sequence, structure=None):
+    if structure is None:
+        structure = vienna.fold(sequence)['MFE']
     tmp_file = NTF(dir='.', delete=False)
     tmp_file.write('{}\n'.format(STOCKHOLM_FORMAT).encode())
     tmp_file.write('seq1\t{}\n'.format(sequence).encode())
@@ -28,9 +29,9 @@ def generate_stockholm(sequence):
     return tmp_file
 
 
-def generate_cm(sequence, outcm_path):
+def generate_cm(sequence, outcm_path, structure=None):
     result = False
-    tmp_stockholm = generate_stockholm(sequence)
+    tmp_stockholm = generate_stockholm(sequence, structure)
     try:
         if not os.path.exists(outcm_path):
             param_list = [os.path.join(INFENRAL_PATH, CMBUILD_EXE), '-F', outcm_path,

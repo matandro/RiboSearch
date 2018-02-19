@@ -124,7 +124,9 @@ def get_shapiro(structure):
             helix_size[loop[lp]] = p + 1
             _add_to_indexes(stem_indexes, loop[lp], i)
             _add_to_indexes(stem_indexes, loop[lp], closure_map[i])
-            temp += str(loop_size.get(loop[lp])) + ')'
+            if loop_size.get(loop[lp]) is not None:
+                temp += str(loop_size.get(loop[lp]))
+            temp += ')'
             temp_indexes += _get_indexes(loop_indexes, loop[lp]) + ')'
             temp += 'S' + str(helix_size[loop[lp]]) + ')'
             temp_indexes += _get_indexes(stem_indexes, loop[lp]) + ')'
@@ -156,6 +158,7 @@ class ShapiroObject(object):
 
 
 if __name__ == "__main__":
+    '''
     print("1){}\n".format(get_shapiro(
         "(((...)))")))
     print("2){}\n".format(get_shapiro(
@@ -163,3 +166,6 @@ if __name__ == "__main__":
     print("3){}\n".format(get_shapiro(
         "(((...(((...)))...(((...)))...(((...(((...)))...(((...)))...)))...)))")))
     print("4){}\n".format(get_shapiro("((((((((...(.(((((.......)))))(((........((((....)))..).((((....))))..)..))....((((....))..))...)))))))))")))
+    '''
+    print("5){}\n".format(get_shapiro("(((((((((.(.((.((((.......)))).)).).)))(((((((((.....)))))))))))))))")))
+
