@@ -61,7 +61,7 @@ def remove_existing(match_folder, cm_file, filter_score, recalc_res=False):
             header = [item.strip() for item in in_file.readline().strip().split('\t')]
             sequence_index = get_index(header, "target sequence", 3)
             db_index = get_index(header, "db", 2)
-            out_file.write("{}\n".format(header))
+            out_file.write("{}\n".format("\t".join(header)))
             for line in in_file:
                 if line.strip() == '' or line[:1] == '#':
                     continue

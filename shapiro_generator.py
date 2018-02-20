@@ -18,7 +18,7 @@ def _add_to_indexes(orig_map_list, arr_index, str_index):
 
 
 def _get_indexes(orig_map_list, arr_index):
-    res = "[]";
+    res = "[]"
     value = orig_map_list.get(arr_index)
     if value is not None:
         res = str(value)
