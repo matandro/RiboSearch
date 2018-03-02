@@ -79,7 +79,18 @@ def remove_existing(match_folder, cm_file, filter_score, recalc_res=False):
                     values[get_index(header, "align tree centroid", 9)] = match_tree_centroid
                     line = "{}\n".format("\t".join([str(item) for item in values]))
                 else:
-                    score = float(values[get_index(header, "distance centroid", 8)])
+                    try:
+                        score = float(values[get_index(header, "distance centroid", 8)])
+                    except:
+                        tree_mfe, match_score_mfe, match_tree_mfe, tree_centroid, match_score_centroid, match_tree_centroid = search_runner.analyze_res(sequence, target_tree)
+                        score = match_score_centroid
+                        values[get_index(header, "Tree MFE", 4)] = tree_mfe
+                        values[get_index(header, "distance MFE", 5)] = match_score_mfe
+                        values[get_index(header, "align tree MFE", 6)] = match_tree_mfe
+                        values[get_index(header, "Tree centroid", 7)] = tree_centroid
+                        values[get_index(header, "distance centroid", 8)] = match_score_centroid 
+                        values[get_index(header, "align tree centroid", 9)] = match_tree_centroid
+                        line = "{}\n".format("\t".join([str(item) for item in values]))
                 if score > filter_score and is_novel(sequence, cm_file):
                     logging.info("LINE ADDED: [{}\n], score: {}".format(line, score))
                     out_file.write("{}\n".format(line))
@@ -119,7 +130,7 @@ Using defaults""")
         target_sequence = 'NNNNNNNNUNNNNNNNNNNNNNNNNNNNNNNNNUNNNUNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNN'
         target_structure = '((((((((...(.(((((.......))))).)........((((((.......))))))..))))))))'
         min_score =  95.0
-        recalc= True
+        recalc= False
     target_tree, max_score = get_max_score(target_sequence, target_structure)
     logging.info("Optimal score is: {}".format(max_score))
     min_score = max_score * (min_score / 100.0)
