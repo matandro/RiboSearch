@@ -61,7 +61,7 @@ def run_all_in_file(input_file_path, output_dir_path):
             sequence = line.strip()
             if sequence == '':
                 continue
-            structure = vienna.fold(sequence)['MFE']
+            structure = vienna.fold(sequence)['centroid']
             logging.info("Sequence {} run {}".format(seq_index, call_varna(sequence, structure, 
                                                                            os.path.join(output_dir_path, 
                                                                                         "seq_{}.jpg".format(seq_index)))))
