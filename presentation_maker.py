@@ -33,19 +33,35 @@ seq_map = generate_seq_map()
 full_map = add_map_images(seq_map)
 
 prs = Presentation()
-blank_slide_layout = prs.slide_layouts[5]
+# default slide width
+prs.slide_width = 9144000
+# slide height @ 16:9
+prs.slide_height = 5143500
+blank_slide_layout = prs.slide_layouts[6]
 
 for i in range(1, len(full_map) + 1):
     single_info = full_map.get(i)
     slide = prs.slides.add_slide(blank_slide_layout)
+    # set pic top
+    pic_top = prs.slide_height * 0.10
+    item_width = prs.slide_width * 0.45
     # add sequence as title
-    title_shape = slide.shapes.title
+    title_shape = slide.shapes.add_textbox(0, 0, prs.slide_width, pic_top / 2)
     title_shape.text = single_info.get('sequence')
     # add MFE image
-    left = top = Inches(1)
-    slide.shapes.add_picture(single_info.get('mfe'), left, top)
+    left = prs.slide_width * 0.04
+    slide.shapes.add_picture(single_info.get('mfe'), left, pic_top,
+                             width=item_width, height=prs.slide_height * 0.85)
+    mfe_text = slide.shapes.add_textbox(left, prs.slide_height * 0.95,
+                                        item_width, prs.slide_height * 0.03)
+    mfe_text.text = 'MFE structure'
     # add centroid image
-    left = Inches(5)
-    slide.shapes.add_picture(single_info.get('centroid'), left, top)
-
+    left = prs.slide_width * 0.51
+    slide.shapes.add_picture(single_info.get('centroid'), left, pic_top,
+                             width=item_width, height=prs.slide_height * 0.85)
+    centroid_text = slide.shapes.add_textbox(left, prs.slide_height * 0.95,
+                                             item_width, prs.slide_height * 0.03)
+    centroid_text.text = 'Centroid structure'
+    # empty slide after each
+    slide = prs.slides.add_slide(blank_slide_layout)
 prs.save(os.path.join(BASE_FOLDER, 'report_frame.pptx'))
