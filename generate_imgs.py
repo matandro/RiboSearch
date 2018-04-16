@@ -52,7 +52,7 @@ def call_varna(sequence, structure, out_file_path):
     return res
 
 
-def run_all_in_file(input_file_path, output_dir_path):
+def run_all_in_file(input_file_path, output_dir_path, seq_type='M'):
     if not os.path.isdir(output_dir_path):
         os.makedirs(output_dir_path)
     with open(input_file_path, 'r') as input_file:
@@ -61,7 +61,10 @@ def run_all_in_file(input_file_path, output_dir_path):
             sequence = line.strip()
             if sequence == '':
                 continue
-            structure = vienna.fold(sequence)['centroid']
+            if seq_type == 'C':
+                structure = vienna.fold(sequence)['centroid']
+            else:
+                structure = vienna.fold(sequence)['MFE']
             logging.info("Sequence {} run {}".format(seq_index, call_varna(sequence, structure, 
                                                                            os.path.join(output_dir_path, 
                                                                                         "seq_{}.jpg".format(seq_index)))))
@@ -70,8 +73,8 @@ def run_all_in_file(input_file_path, output_dir_path):
 
 if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO)
-    if len(sys.argv) < 3:
-        logging.error('Usage: python3 generate_imgs.py <sequence list file> <image output directory>')
+    if len(sys.argv) < 4:
+        logging.error('Usage: python3 generate_imgs.py <sequence list file> <image output directory> <M/C>')
         sys.exit(-1)
-    run_all_in_file(sys.argv[1], sys.argv[2])    
+    run_all_in_file(sys.argv[1], sys.argv[2], sys.argv[3])
 
