@@ -1,7 +1,7 @@
 from subprocess import Popen, PIPE
 import logging
 import os
-import vienna
+from rnafbinv import vienna
 from tempfile import NamedTemporaryFile as NTF
 import re
 from Bio import SeqIO

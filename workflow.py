@@ -5,7 +5,7 @@ from concurrent import futures
 from tempfile import NamedTemporaryFile as NTF
 import os
 import random
-import rnafbinv
+from rnafbinv import RNAfbinvCL, shapiro_tree_aligner, sfb_designer, vienna
 
 
 MAX_WORKER=8
@@ -30,7 +30,7 @@ def run_design(run_code:int, seed: str, target_sequence: str, target_structure: 
         temp_file.write('ITERATION={}\n'.format(1000))
         temp_file.flush()
         temp_file.close()
-        result_object = rnafbinv.RNAfbinvCL.main('-f {} --length 5'.format(temp_file.name))
+        result_object = RNAfbinvCL.main('-f {} --length 5'.format(temp_file.name))
         if result_object is not None:
             if result_object.score < 300 and result_object.score % 100 < 30:
                 general_run_logger.info('Finished designing {}'.format(run_code))
@@ -58,7 +58,7 @@ def run_design(run_code:int, seed: str, target_sequence: str, target_structure: 
 NT_PATH = '/DB/fasta_db/nt/nt'
 
 
-def run_search(run_code: str, designed_object: rnafbinv.sfb_designer.RnafbinvResult):
+def run_search(run_code: str, designed_object):
     general_run_logger.info('Starting search {}'.format(run_code))
     cm_path = os.path.join(output_dir, '{}.cm'.format(run_code))
     if not infernal.generate_cm(designed_object.sequence, cm_path, designed_object.structure):
@@ -73,9 +73,9 @@ def run_search(run_code: str, designed_object: rnafbinv.sfb_designer.RnafbinvRes
     for res_no, res in enumerate(results):
         try:
             sequence = res.get('sequence')
-            structure = rnafbinv.vienna.fold(sequence)['MFE']
-            res_tree = rnafbinv.shapiro_tree_aligner.get_tree(structure, sequence)
-            tree, score = rnafbinv.shapiro_tree_aligner.align_trees(res_tree, target_tree)
+            structure = vienna.fold(sequence)['MFE']
+            res_tree = shapiro_tree_aligner.get_tree(structure, sequence)
+            tree, score = shapiro_tree_aligner.align_trees(res_tree, target_tree)
             if score < 300 and score % 100 < 30:
                 general_run_logger.info('Adding result {}, score {} sequence {}'.format(run_code, score, sequence))
                 'seq code\tmatch no\tsequence\tstructure\tscore\ttarget id'
@@ -90,10 +90,15 @@ def run_search(run_code: str, designed_object: rnafbinv.sfb_designer.RnafbinvRes
             general_run_logger.fatel('Exception in search {}, res no {}, {}'.format(run_code, res_no, res))
 
 
-def run(sequence: str, structure: str, design_per_seed: int=10, amount_of_seeds: int=500):
+def run(sequence: str, structure: str, design_per_seed: int=1, amount_of_seeds: int=4):
     # generate seeds
+    general_run_logger.info("generating seeds\n{}\n{}".format(sequence, structure))
     seeds = design_seeds(sequence, structure, amount_of_seeds)
+    if seeds is None or not seeds:
+        general_run_logger.fatal('Failed to generate seeds!')
+        return
     # create executor
+    general_run_logger.info('starting to generate tasks')
     with futures.ThreadPoolExecutor(max_workers=MAX_WORKER) as executor:
         # generate single task for each sequence
         future_sequences = []
@@ -119,17 +124,17 @@ def setup_logger(logger_name: str, folder: str, formatter: logging.Formatter=log
 
 if __name__ == '__main__':
     # setup vienna location
-    rnafbinv.vienna.set_vienna_path('/opt/algorithm/ViennaRNA/bin')
+    vienna.set_vienna_path('/opt/algorithm/ViennaRNA/bin')
     # setup log files
     output_dir = '/DB/Output/SandD'
     result_logger = setup_logger("match_log", output_dir)
     result_logger.info("seq code\tmatch no\tsequence\tstructure\tscore\ttarget id")
-    general_run_logger = setup_logger("error_log", output_dir, logging.Formatter('%(levelname)s::%(asctime)s - %(message)s'))
+    general_run_logger = setup_logger("log", output_dir, logging.Formatter('%(levelname)s::%(asctime)s - %(message)s'))
     design_logger = setup_logger("design_log", output_dir)
     design_logger.info("sec_code\tseed\tsequence\tscore\tstructure\tbp distance\tmotif distance")
     # setup target tree
-    PURINE_SEQ = "AGGGUGCCUGAGCCGCGCAUAUAUCGACGGGGAUUCUUCAAAAGCGCCCGCGCGGGGAAACGAAGACGA"
+    PURINE_SEQ =    "NNNNNNNNUNNNNNNNNNNNNNNNNNNNNNNNNUNNNUNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNN"
     PURINE_STRUCT = "((((((((...(.(((((.......))))).)........((((((.......))))))..))))))))"
-    target_tree = rnafbinv.shapiro_tree_aligner.get_tree(PURINE_STRUCT, PURINE_SEQ)
+    target_tree = shapiro_tree_aligner.get_tree(PURINE_STRUCT, PURINE_SEQ)
     # run
     run(PURINE_SEQ, PURINE_STRUCT)
