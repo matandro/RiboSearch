@@ -121,7 +121,7 @@ if __name__ == '__main__':
     # setup vienna location
     rnafbinv.vienna.set_vienna_path('/opt/algorithm/ViennaRNA/bin')
     # setup log files
-    output_dir = 'SandD'
+    output_dir = '/DB/Output/SandD'
     result_logger = setup_logger("match_log", output_dir)
     result_logger.info("seq code\tmatch no\tsequence\tstructure\tscore\ttarget id")
     general_run_logger = setup_logger("error_log", output_dir, logging.Formatter('%(levelname)s::%(asctime)s - %(message)s'))
