@@ -8,10 +8,7 @@ from concurrent import futures
 
 from Bio import Seq
 
-import shapiro_tree_aligner
 import incaRNAtion
-import rna_designer
-import vienna
 import infernal
 import blast_sequence
 

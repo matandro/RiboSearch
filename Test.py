@@ -1,3 +1,4 @@
+'''
 import rpy2
 print(rpy2.__version__)
 
@@ -21,7 +22,7 @@ print(r_getwd())
 r_source = robjects.r['source']
 print(r_source(BAYESIAN_CLUSTER_PATH))
 
-'''
+
 from Bio import SeqIO
 import sys
 
@@ -39,3 +40,29 @@ with open(test_path, "rU") as handle:
         print("record seq[10:20]: {}".format(record.seq[10:20]))
         sys.exit(0)
 '''
+
+import re
+
+
+def extract_gene(mstr):
+    res = None
+    match = re.match(r'.*gene=(?P<gene_id>[^\s]+).*', mstr)
+    if match is not None:
+        res = match.group('gene_id')
+    else:
+        print('failed to match line: {}'.format(mstr))
+    return res
+
+infile = 'D:\\Matan\\Dropbox\\PHd\\Michal_Lab\\Rohit Analysis\\ms\\MaxQuant\\fasta_header.txt'
+outfile = 'D:\\Matan\\Dropbox\\PHd\\Michal_Lab\\Rohit Analysis\\ms\\MaxQuant\\fasta_gene.txt'
+
+header_set = set()
+with open(outfile, 'w') as outf:
+    with open(infile, 'r') as inf:
+        for line in inf:
+            fasta_line = line.strip('\n')
+            if fasta_line not in header_set:
+                header_set.add(fasta_line)
+                gene_name = extract_gene(fasta_line)
+                outf.write('{}\t{}\n'.format(fasta_line, '' if gene_name is None else gene_name))
+
