@@ -41,6 +41,7 @@ def _single_run(param_list):
             match = RES_REGEXP.match(line)
             if match is not None:
                 full_result.append(match.group('sequence'))
+        return full_result
     try:
         with Popen(param_list, stdout=PIPE, stdin=PIPE) as proc:
             logging.debug("Running incaRNAtion on params: {}".format(param_list))
