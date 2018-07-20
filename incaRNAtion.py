@@ -1,6 +1,7 @@
 from tempfile import NamedTemporaryFile as NTF
 from subprocess import Popen, PIPE
 import os
+import re
 import logging
 import sys
 
@@ -30,17 +31,25 @@ def run_incaRNAtion(structure, amount_to_generate, gc_content = 0.5, sequence_co
     return result
 
 
+RES_REGEXP = re.compile(r'(?P<sequence>[UGCA]+) \((?P<energy>.)*\)')
+
+
 def _single_run(param_list):
-    result = []
+    def analyze_res(res: str):
+        full_result = []
+        for line in res.split('\n'):
+            match = RES_REGEXP.match(line)
+            if match is not None:
+                full_result.append(match.group('sequence'))
     try:
         with Popen(param_list, stdout=PIPE, stdin=PIPE) as proc:
             logging.debug("Running incaRNAtion on params: {}".format(param_list))
-            result = proc.communicate()[0].decode().split('\n')
+            result = proc.communicate()[0].decode()
     except:
         logging.error("Failed to run: '{}'".format(param_list))
         sys.exc_info()
         sys.exit(1)
-    return [res.strip() for res in result if res.strip() != '']
+    return analyze_res(result)
 
 
 def generate_seeds(structure, amount_to_generate):
