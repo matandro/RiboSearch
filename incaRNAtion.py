@@ -4,10 +4,7 @@ import os
 import logging
 import sys
 
-INCARNATION_PATH = "/opt/algorithm/incaRNAtion/IncaRNAtion-master/src/IncaRNAtion.py"
-#PYTHON_PATH = "/opt/algorithm/python36/bin/python3"
-#INCARNATION_PATH = "/home/matan/Dropbox/Thesis/Workspace/incaRNAtion/IncaRNAtion-master/src/IncaRNAtion"
-PYTHON_PATH = "python"
+INCARNATION_PATH = "/opt/algorithm/incaRNAtion2/IncaRNAtion"
 MAX_ATTEMPT = 5
 
 
@@ -20,7 +17,7 @@ def run_incaRNAtion(structure, amount_to_generate, gc_content = 0.5, sequence_co
     try:
         tmp_file.write('{}\n'.format(structure).encode())
         tmp_file.close()
-        param_list = [PYTHON_PATH, INCARNATION_PATH, '-a', '1', '-d', tmp_file.name,
+        param_list = [INCARNATION_PATH, '-a', '1', '-d', tmp_file.name,
                       '-c', sequence_constraints, '-no_profile', '-s_gc', str(gc_content)]
         while len(result) < amount_to_generate and attempt < MAX_ATTEMPT:
             attempt += 1
