@@ -90,13 +90,14 @@ def run_search(run_code: str, designed_object):
             general_run_logger.fatel('Exception in search {}, res no {}, {}'.format(run_code, res_no, res))
 
 
-def run(sequence: str, structure: str, design_per_seed: int=1, amount_of_seeds: int=4):
+def run(sequence: str, structure: str, design_per_seed: int=10, amount_of_seeds: int=250):
     # generate seeds
     general_run_logger.info("generating seeds\n{}\n{}".format(sequence, structure))
     seeds = design_seeds(sequence, structure, amount_of_seeds)
     if seeds is None or not seeds:
         general_run_logger.fatal('Failed to generate seeds!')
         return
+    seeds = seeds[:amount_of_seeds]
     # create executor
     general_run_logger.info('starting to generate tasks')
     with futures.ThreadPoolExecutor(max_workers=MAX_WORKER) as executor:
@@ -104,7 +105,7 @@ def run(sequence: str, structure: str, design_per_seed: int=1, amount_of_seeds: 
         future_sequences = []
         for seed_no, seed in enumerate(seeds):
             for design_no in range(design_per_seed):
-                future_sequences.append(executor.submit(run_design, '{}_{}'.format(seed_no, design_no), seed))
+                future_sequences.append(executor.submit(run_design, '{}_{}'.format(seed_no, design_no), seed, sequence, structure))
         for future in futures.as_completed(future_sequences):
             seq_code, designed_object = future.result()
             if designed_object is not None:
@@ -131,7 +132,7 @@ if __name__ == '__main__':
     result_logger.info("seq code\tmatch no\tsequence\tstructure\tscore\ttarget id")
     general_run_logger = setup_logger("log", output_dir, logging.Formatter('%(levelname)s::%(asctime)s - %(message)s'))
     design_logger = setup_logger("design_log", output_dir)
-    design_logger.info("sec_code\tseed\tsequence\tscore\tstructure\tbp distance\tmotif distance")
+    design_logger.info("sec_code\tseed\tsequence\tscore\tstructure\tbp distance\tmotif distance\tevalue")
     # setup target tree
     PURINE_SEQ =    "NNNNNNNNUNNNNNNNNNNNNNNNNNNNNNNNNUNNNUNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNN"
     PURINE_STRUCT = "((((((((...(.(((((.......))))).)........((((((.......))))))..))))))))"
