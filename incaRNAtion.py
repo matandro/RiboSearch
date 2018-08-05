@@ -5,7 +5,9 @@ import re
 import logging
 import sys
 
-INCARNATION_PATH = "/opt/algorithm/incaRNAtion2/IncaRNAtion"
+#INCARNATION_PATH = "/opt/algorithm/incaRNAtion2/IncaRNAtion"
+INCARNATION_PATH = "/opt/algorithm/incaRNAtion/IncaRNAtion-master/src/IncaRNAtion.py"
+PYTHON_PATH = "python"
 MAX_ATTEMPT = 5
 
 
@@ -18,7 +20,8 @@ def run_incaRNAtion(structure, amount_to_generate, gc_content = 0.5, sequence_co
     try:
         tmp_file.write('{}\n'.format(structure).encode())
         tmp_file.close()
-        param_list = [INCARNATION_PATH, '-a', '1', '-d', tmp_file.name,
+        #param_list = [INCARNATION_PATH, '-a', '1', '-d', tmp_file.name,
+        param_list = [PYTHON_PATH, INCARNATION_PATH, '-a', '1', '-d', tmp_file.name,
                       '-c', sequence_constraints, '-no_profile', '-s_gc', str(gc_content)]
         while len(result) < amount_to_generate and attempt < MAX_ATTEMPT:
             attempt += 1
@@ -31,7 +34,8 @@ def run_incaRNAtion(structure, amount_to_generate, gc_content = 0.5, sequence_co
     return result
 
 
-RES_REGEXP = re.compile(r'(?P<sequence>[UGCA]+) \((?P<energy>.)*\)')
+#RES_REGEXP = re.compile(r'(?P<sequence>[UGCA]+) \((?P<energy>.)*\)')
+RES_REGEXP = re.compile(r'(?P<sequence>[UGCA]+)')
 
 
 def _single_run(param_list):
