@@ -37,7 +37,7 @@ def check_ancestor(name: str, tax_id:int, rank: str=None) -> bool:
     return False
 
 
-class DesignGroup():
+class DesignGroup:
     def __init(self, seq_code_map: Dict[str, str]):
         self.sequence = seq_code_map.get('sequence')
         self.structure = seq_code_map.get('structure')
