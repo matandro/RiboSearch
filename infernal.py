@@ -133,7 +133,8 @@ def output_search_analyze_tlbout(output: str) -> List[Dict[str, str]]:
             words = line.split()
             single_res = {'target name': words[0], 'model from': words[5], 'model to': words[6],
                           'seq from': words[7], 'seq to': words[8], 'strand': words[9],
-                          'score': words[14], 'E-value': words[15], 'description': words[17]}
+                          'score': words[14], 'E-value': words[15], 'description': words[17],
+                          'identifier': '{}/{}-{}({})'.format(words[0], words[7], words[8], words[9])}
             search_list.append(single_res)
     return search_list
 
@@ -185,7 +186,8 @@ def output_search_analyze_normal(output: str) -> List[Dict[str, str]]:
             res_seq = res_seq.replace('-','').upper()
             res = {'target name': res_name, 'score': res_info[3], 'E-value': res_info[2], 
                    'seq from': res_info[9], 'seq to': res_info[10], 'strand': res_info[11],
-                   'model from': res_info[6], 'model to': res_info[7], 'sequence': res_seq}
+                   'model from': res_info[6], 'model to': res_info[7], 'sequence': res_seq,
+                   'identifier': '{}/{}-{}({})'.format(res_name, res_info[9], res_info[10], res_info[11])}
             search_list.append(res)
     return search_list
 

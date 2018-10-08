@@ -80,7 +80,7 @@ def run_search(run_code: str, designed_object):
                 general_run_logger.info('Adding result {}, score {} sequence {}'.format(run_code, score, sequence))
                 'seq code\tmatch no\tsequence\tstructure\tscore\ttarget id'
                 result_logger.info('{}\t{}\t{}\t{}\t{}\t{}'.format(run_code, res_no, sequence, structure, score,
-                                                                   res.get('target name')))
+                                                                   res.get('identifier')))
             else:
                 general_run_logger.warning('Score too low {} result no {}, score {}, sequence: {}'.format(run_code,
                                                                                                           res_no,
