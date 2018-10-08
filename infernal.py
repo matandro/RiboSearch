@@ -3,6 +3,7 @@ import logging
 import os
 from rnafbinv import vienna
 from tempfile import NamedTemporaryFile as NTF
+from typing import List, Dict
 import re
 from Bio import SeqIO
 from enum import Enum
@@ -12,13 +13,47 @@ INFENRAL_PATH = "/opt/algorithm/infernal/bin/"
 CMBUILD_EXE = "cmbuild"
 CMSEARCH_EXE = "cmsearch"
 CMCALIBRATE_EXE = "cmcalibrate"
+CMALIGN_EXE = "cmalign"
 SHELL_SEQ_SCRIPT = "/opt/algorithm/RiboSearch/infernal_pull_seq.sh"
 STOCKHOLM_FORMAT = "# STOCKHOLM 1.0"
 MAX_THREADS = 4
+FASTA_LINE_LENGTH = 80
 
 
+def generate_fasta(sequences: Dict[str, str]) -> NTF:
+    tmp_file = NTF(dir='.', delete=False, encoding="utf-8")
+    for topic, sequence in sequences.items():
+        tmp_file.write('> {}\n'.format(topic))
+        for fasta_line in [sequence[i:i+FASTA_LINE_LENGTH] for i in range(0, len(sequence), FASTA_LINE_LENGTH)]:
+            tmp_file.write('{}\n'.format(fasta_line))
+    tmp_file.close()
+    return tmp_file
 
-def generate_stockholm(sequence, structure=None):
+
+def align_sequences(sequences: Dict[str, str], cm_path: str, out_align_path: str) -> bool:
+    result = False
+    tmp_sequences_fasta = generate_fasta(sequences)
+    try:
+        param_list = [os.path.join(INFENRAL_PATH, CMALIGN_EXE), '-g', '-o', out_align_path, cm_path,
+                      tmp_sequences_fasta.name]
+        logging.info("Aligning sequences to CM file {}".format(cm_path))
+        with Popen(param_list, stdout=PIPE, stdin=PIPE) as proc:
+            ret_code = proc.wait()
+            if ret_code < 0:
+                raise Exception("cmalign ended with error code {}".format(ret_code))
+        if os.path.exists(out_align_path):
+            result = True
+    except Exception as e:
+        if os.path.exists(out_align_path):
+            os.remove(out_align_path)
+        logging.error("Failed to sequence to cm file {}. ERROR: {}".format(cm_path, e))
+    finally:
+        if tmp_sequences_fasta is not None and os.path.exists(tmp_sequences_fasta.name):
+            os.remove(tmp_sequences_fasta.name)
+    return result
+
+
+def generate_stockholm(sequence: str, structure: str=None) -> NTF:
     if structure is None:
         structure = vienna.fold(sequence)['MFE']
     tmp_file = NTF(dir='.', delete=False)
@@ -29,38 +64,46 @@ def generate_stockholm(sequence, structure=None):
     return tmp_file
 
 
-def generate_cm(sequence, outcm_path, structure=None):
+def generate_cm(stockholm_path: str, outcm_path: str) -> bool:
     result = False
-    tmp_stockholm = generate_stockholm(sequence, structure)
     try:
         if not os.path.exists(outcm_path):
             param_list = [os.path.join(INFENRAL_PATH, CMBUILD_EXE), '-F', outcm_path,
-                          tmp_stockholm.name]
-            logging.info("Generating CM file {} for sequence: {}".format(outcm_path, sequence))
+                          stockholm_path]
+            logging.info("Generating CM file {} for file: {}".format(outcm_path, stockholm_path))
             with Popen(param_list, stdout=PIPE, stdin=PIPE) as proc:
                 ret_code = proc.wait()
                 if ret_code < 0:
-                    raise Exception()
+                    raise Exception("cmbuild ended with error code {}".format(ret_code))
             param_list = [os.path.join(INFENRAL_PATH, CMCALIBRATE_EXE), '--cpu', str(MAX_THREADS), outcm_path]
         if not is_calibrated(outcm_path):
-            logging.info("Calibrating CM file")
+            logging.info("Calibrating CM file {}".format(outcm_path))
             with Popen(param_list, stdout=PIPE, stdin=PIPE) as proc:
                 ret_code = proc.wait()
                 if ret_code < 0:
-                    raise Exception()
+                    raise Exception("cmcalibrate ended with error code {}".format(ret_code))
         result = os.path.exists(outcm_path)
         logging.info("Finished CM file")
     except Exception as e:
         if os.path.exists(outcm_path):
             os.remove(outcm_path)
         logging.error("Failed to generate and calibrate cm file {}. ERROR: ".format(outcm_path, e))
+        raise e
+    return result
+
+
+def generate_single_seq_cm(sequence: str, outcm_path: str, structure: str=None) -> bool:
+    result = False
+    tmp_stockholm = generate_stockholm(sequence, structure)
+    try:
+        generate_cm(tmp_stockholm.name, outcm_path)
     finally:
         if tmp_stockholm is not None and os.path.exists(tmp_stockholm.name):
             os.remove(tmp_stockholm.name)
     return result
 
 
-def fetch_seq_tlbout(tlbout_path, fasta_orig):
+def fetch_seq_tlbout(tlbout_path: str, fasta_orig: str) -> List[Dict[str, str]]:
     results = []
     try:
         temp_fasta_out = NTF(dir='.', delete=False)
@@ -82,7 +125,7 @@ def fetch_seq_tlbout(tlbout_path, fasta_orig):
     return results
 
 
-def output_search_analyze_tlbout(output):
+def output_search_analyze_tlbout(output: str) -> List[Dict[str, str]]:
     search_list = []
     for line in output.split('\n'):
         line = line.strip()
@@ -95,13 +138,14 @@ def output_search_analyze_tlbout(output):
     return search_list
 
 
-def output_search_analyze(output):
+def output_search_analyze(output: str) -> List[Dict[str, str]]:
     return output_search_analyze_tlbout(output)
-    #return output_search_analyze_normal(output)
+    # return output_search_analyze_normal(output)
+
 
 # NOT USED
-def output_search_analyze_normal(output):
-    def split_results(hit_section_text):
+def output_search_analyze_normal(output: str) -> List[Dict[str, str]]:
+    def split_results(hit_section_text: str) -> List[str]:
         res = []
         collect = None
         for line in hit_section_text.split('\n'):
@@ -146,11 +190,11 @@ def output_search_analyze_normal(output):
     return search_list
 
 
-def is_calibrated(cm_file_path):
+def is_calibrated(cm_file_path: str) -> bool:
     calibrated = False
     with open(cm_file_path, 'r') as cm_file:
         for line in cm_file:
-            if line[0:3]  == 'COM' and 'cmcalibrate' in line:
+            if line[0:3] == 'COM' and 'cmcalibrate' in line:
                 calibrated = True
                 break
     return calibrated
@@ -162,7 +206,8 @@ class ResType(Enum):
     MANUAL = 3
 
 
-def search_cm(cm_file_path, seqdb_path, debug=False, res_type=ResType.ERIC):
+def search_cm(cm_file_path: str, seqdb_path: str, debug: bool=False, res_type: ResType=ResType.ERIC) \
+        -> List[Dict[str, str]]:
     results = None
     temp_out = None
     try:
@@ -186,7 +231,8 @@ def search_cm(cm_file_path, seqdb_path, debug=False, res_type=ResType.ERIC):
                 # getting actual results (sequnces)
                 results = fetch_seq_tlbout(temp_out.name, seqdb_path)
                 if len(tlbout_results) != len(results):
-                    logging.warning("Something strange in infernal result analysis. tlbout lines = {}, esl_sfetch lines = {}".format(len(tlbout_results), len(results)))
+                    logging.warning("Something strange in infernal result analysis. tlbout lines = {},"
+                                    " esl_sfetch lines = {}".format(len(tlbout_results), len(results)))
             elif res_type == ResType.TLBOUT:
                 results = tlbout_results
             logging.info("Finisied cm search {} results".format(len(results)))
@@ -204,11 +250,12 @@ def search_cm(cm_file_path, seqdb_path, debug=False, res_type=ResType.ERIC):
 
 if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO)
-    test_sequence = "AGGUCCUAGUGCAGCGGGACUUUUUUUCUAAAGUCGUUGAGAGGAGGAGUCGUCAGACCAGAUAGCUUUGAUGUCCUGAUCGGAAGGAUCGUUGGCCCCC" #"GGAGGCCGCUUGCCCUCC"
-    is_build_cm = generate_cm(test_sequence,"test.cm")
+    test_sequence = "AGGUCCUAGUGCAGCGGGACUUUUUUUCUAAAGUCGUUGAGAGGAGGAGUCGUCAGACCAGAUAGCUUUGAUGUCCUGAU" \
+                    "CGGAAGGAUCGUUGGCCCCC" #"GGAGGCCGCUUGCCCUCC"
+    is_build_cm = generate_single_seq_cm(test_sequence, "test.cm")
     print("is build CM {}".format(is_build_cm))
     if is_build_cm:
-#        print(search_cm("test.cm", "test_seq_db.fasta", debug=True))
-#        print(search_cm("test.cm", "no_find_seq_db.fasta", debug=True))
+        # print(search_cm("test.cm", "test_seq_db.fasta", debug=True))
+        # print(search_cm("test.cm", "no_find_seq_db.fasta", debug=True))
         print(search_cm("1_3.cm", "/DB/fasta_db/Tbrucei/Tbrucei", debug=True))
 

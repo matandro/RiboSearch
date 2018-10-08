@@ -61,7 +61,7 @@ NT_PATH = '/DB/fasta_db/nt/nt'
 def run_search(run_code: str, designed_object):
     general_run_logger.info('Starting search {}'.format(run_code))
     cm_path = os.path.join(output_dir, '{}.cm'.format(run_code))
-    if not infernal.generate_cm(designed_object.sequence, cm_path, designed_object.structure):
+    if not infernal.generate_single_seq_cm(designed_object.sequence, cm_path, designed_object.structure):
         general_run_logger.error('Failed to build covariance model. run code: {}\n{}\n{}'
                                  .format(run_code, designed_object.sequence, designed_object.structure))
         return

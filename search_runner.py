@@ -117,7 +117,7 @@ def cm_search(sequence, seq_code, fasta_list=None):
         fasta_dbs = fasta_list
     # cm build \ calibrate
     cm_path = os.path.join(output_dir, "{}.cm".format(seq_code))
-    infernal.generate_cm(sequence, cm_path)
+    infernal.generate_single_seq_cm(sequence, cm_path)
     # search fasta files
     for fasta_file in fasta_dbs:
         single_fasta_res = infernal.search_cm(cm_path, fasta_file)
