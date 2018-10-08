@@ -208,6 +208,17 @@ class ResType(Enum):
 
 def search_cm(cm_file_path: str, seqdb_path: str, debug: bool=False, res_type: ResType=ResType.ERIC) \
         -> List[Dict[str, str]]:
+    def merge_eric(table_results: List[Dict[str, str]], eric_results: List[Dict[str, str]]):
+        for eric_res, table_res in zip(eric_results, table_results):
+            eric_target = eric_res.get("target name")
+            target, loc_str = eric_target.split('/', 1)
+            seq_from, seq_to = loc_str.split('-', 1)
+            if table_res.get('target name') != target or table_res.get('seq from') != seq_from \
+                    or table_res.get('seq to') != seq_to:
+                logging.error("Rows do not match: table - {} eric - {}".format(table_res, eric_res))
+            else:
+                table_res['sequence'] = eric_res.get('sequence')
+
     results = None
     temp_out = None
     try:
@@ -233,6 +244,9 @@ def search_cm(cm_file_path: str, seqdb_path: str, debug: bool=False, res_type: R
                 if len(tlbout_results) != len(results):
                     logging.warning("Something strange in infernal result analysis. tlbout lines = {},"
                                     " esl_sfetch lines = {}".format(len(tlbout_results), len(results)))
+                else:
+                    merge_eric(tlbout_results, results)
+                    results = tlbout_results
             elif res_type == ResType.TLBOUT:
                 results = tlbout_results
             logging.info("Finisied cm search {} results".format(len(results)))
@@ -251,11 +265,12 @@ def search_cm(cm_file_path: str, seqdb_path: str, debug: bool=False, res_type: R
 if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO)
     test_sequence = "AGGUCCUAGUGCAGCGGGACUUUUUUUCUAAAGUCGUUGAGAGGAGGAGUCGUCAGACCAGAUAGCUUUGAUGUCCUGAU" \
-                    "CGGAAGGAUCGUUGGCCCCC" #"GGAGGCCGCUUGCCCUCC"
+                    "CGGAAGGAUCGUUGGCCCCC"
+    test_sequence = "GGAGGCCGCUUGCCCUCC"
     is_build_cm = generate_single_seq_cm(test_sequence, "test.cm")
     print("is build CM {}".format(is_build_cm))
     if is_build_cm:
-        # print(search_cm("test.cm", "test_seq_db.fasta", debug=True))
+        print(search_cm("test.cm", "test_seq_db.fasta", debug=True))
         # print(search_cm("test.cm", "no_find_seq_db.fasta", debug=True))
-        print(search_cm("1_3.cm", "/DB/fasta_db/Tbrucei/Tbrucei", debug=True))
+        # print(search_cm("1_3.cm", "/DB/fasta_db/Tbrucei/Tbrucei", debug=True))
 
