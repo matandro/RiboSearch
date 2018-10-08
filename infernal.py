@@ -96,7 +96,7 @@ def generate_single_seq_cm(sequence: str, outcm_path: str, structure: str=None) 
     result = False
     tmp_stockholm = generate_stockholm(sequence, structure)
     try:
-        generate_cm(tmp_stockholm.name, outcm_path)
+        result = generate_cm(tmp_stockholm.name, outcm_path)
     finally:
         if tmp_stockholm is not None and os.path.exists(tmp_stockholm.name):
             os.remove(tmp_stockholm.name)
