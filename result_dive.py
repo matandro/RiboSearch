@@ -12,7 +12,6 @@ import os
 import shutil
 from copy import copy
 import logging
-import filecmp
 
 
 def get_tax_id(organism_id: str) -> int:
@@ -119,10 +118,18 @@ def test_taxonomy():
 
 
 def has_non_bacteria(tax_list: List[str]) -> bool:
+    has_warning = False
     for tax_name in tax_list:
-        if not check_ancestor('Bacteria', get_tax_id(tax_name)):
-            return True
-    return False
+        try:
+            if not check_ancestor('Bacteria', get_tax_id(tax_name)):
+                return True
+        except:
+            has_warning = True
+            logging.warning("Unknown taxonomy {}".format(tax_name))
+    if has_warning:
+        return None
+    else:
+        return False
 
 
 if __name__ == "__main__":
