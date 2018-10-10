@@ -146,7 +146,7 @@ if __name__ == "__main__":
         out_file.write('design code\tNo of matches\thas non bacteria\tsequence\tstructure\n')
         for design_group in all_design_groups:
             logging.info('Dive group {}'.format(design_group.identifier))
-            new_design_group = dive_single(design_group, base_dir, '/DB/fasta_db/nt/nt')
+            new_design_group = dive_single(design_group.identifier, design_group, base_dir, '/DB/fasta_db/nt/nt')
             logging.info('Finished group {} matched {} results'.format(design_group.identifier,
                                                                        len(new_design_group.matches)))
             tax_name_list = [x.split('/')[0] for x in new_design_group.matches.keys()]
