@@ -88,7 +88,7 @@ def dive_single(group_id: str, single_design_group: DesignGroup, cm_dir: str, se
     while found_new:
         found_new = False
         # rebuild cm (align to old, delete and create new)
-        success = infernal.align_sequences(dict(enumerate(single_design_group.matches)),
+        success = infernal.align_sequences(single_design_group.matches,
                                            os.path.join(cm_dir, cm_name), stockholm_file)
         os.remove(os.path.join(cm_dir, cm_name))
         success = infernal.generate_cm(stockholm_file, os.path.join(cm_dir, cm_name))

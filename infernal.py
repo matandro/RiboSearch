@@ -4,7 +4,6 @@ import os
 from rnafbinv import vienna
 from tempfile import NamedTemporaryFile as NTF
 from typing import List, Dict
-import re
 from Bio import SeqIO
 from enum import Enum
 
