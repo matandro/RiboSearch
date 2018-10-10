@@ -56,10 +56,10 @@ def align_sequences(sequences: Dict[str, str], cm_path: str, out_align_path: str
 def generate_stockholm(sequence: str, structure: str=None) -> NTF:
     if structure is None:
         structure = vienna.fold(sequence)['MFE']
-    tmp_file = NTF(mode='w+', dir='.', delete=False)
-    tmp_file.write('{}\n'.format(STOCKHOLM_FORMAT).encode())
-    tmp_file.write('seq1\t{}\n'.format(sequence).encode())
-    tmp_file.write('#=GC SS_cons\t{}\n//'.format(structure).encode())
+    tmp_file = NTF(mode='w+', dir='.', delete=False, encoding="utf-8")
+    tmp_file.write('{}\n'.format(STOCKHOLM_FORMAT))
+    tmp_file.write('seq1\t{}\n'.format(sequence))
+    tmp_file.write('#=GC SS_cons\t{}\n//'.format(structure))
     tmp_file.close()
     return tmp_file
 
