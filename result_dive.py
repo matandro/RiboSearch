@@ -73,18 +73,20 @@ def generate_clusters(match_file_path: str, design_file_path: str, is_filter_bac
             design_group = design_group_map.get(design_id, DesignGroup(design_id, seq_code_map.get(design_id)))
             if not is_filter_bacteria or not check_ancestor('Bacteria', get_tax_id(items[5].strip().split('/', 1)[0])):
                 design_group.add_match(items[5].strip(), items[2].strip(), items[3].strip())
+            design_group_map[design_id] = design_group
     return list(design_group_map.values())
 
 
 def dive_single(group_id: str, single_design_group: DesignGroup, cm_dir: str, seq_db_path: str) -> DesignGroup:
-    found_new = False
+    found_new = True
     base_cm_name = '{}.cm'.format(group_id)
     cm_name = 'TEMP_{}'.format(base_cm_name)
     shutil.copyfile(os.path.join(cm_dir, base_cm_name), os.path.join(cm_dir, cm_name))
     stockholm_file = '{}.stk'.format(group_id)
     design_group_identifies = {'sequence': single_design_group.sequence, 'structure': single_design_group.structure}
     design_copy = copy(single_design_group)
-    while not found_new:
+    while found_new:
+        found_new = False
         # rebuild cm (align to old, delete and create new)
         success = infernal.align_sequences(dict(enumerate(single_design_group.matches)),
                                            os.path.join(cm_dir, cm_name), stockholm_file)
@@ -93,14 +95,14 @@ def dive_single(group_id: str, single_design_group: DesignGroup, cm_dir: str, se
         # search on cm
         search_res = infernal.search_cm(os.path.join(cm_dir, cm_name), seq_db_path)
         # identify items (see different matches) and compare size of match group
-        new_design_group = DesignGroup(single_design_group.identifier, design_group_identifies)
+        newl_design_group = DesignGroup(single_design_group.identifier, design_group_identifies)
         for single_match in search_res:
             code = single_match.get('identifier')
             seq = single_match.get('sequence')
-            new_design_group.add_match(code, seq)
+            newl_design_group.add_match(code, seq)
             if code not in design_copy.matches:
                 found_new = True
-        design_copy = new_design_group
+        design_copy = newl_design_group
     # organize cm
     shutil.move(os.path.join(cm_dir, base_cm_name), os.path.join('FINAL_{}'.format(base_cm_name), cm_name))
     return design_copy
@@ -136,7 +138,8 @@ if __name__ == "__main__":
     # test_taxonomy()
     logging.basicConfig(level=logging.INFO)
     base_dir = '/DB/Output/SandD'
-    logging.info('Reading clusters')
+    logging.info('Reading clusters {} and {}'.format(os.path.join(base_dir, 'match_log'),
+                                                     os.path.join(base_dir, 'design_log')))
     all_design_groups = generate_clusters(os.path.join(base_dir, 'match_log'), os.path.join(base_dir, 'design_log'))
     logging.info('Read {} clusters, starting dive'.format(len(all_design_groups)))
     with open(os.path.join(base_dir, 'FINAL_summary'), 'w') as out_file:
