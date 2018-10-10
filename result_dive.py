@@ -104,7 +104,7 @@ def dive_single(group_id: str, single_design_group: DesignGroup, cm_dir: str, se
                 found_new = True
         design_copy = newl_design_group
     # organize cm
-    shutil.move(os.path.join(cm_dir, base_cm_name), os.path.join('FINAL_{}'.format(base_cm_name), cm_name))
+    shutil.move(os.path.join(cm_dir, cm_name), os.path.join(cm_dir, 'FINAL_{}'.format(base_cm_name)))
     return design_copy
 
 
