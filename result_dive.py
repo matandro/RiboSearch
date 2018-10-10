@@ -134,8 +134,7 @@ def has_non_bacteria(tax_list: List[str]) -> bool:
         return False
 
 
-if __name__ == "__main__":
-    # test_taxonomy()
+def run_dive():
     logging.basicConfig(level=logging.INFO)
     base_dir = '/DB/Output/SandD'
     logging.info('Reading clusters {} and {}'.format(os.path.join(base_dir, 'match_log'),
@@ -143,16 +142,21 @@ if __name__ == "__main__":
     all_design_groups = generate_clusters(os.path.join(base_dir, 'match_log'), os.path.join(base_dir, 'design_log'))
     logging.info('Read {} clusters, starting dive'.format(len(all_design_groups)))
     with open(os.path.join(base_dir, 'FINAL_summary'), 'w') as out_file:
-        out_file.write('design code\tNo of matches\thas non bacteria\tsequence\tstructure\n')
+        out_file.write('design code\tOriginal # of matches\tDive # of matches\thas non bacteria\tsequence\tstructure\n')
         for design_group in all_design_groups:
             logging.info('Dive group {}'.format(design_group.identifier))
             new_design_group = dive_single(design_group.identifier, design_group, base_dir, '/DB/fasta_db/nt/nt')
             logging.info('Finished group {} matched {} results'.format(design_group.identifier,
                                                                        len(new_design_group.matches)))
             tax_name_list = [x.split('/')[0] for x in new_design_group.matches.keys()]
-            write_str = '{}\t{}\t{}\t{}\t{}'.format(new_design_group.identifier, len(new_design_group.matches),
-                                                    has_non_bacteria(tax_name_list),
+            write_str = '{}\t{}\t{}\t{}\t{}'.format(new_design_group.identifier, len(design_group.matches),
+                                                    len(new_design_group.matches), has_non_bacteria(tax_name_list),
                                                     new_design_group.sequence, new_design_group.structure)
             logging.info(write_str)
             out_file.write('{}\n'.format(write_str))
     logging.info('All clusters done')
+
+
+if __name__ == "__main__":
+    # test_taxonomy()
+    run_dive()
