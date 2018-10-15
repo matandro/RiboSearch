@@ -92,7 +92,9 @@ def dive_single(group_id: str, single_design_group: DesignGroup, cm_dir: str, se
         count += 1
         found_new = False
         # rebuild cm (align to old, delete and create new)
-        full_list = copy(single_design_group.matches)
+        full_list = {}
+        for match in single_design_group.matches:
+            full_list[match.get('identifier')] = match.get('sequence')
         full_list[single_design_group.identifier] = single_design_group.sequence
         success = infernal.align_sequences(full_list,
                                            os.path.join(cm_dir, cm_name), stockholm_file)
