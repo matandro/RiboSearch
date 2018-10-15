@@ -182,7 +182,7 @@ def output_search_analyze_normal(output: str) -> List[Dict[str, str]]:
                 if index_nc >= 0:
                     temp_split = partial_info.split('\n')[index_nc + 4].rsplit(' ',1)[0].strip()
                     res_seq += temp_split.split(' ',3)[2]
-            res_seq = res_seq.replace('-','').upper()
+            res_seq = res_seq.replace('-', '').upper()
             res = {'target name': res_name, 'score': res_info[3], 'E-value': res_info[2], 
                    'seq from': res_info[9], 'seq to': res_info[10], 'strand': res_info[11],
                    'model from': res_info[6], 'model to': res_info[7], 'sequence': res_seq,
@@ -274,4 +274,3 @@ if __name__ == "__main__":
         print(search_cm("test.cm", "test_seq_db.fasta", debug=True))
         # print(search_cm("test.cm", "no_find_seq_db.fasta", debug=True))
         # print(search_cm("1_3.cm", "/DB/fasta_db/Tbrucei/Tbrucei", debug=True))
-

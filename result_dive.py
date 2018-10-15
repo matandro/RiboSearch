@@ -4,7 +4,7 @@ For each results, rebuild model and keep searching. Use infernal cm align to bui
 '''
 
 import requests
-from typing import List, Dict
+from typing import List, Dict, Tuple
 from ete3 import NCBITaxa
 import xml.etree.ElementTree as etree
 import infernal
@@ -49,12 +49,13 @@ class DesignGroup:
         self.structure = seq_code_map.get('structure')
         self.matches = {}
 
-    def add_match(self, identifier: str, sequence: str, structure:str=None):
-        seq = self.matches.get(identifier)
-        if seq is not None and seq != sequence:
-            logging.warning('Identifier [{}] already exists with different sequence:\n{}\n{}'.format(identifier, seq,
-                                                                                                     sequence))
-        self.matches[identifier] = sequence
+    def add_match(self, identifier: str, infernal_datum: Dict[str, str]):
+        datum = self.matches.get(identifier)
+        if datum is not None and datum != infernal_datum:
+            logging.warning('Identifier [{}] already exists with different sequence:\n{}\n{}'.format(identifier,
+                                                                                                     infernal_datum,
+                                                                                                     datum))
+        self.matches[identifier] = infernal_datum
 
 
 def generate_clusters(match_file_path: str, design_file_path: str, is_filter_bacteria: bool=False) \
@@ -72,12 +73,14 @@ def generate_clusters(match_file_path: str, design_file_path: str, is_filter_bac
             design_id = items[0].strip()
             design_group = design_group_map.get(design_id, DesignGroup(design_id, seq_code_map.get(design_id)))
             if not is_filter_bacteria or not check_ancestor('Bacteria', get_tax_id(items[5].strip().split('/', 1)[0])):
-                design_group.add_match(items[5].strip(), items[2].strip(), items[3].strip())
+                design_group.add_match(items[5].strip(), {'identifier': items[5].strip(), 'sequence': items[2].strip()})
             design_group_map[design_id] = design_group
     return list(design_group_map.values())
 
 
-def dive_single(group_id: str, single_design_group: DesignGroup, cm_dir: str, seq_db_path: str) -> DesignGroup:
+def dive_single(group_id: str, single_design_group: DesignGroup, cm_dir: str, seq_db_path: str,
+                filter_evalue: float = 10.0) -> Tuple[DesignGroup, int]:
+    count = 0
     found_new = True
     base_cm_name = '{}.cm'.format(group_id)
     cm_name = 'TEMP_{}'.format(base_cm_name)
@@ -86,6 +89,7 @@ def dive_single(group_id: str, single_design_group: DesignGroup, cm_dir: str, se
     design_group_identifies = {'sequence': single_design_group.sequence, 'structure': single_design_group.structure}
     design_copy = copy(single_design_group)
     while found_new:
+        count += 1
         found_new = False
         # rebuild cm (align to old, delete and create new)
         full_list = copy(single_design_group.matches)
@@ -97,17 +101,18 @@ def dive_single(group_id: str, single_design_group: DesignGroup, cm_dir: str, se
         # search on cm
         search_res = infernal.search_cm(os.path.join(cm_dir, cm_name), seq_db_path)
         # identify items (see different matches) and compare size of match group
-        newl_design_group = DesignGroup(single_design_group.identifier, design_group_identifies)
+        new_design_group = DesignGroup(single_design_group.identifier, design_group_identifies)
         for single_match in search_res:
             code = single_match.get('identifier')
             seq = single_match.get('sequence')
-            newl_design_group.add_match(code, seq)
-            if code not in design_copy.matches:
-                found_new = True
-        design_copy = newl_design_group
+            if float(single_match.get('E-value')) < filter_evalue:
+                new_design_group.add_match(code, single_match)
+                if code not in design_copy.matches:
+                    found_new = True
+        design_copy = new_design_group
     # organize cm
     shutil.move(os.path.join(cm_dir, cm_name), os.path.join(cm_dir, 'FINAL_{}'.format(base_cm_name)))
-    return design_copy
+    return design_copy, count
 
 
 def test_taxonomy():
@@ -136,24 +141,33 @@ def has_non_bacteria(tax_list: List[str]) -> bool:
         return False
 
 
-def run_dive():
+def run_dive(filter_evalue: float = 10.0):
     logging.basicConfig(level=logging.INFO)
     base_dir = '/DB/Output/SandD'
     logging.info('Reading clusters {} and {}'.format(os.path.join(base_dir, 'match_log'),
                                                      os.path.join(base_dir, 'design_log')))
     all_design_groups = generate_clusters(os.path.join(base_dir, 'match_log'), os.path.join(base_dir, 'design_log'))
     logging.info('Read {} clusters, starting dive'.format(len(all_design_groups)))
-    with open(os.path.join(base_dir, 'FINAL_summary'), 'w') as out_file:
-        out_file.write('design code\tOriginal # of matches\tDive # of matches\thas non bacteria\tsequence\tstructure\n')
+    with open(os.path.join(base_dir, 'FINAL_summary'), 'w') as out_file,\
+         open(os.path.join(base_dir, 'FINAL_all.txt'), 'w') as final_all:
+        final_all.write('design_code\tidentifier\tscore\tE-value\tsequence\n')
+        out_file.write('design code\tOriginal # of matches\tDive # of matches\t# of cycles\thas non bacteria\tsequence'
+                       '\tstructure\n')
         for design_group in all_design_groups:
             logging.info('Dive group {}'.format(design_group.identifier))
-            new_design_group = dive_single(design_group.identifier, design_group, base_dir, '/DB/fasta_db/nt/nt')
+            new_design_group, count = dive_single(design_group.identifier, design_group, base_dir, '/DB/fasta_db/nt/nt',
+                                                  filter_evalue)
             logging.info('Finished group {} matched {} results'.format(design_group.identifier,
                                                                        len(new_design_group.matches)))
             tax_name_list = [x.split('/')[0] for x in new_design_group.matches.keys()]
-            write_str = '{}\t{}\t{}\t{}\t{}'.format(new_design_group.identifier, len(design_group.matches),
-                                                    len(new_design_group.matches), has_non_bacteria(tax_name_list),
-                                                    new_design_group.sequence, new_design_group.structure)
+            write_str = '{}\t{}\t{}\t{}\t{}\t{}\t{}'.format(new_design_group.identifier, len(design_group.matches),
+                                                            len(new_design_group.matches), count,
+                                                            has_non_bacteria(tax_name_list), new_design_group.sequence,
+                                                            new_design_group.structure)
+            for match in design_group.matches:
+                final_all.write('{}\t{}\t{}\t{}\t{}\n'.format(new_design_group.identifier, match.get('identifier'),
+                                                              match.get('score'), match.get('E-value'),
+                                                              match.get('sequence')))
             logging.info(write_str)
             out_file.write('{}\n'.format(write_str))
     logging.info('All clusters done')
@@ -161,4 +175,4 @@ def run_dive():
 
 if __name__ == "__main__":
     # test_taxonomy()
-    run_dive()
+    run_dive(1)
