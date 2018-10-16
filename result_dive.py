@@ -166,8 +166,8 @@ def run_dive(filter_evalue: float = 10.0):
                                                             len(new_design_group.matches), count,
                                                             has_non_bacteria(tax_name_list), new_design_group.sequence,
                                                             new_design_group.structure)
-            for match in design_group.matches:
-                final_all.write('{}\t{}\t{}\t{}\t{}\n'.format(new_design_group.identifier, match.get('identifier'),
+            for identifier, match in design_group.matches.items():
+                final_all.write('{}\t{}\t{}\t{}\t{}\n'.format(new_design_group.identifier, identifier,
                                                               match.get('score'), match.get('E-value'),
                                                               match.get('sequence')))
             logging.info(write_str)
