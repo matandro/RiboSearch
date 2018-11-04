@@ -14,6 +14,7 @@ CMSEARCH_EXE = "cmsearch"
 CMCALIBRATE_EXE = "cmcalibrate"
 CMALIGN_EXE = "cmalign"
 SHELL_SEQ_SCRIPT = "/opt/algorithm/RiboSearch/infernal_pull_seq.sh"
+#SHELL_SEQ_SCRIPT = "infernal_pull_seq.sh"
 STOCKHOLM_FORMAT = "# STOCKHOLM 1.0"
 MAX_THREADS = 4
 FASTA_LINE_LENGTH = 80
