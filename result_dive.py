@@ -153,6 +153,7 @@ def run_dive(base_dir: str, filter_evalue: float = 10.0, filter_path: str = None
                 if not filter_list:
                     logging.error("filter file empty {}".format(filter_path))
                     exit(-1)
+
     logging.basicConfig(level=logging.INFO)
     filter_list = None
     logging.info('Reading clusters {} and {}'.format(os.path.join(base_dir, 'match_log'),
@@ -189,6 +190,7 @@ def run_dive(base_dir: str, filter_evalue: float = 10.0, filter_path: str = None
 
 
 if __name__ == "__main__":
+    logging.basicConfig(level=logging.INFO)
     # test_taxonomy()
     if len(sys.argv) == 1:
         base_dir = '/DB/Output/SandD'
