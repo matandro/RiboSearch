@@ -161,8 +161,8 @@ def run_dive(base_dir: str, filter_evalue: float = 10.0, filter_path: str = None
     all_design_groups = generate_clusters(os.path.join(base_dir, 'match_log'), os.path.join(base_dir, 'design_log'))
     logging.info('Read {} clusters, starting dive'.format(len(all_design_groups)))
     check_filter()
-    with open(os.path.join(base_dir, 'FINAL_summary'), 'w') as out_file,\
-         open(os.path.join(base_dir, 'FINAL_all.txt'), 'w') as final_all:
+    with open(os.path.join(base_dir, 'FINAL_summary'), 'w') as out_file, \
+            open(os.path.join(base_dir, 'FINAL_all.txt'), 'w') as final_all:
         final_all.write('design_code\tidentifier\tscore\tE-value\tsequence\tRound\n')
         out_file.write('design code\tOriginal # of matches\tDive # of matches\t# of cycles\thas non bacteria\tsequence'
                        '\tstructure\n')
@@ -202,4 +202,4 @@ if __name__ == "__main__":
         sys.exit(-1)
     else:
         logging.info("running with arguments: {}".format(sys.argv))
-        run_dive(sys.argv[1], sys.argv[2], None if len(sys.argv) < 4 else sys.argv[3])
+        run_dive(sys.argv[1], float(sys.argv[2]), None if len(sys.argv) < 4 else sys.argv[3])
