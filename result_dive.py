@@ -9,6 +9,7 @@ from ete3 import NCBITaxa
 import xml.etree.ElementTree as etree
 import infernal
 import os
+import sys
 import shutil
 from copy import copy
 import logging
@@ -110,6 +111,7 @@ def dive_single(group_id: str, single_design_group: DesignGroup, cm_dir: str, se
             if float(single_match.get('E-value')) < filter_evalue:
                 new_design_group.add_match(code, single_match)
                 if code not in design_copy.matches:
+                    single_match['round'] = count
                     found_new = True
         design_copy = new_design_group
     # organize cm
@@ -143,19 +145,30 @@ def has_non_bacteria(tax_list: List[str]) -> bool:
         return False
 
 
-def run_dive(filter_evalue: float = 10.0):
+def run_dive(base_dir: str, filter_evalue: float = 10.0, filter_path: str = None):
+    def check_filter():
+        if filter_path is not None:
+            with open(filter_path, 'r') as filter_file:
+                filter_list = [line.strip() for line in filter_file]
+                if not filter_list:
+                    logging.error("filter file empty {}".format(filter_path))
+                    exit(-1)
     logging.basicConfig(level=logging.INFO)
-    base_dir = '/DB/Output/SandD'
+    filter_list = None
     logging.info('Reading clusters {} and {}'.format(os.path.join(base_dir, 'match_log'),
                                                      os.path.join(base_dir, 'design_log')))
     all_design_groups = generate_clusters(os.path.join(base_dir, 'match_log'), os.path.join(base_dir, 'design_log'))
     logging.info('Read {} clusters, starting dive'.format(len(all_design_groups)))
+    check_filter()
     with open(os.path.join(base_dir, 'FINAL_summary'), 'w') as out_file,\
          open(os.path.join(base_dir, 'FINAL_all.txt'), 'w') as final_all:
-        final_all.write('design_code\tidentifier\tscore\tE-value\tsequence\n')
+        final_all.write('design_code\tidentifier\tscore\tE-value\tsequence\tRound\n')
         out_file.write('design code\tOriginal # of matches\tDive # of matches\t# of cycles\thas non bacteria\tsequence'
                        '\tstructure\n')
         for design_group in all_design_groups:
+            if filter_list is not None and \
+                    design_group.identifier not in filter_list:
+                continue
             logging.info('Dive group {}'.format(design_group.identifier))
             new_design_group, count = dive_single(design_group.identifier, design_group, base_dir, '/DB/fasta_db/nt/nt',
                                                   filter_evalue)
@@ -167,9 +180,9 @@ def run_dive(filter_evalue: float = 10.0):
                                                             has_non_bacteria(tax_name_list), new_design_group.sequence,
                                                             new_design_group.structure)
             for identifier, match in new_design_group.matches.items():
-                final_all.write('{}\t{}\t{}\t{}\t{}\n'.format(new_design_group.identifier, identifier,
+                final_all.write('{}\t{}\t{}\t{}\t{}\t{}\n'.format(new_design_group.identifier, identifier,
                                                               match.get('score'), match.get('E-value'),
-                                                              match.get('sequence')))
+                                                              match.get('sequence'), match.get('round')))
             logging.info(write_str)
             out_file.write('{}\n'.format(write_str))
     logging.info('All clusters done')
@@ -177,4 +190,14 @@ def run_dive(filter_evalue: float = 10.0):
 
 if __name__ == "__main__":
     # test_taxonomy()
-    run_dive(0.01)
+    if len(sys.argv) == 1:
+        base_dir = '/DB/Output/SandD'
+        logging.info("No arguments, running on default ({}, 0.01, no filter)".format(base_dir))
+        run_dive(base_dir, 0.01)
+    elif len(sys.argv) < 3:
+        logging.error("If arguments are given 2 are mandatory. result_dive.py <base_dir> <filter_amount> [filter path]"
+                      "\nGot: {}".format(sys.argv))
+        sys.exit(-1)
+    else:
+        logging.info("running with arguments: {}".format(sys.argv))
+        run_dive(sys.argv[1], sys.argv[2], None if len(sys.argv) < 4 else sys.argv[3])

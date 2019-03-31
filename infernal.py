@@ -30,7 +30,7 @@ def generate_fasta(sequences: Dict[str, str]) -> NTF:
     return tmp_file
 
 
-def align_sequences(sequences: Dict[str, str], cm_path: str, out_align_path: str) -> bool:
+def align_sequences(sequences: Dict[str, str], cm_path: str, out_align_path: str, timeout: int=None) -> bool:
     result = False
     tmp_sequences_fasta = generate_fasta(sequences)
     try:
@@ -38,9 +38,9 @@ def align_sequences(sequences: Dict[str, str], cm_path: str, out_align_path: str
                       tmp_sequences_fasta.name]
         logging.info("Aligning sequences to CM file {}".format(cm_path))
         with Popen(param_list, stdout=PIPE, stdin=PIPE) as proc:
-            ret_code = proc.wait()
-            if ret_code < 0:
-                raise Exception("cmalign ended with error code {}".format(ret_code))
+            _, stderr_out = proc.communicate(timeout=timeout)
+            if stderr_out is not None:
+                print(stderr_out)
         if os.path.exists(out_align_path):
             result = True
     except Exception as e:
