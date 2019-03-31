@@ -26,11 +26,11 @@ def generate_r2r(folder_path: str, sto_file_name: str, force: bool=False):
         with open(meta_file_path, 'w') as meta_file:
             meta_file.write(pre_comp_sto)
             meta_file.flush()
-        args = ["r2r", meta_file_path, result_img_path]
+        args = ["r2r", "--disable-usage-warning", meta_file_path, result_img_path]
         with Popen(args) as proc:
             proc.communicate()
         if not os.path.exists(result_img_path) or os.stat(result_img_path).st_size == 0:
-            if os.stat(result_img_path).st_size == 0:
+            if os.path.exists(result_img_path) and os.stat(result_img_path).st_size == 0:
                 os.remove(result_img_path)
             logging.error("Failed to generate svg image for {}".format(result_img_path))
             return None
