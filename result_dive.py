@@ -74,7 +74,8 @@ def generate_clusters(match_file_path: str, design_file_path: str, is_filter_bac
             design_id = items[0].strip()
             design_group = design_group_map.get(design_id, DesignGroup(design_id, seq_code_map.get(design_id)))
             if not is_filter_bacteria or not check_ancestor('Bacteria', get_tax_id(items[5].strip().split('/', 1)[0])):
-                design_group.add_match(items[5].strip(), {'identifier': items[5].strip(), 'sequence': items[2].strip()})
+                design_group.add_match(items[5].strip(), {'identifier': items[5].strip(), 'sequence': items[2].strip(),
+                                                          'round': 0})
             design_group_map[design_id] = design_group
     return list(design_group_map.values())
 
@@ -89,6 +90,14 @@ def dive_single(group_id: str, single_design_group: DesignGroup, cm_dir: str, se
     stockholm_file = '{}.stk'.format(group_id)
     design_group_identifies = {'sequence': single_design_group.sequence, 'structure': single_design_group.structure}
     design_copy = copy(single_design_group)
+    if not os.path.exists(os.path.join(cm_dir, cm_name)):
+        full_list = {}
+        for identifier, match in single_design_group.matches.items():
+            full_list[identifier] = match.get('sequence')
+        full_list[single_design_group.identifier] = single_design_group.sequence
+        success = infernal.align_sequences(full_list,
+                                           os.path.join(cm_dir, cm_name), stockholm_file)
+        success = infernal.generate_cm(stockholm_file, os.path.join(cm_dir, cm_name))
     while found_new:
         count += 1
         found_new = False
@@ -149,7 +158,7 @@ def run_dive(base_dir: str, filter_evalue: float = 10.0, filter_path: str = None
     def check_filter():
         if filter_path is not None:
             with open(filter_path, 'r') as filter_file:
-                filter_list = [line.strip() for line in filter_file]
+                filter_list = [line.strip() for line in filter_file if line.strip() != '']
                 if not filter_list:
                     logging.error("filter file empty {}".format(filter_path))
                     exit(-1)

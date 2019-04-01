@@ -12,6 +12,8 @@ import incaRNAtion
 import infernal
 import blast_sequence
 
+from rnafbinv import shapiro_tree_aligner, vienna
+
 
 MAX_WORKER = 8
 
