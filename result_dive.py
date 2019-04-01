@@ -85,19 +85,14 @@ def dive_single(group_id: str, single_design_group: DesignGroup, cm_dir: str, se
     count = 0
     found_new = True
     base_cm_name = '{}.cm'.format(group_id)
+    if not os.path.exists(os.path.join(cm_dir, base_cm_name)):
+        infernal.generate_single_seq_cm(single_design_group.sequence, os.path.join(cm_dir, base_cm_name),
+                                        structure=single_design_group.structure)
     cm_name = 'TEMP_{}'.format(base_cm_name)
     shutil.copyfile(os.path.join(cm_dir, base_cm_name), os.path.join(cm_dir, cm_name))
     stockholm_file = '{}.stk'.format(group_id)
     design_group_identifies = {'sequence': single_design_group.sequence, 'structure': single_design_group.structure}
     design_copy = copy(single_design_group)
-    if not os.path.exists(os.path.join(cm_dir, cm_name)):
-        full_list = {}
-        for identifier, match in single_design_group.matches.items():
-            full_list[identifier] = match.get('sequence')
-        full_list[single_design_group.identifier] = single_design_group.sequence
-        success = infernal.align_sequences(full_list,
-                                           os.path.join(cm_dir, cm_name), stockholm_file)
-        success = infernal.generate_cm(stockholm_file, os.path.join(cm_dir, cm_name))
     while found_new:
         count += 1
         found_new = False
