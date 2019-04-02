@@ -163,6 +163,8 @@ def run_dive(base_dir: str, filter_evalue: float = 10.0, filter_path: str = None
                     exit(-1)
 
     logging.basicConfig(level=logging.INFO)
+    logging.info("Running run_dive with: Dir: {}, Max evalue: {}, Filter file: {}".format(base_dir, filter_evalue,
+                                                                                          filter_path))
     filter_list = None
     logging.info('Reading clusters {} and {}'.format(os.path.join(base_dir, 'match_log'),
                                                      os.path.join(base_dir, 'design_log')))
