@@ -16,7 +16,6 @@ CMALIGN_EXE = "cmalign"
 SHELL_SEQ_SCRIPT = "/opt/algorithm/RiboSearch/infernal_pull_seq.sh"
 #SHELL_SEQ_SCRIPT = "infernal_pull_seq.sh"
 STOCKHOLM_FORMAT = "# STOCKHOLM 1.0"
-MAX_THREADS = 4
 FASTA_LINE_LENGTH = 80
 
 
@@ -64,7 +63,7 @@ def generate_stockholm(sequence: str, structure: str=None) -> NTF:
     return tmp_file
 
 
-def generate_cm(stockholm_path: str, outcm_path: str) -> bool:
+def generate_cm(stockholm_path: str, outcm_path: str, cpus: int=None) -> bool:
     result = False
     try:
         if not os.path.exists(outcm_path):
@@ -75,7 +74,10 @@ def generate_cm(stockholm_path: str, outcm_path: str) -> bool:
                 ret_code = proc.wait()
                 if ret_code < 0:
                     raise Exception("cmbuild ended with error code {}".format(ret_code))
-            param_list = [os.path.join(INFENRAL_PATH, CMCALIBRATE_EXE), '--cpu', str(MAX_THREADS), outcm_path]
+            param_list = [os.path.join(INFENRAL_PATH, CMCALIBRATE_EXE)]
+            if cpus is not None:
+                param_list += ['--cpu', str(cpus)]
+            param_list.append(outcm_path)
         if not is_calibrated(outcm_path):
             logging.info("Calibrating CM file {}".format(outcm_path))
             with Popen(param_list, stdout=PIPE, stdin=PIPE) as proc:
@@ -93,11 +95,11 @@ def generate_cm(stockholm_path: str, outcm_path: str) -> bool:
     return result
 
 
-def generate_single_seq_cm(sequence: str, outcm_path: str, structure: str=None) -> bool:
+def generate_single_seq_cm(sequence: str, outcm_path: str, structure: str=None, cpus: int=None) -> bool:
     result = False
     tmp_stockholm = generate_stockholm(sequence, structure)
     try:
-        result = generate_cm(tmp_stockholm.name, outcm_path)
+        result = generate_cm(tmp_stockholm.name, outcm_path, cpus=cpus)
     finally:
         if tmp_stockholm is not None and os.path.exists(tmp_stockholm.name):
             os.remove(tmp_stockholm.name)
@@ -231,7 +233,7 @@ def search_cm(cm_file_path: str, seqdb_path: str, debug: bool=False,
         if inc_e is not None:
             param_list += ['--incE', str(inc_e)]
         if cpus is not None:
-            param_list += ['--cpu', cpus]
+            param_list += ['--cpu', str(cpus)]
         param_list += [cm_file_path, seqdb_path]
         logging.info("Starting cm search {}".format(param_list))
         with Popen(param_list, stdout=PIPE, stdin=PIPE) as proc:

@@ -81,13 +81,13 @@ def generate_clusters(match_file_path: str, design_file_path: str, is_filter_bac
 
 
 def dive_single(group_id: str, single_design_group: DesignGroup, cm_dir: str, seq_db_path: str,
-                filter_evalue: float = 10.0) -> Tuple[DesignGroup, int]:
+                filter_evalue: float = 10.0, cpus: int=12) -> Tuple[DesignGroup, int]:
     count = 0
     found_new = True
     base_cm_name = '{}.cm'.format(group_id)
     if not os.path.exists(os.path.join(cm_dir, base_cm_name)):
         infernal.generate_single_seq_cm(single_design_group.sequence, os.path.join(cm_dir, base_cm_name),
-                                        structure=single_design_group.structure)
+                                        structure=single_design_group.structure, cpus=cpus)
     cm_name = 'TEMP_{}'.format(base_cm_name)
     shutil.copyfile(os.path.join(cm_dir, base_cm_name), os.path.join(cm_dir, cm_name))
     stockholm_file = os.path.join(cm_dir, '{}.sto'.format(group_id))
@@ -104,9 +104,9 @@ def dive_single(group_id: str, single_design_group: DesignGroup, cm_dir: str, se
         success = infernal.align_sequences(full_list,
                                            os.path.join(cm_dir, cm_name), stockholm_file)
         os.remove(os.path.join(cm_dir, cm_name))
-        success = infernal.generate_cm(stockholm_file, os.path.join(cm_dir, cm_name))
+        success = infernal.generate_cm(stockholm_file, os.path.join(cm_dir, cm_name), cpus=cpus)
         # search on cm
-        search_res = infernal.search_cm(os.path.join(cm_dir, cm_name), seq_db_path, cpus=12)
+        search_res = infernal.search_cm(os.path.join(cm_dir, cm_name), seq_db_path, cpus=cpus)
         # identify items (see different matches) and compare size of match group
         new_design_group = DesignGroup(single_design_group.identifier, design_group_identifies)
         for single_match in search_res:
