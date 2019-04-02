@@ -106,7 +106,7 @@ def dive_single(group_id: str, single_design_group: DesignGroup, cm_dir: str, se
         os.remove(os.path.join(cm_dir, cm_name))
         success = infernal.generate_cm(stockholm_file, os.path.join(cm_dir, cm_name))
         # search on cm
-        search_res = infernal.search_cm(os.path.join(cm_dir, cm_name), seq_db_path)
+        search_res = infernal.search_cm(os.path.join(cm_dir, cm_name), seq_db_path, cpus=12)
         # identify items (see different matches) and compare size of match group
         new_design_group = DesignGroup(single_design_group.identifier, design_group_identifies)
         for single_match in search_res:

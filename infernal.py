@@ -210,7 +210,7 @@ class ResType(Enum):
 
 
 def search_cm(cm_file_path: str, seqdb_path: str, debug: bool=False,
-              res_type: ResType=ResType.ERIC, inc_e: float=0.01) -> List[Dict[str, str]]:
+              res_type: ResType=ResType.ERIC, inc_e: float=None, cpus: int=None) -> List[Dict[str, str]]:
     def merge_eric(table_results: List[Dict[str, str]], eric_results: List[Dict[str, str]]):
         for eric_res, table_res in zip(eric_results, table_results):
             eric_target = eric_res.get("target name")
@@ -227,8 +227,12 @@ def search_cm(cm_file_path: str, seqdb_path: str, debug: bool=False,
     try:
         temp_out = NTF(dir='.', delete=False)
         temp_out.close()
-        param_list = [os.path.join(INFENRAL_PATH, CMSEARCH_EXE), '--tblout', #'-A', 'something.stk', '-o',
-                      temp_out.name, '--incE', str(inc_e), cm_file_path, seqdb_path]
+        param_list = [os.path.join(INFENRAL_PATH, CMSEARCH_EXE), '--tblout', temp_out.name]
+        if inc_e is not None:
+            param_list += ['--incE', str(inc_e)]
+        if cpus is not None:
+            param_list += ['--cpu', cpus]
+        param_list += [cm_file_path, seqdb_path]
         logging.info("Starting cm search {}".format(param_list))
         with Popen(param_list, stdout=PIPE, stdin=PIPE) as proc:
             output, err = proc.communicate()
