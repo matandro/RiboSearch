@@ -40,7 +40,7 @@ def align_sequences(sequences: Dict[str, str], cm_path: str, out_align_path: str
         with Popen(param_list, stdout=PIPE, stdin=PIPE) as proc:
             _, stderr_out = proc.communicate(timeout=timeout)
             if stderr_out is not None:
-                print(stderr_out)
+                logging.error(stderr_out)
         if os.path.exists(out_align_path):
             result = True
     except Exception as e:
@@ -79,6 +79,7 @@ def generate_cm(stockholm_path: str, outcm_path: str) -> bool:
         if not is_calibrated(outcm_path):
             logging.info("Calibrating CM file {}".format(outcm_path))
             with Popen(param_list, stdout=PIPE, stdin=PIPE) as proc:
+                proc.communicate()
                 ret_code = proc.wait()
                 if ret_code < 0:
                     raise Exception("cmcalibrate ended with error code {}".format(ret_code))
@@ -208,8 +209,8 @@ class ResType(Enum):
     MANUAL = 3
 
 
-def search_cm(cm_file_path: str, seqdb_path: str, debug: bool=False, res_type: ResType=ResType.ERIC) \
-        -> List[Dict[str, str]]:
+def search_cm(cm_file_path: str, seqdb_path: str, debug: bool=False,
+              res_type: ResType=ResType.ERIC, inc_e: float=0.01) -> List[Dict[str, str]]:
     def merge_eric(table_results: List[Dict[str, str]], eric_results: List[Dict[str, str]]):
         for eric_res, table_res in zip(eric_results, table_results):
             eric_target = eric_res.get("target name")
@@ -227,7 +228,7 @@ def search_cm(cm_file_path: str, seqdb_path: str, debug: bool=False, res_type: R
         temp_out = NTF(dir='.', delete=False)
         temp_out.close()
         param_list = [os.path.join(INFENRAL_PATH, CMSEARCH_EXE), '--tblout', #'-A', 'something.stk', '-o',
-                      temp_out.name, cm_file_path, seqdb_path]
+                      temp_out.name, '--incE', str(inc_e), cm_file_path, seqdb_path]
         logging.info("Starting cm search {}".format(param_list))
         with Popen(param_list, stdout=PIPE, stdin=PIPE) as proc:
             output, err = proc.communicate()
@@ -245,7 +246,8 @@ def search_cm(cm_file_path: str, seqdb_path: str, debug: bool=False, res_type: R
                 results = fetch_seq_tlbout(temp_out.name, seqdb_path)
                 if len(tlbout_results) != len(results):
                     logging.warning("Something strange in infernal result analysis. tlbout lines = {},"
-                                    " esl_sfetch lines = {}".format(len(tlbout_results), len(results)))
+                                    " esl_sfetch lines = {}\n{}\n{}".format(len(tlbout_results), len(results),
+                                                                            tlbout_results, results))
                 else:
                     merge_eric(tlbout_results, results)
                     results = tlbout_results

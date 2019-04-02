@@ -90,7 +90,7 @@ def dive_single(group_id: str, single_design_group: DesignGroup, cm_dir: str, se
                                         structure=single_design_group.structure)
     cm_name = 'TEMP_{}'.format(base_cm_name)
     shutil.copyfile(os.path.join(cm_dir, base_cm_name), os.path.join(cm_dir, cm_name))
-    stockholm_file = '{}.stk'.format(group_id)
+    stockholm_file = os.path.join(cm_dir, '{}.sto'.format(group_id))
     design_group_identifies = {'sequence': single_design_group.sequence, 'structure': single_design_group.structure}
     design_copy = copy(single_design_group)
     while found_new:
@@ -113,13 +113,17 @@ def dive_single(group_id: str, single_design_group: DesignGroup, cm_dir: str, se
             code = single_match.get('identifier')
             seq = single_match.get('sequence')
             if float(single_match.get('E-value')) < filter_evalue:
-                new_design_group.add_match(code, single_match)
-                if code not in design_copy.matches:
+                old_res = design_copy.matches.get(code)
+                if old_res is None:
                     single_match['round'] = count
                     found_new = True
+                else:
+                    single_match['round'] = old_res['round']
+                new_design_group.add_match(code, single_match)
         design_copy = new_design_group
     # organize cm
     shutil.move(os.path.join(cm_dir, cm_name), os.path.join(cm_dir, 'FINAL_{}'.format(base_cm_name)))
+    shutil.move(os.path.join(cm_dir, stockholm_file), os.path.join(cm_dir, 'FINAL_{}'.format(stockholm_file)))
     return design_copy, count
 
 
@@ -193,6 +197,10 @@ def run_dive(base_dir: str, filter_evalue: float = 10.0, filter_path: str = None
     logging.info('All clusters done')
 
 
+# workaround to the issue of search_runner having two different versions
+OLD = 1
+NEW = 2
+MODE = OLD
 if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO)
     # test_taxonomy()
@@ -201,9 +209,24 @@ if __name__ == "__main__":
         logging.info("No arguments, running on default ({}, 0.01, no filter)".format(base_dir))
         run_dive(base_dir, 0.01)
     elif len(sys.argv) < 3:
-        logging.error("If arguments are given 2 are mandatory. result_dive.py <base_dir> <filter_amount> [filter path]"
-                      "\nGot: {}".format(sys.argv))
+        logging.error("If arguments are given 2 are mandatory. result_dive.py <base_dir> <filter_amount>"
+                      " [-f filter path, -m 'old|new']\nGot: {}".format(sys.argv))
         sys.exit(-1)
     else:
         logging.info("running with arguments: {}".format(sys.argv))
-        run_dive(sys.argv[1], float(sys.argv[2]), None if len(sys.argv) < 4 else sys.argv[3])
+        extra = sys.argv[3:]
+        index = 0
+        args_filter = None
+        while index < len(extra):
+            if extra[index] == '-f':
+                args_filter = extra[index + 1]
+                index += 1
+            elif extra[index] == '-m':
+                MODE = NEW if extra[index + 1] == 'new' else OLD
+            else:
+                logging.error(
+                    "usage. result_dive.py <base_dir> <filter_amount> [-f filter path, -m 'old|new']"
+                    "\nGot: {}".format(sys.argv))
+                sys.exit(-1)
+            index += 1
+        run_dive(sys.argv[1], float(sys.argv[2]), filter_path=args_filter)
