@@ -3,7 +3,7 @@
 Generates statistics and images for dive results.
 F
 """
-from typing import List, Tuple, Optional, Dict
+from typing import List, Tuple, Optional, Dict, TextIO
 import os
 import shutil
 from subprocess import Popen, PIPE
@@ -205,20 +205,35 @@ def generate_filter(folder_path: str, cuttoff: int) -> List[str]:
 
 
 def generate_common(folder_path):
+    def add_count(main_map: Dict[str, Dict[str, int]], key: str, value: str):
+        count_map = main_map.get(key, {})
+        count = count_map.get(value, 0)
+        count_map[value] = count + 1
+        main_map[key] = count_map
+
+    def print_counts(main_map: Dict[str, Dict[str, int]], out_file: TextIO):
+        for first_col, count_map in main_map.items():
+            for second_col, count in count_map.items():
+                out_file.write('{}\t{}\t{}\n'.format(first_col, second_col, count))
+
+    sequence_map = {}
+    location_map = {}
     with open(os.path.join(folder_path, 'FINAL_all'), 'r') as all_file, \
             open(os.path.join(folder_path, 'sequence_rep'), 'w') as sequence_rep_file, \
             open(os.path.join(folder_path, 'location_rep'), 'w') as location_rep_file:
         all_file.readline()
-        sequence_rep_file.write('sequence\tdesign_code\n')
-        location_rep_file.write('identifier\tdesign_code\n')
+        sequence_rep_file.write('sequence\tdesign_code\tcount\n')
+        location_rep_file.write('identifier\tdesign_code\tcount\n')
         for line in all_file:
             # 0:design_code, 1:identifier, 2:score, 3:E-value, 4:sequence
             items = line.strip().split('\t')
             design_code = items[0].strip()
-            identifier = items[2].strip()
+            identifier = items[1].strip()
             sequence = items[4].strip()
-            sequence_rep_file.write('{}\t{}\n'.format(sequence, design_code))
-            location_rep_file.write('{}\t{}\n'.format(identifier, design_code))
+            add_count(sequence_map, sequence, design_code)
+            add_count(location_map, identifier, design_code)
+        print_counts(sequence_map, sequence_rep_file)
+        print_counts(location_map, location_rep_file)
         sequence_rep_file.flush()
         location_rep_file.flush()
 

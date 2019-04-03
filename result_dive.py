@@ -123,7 +123,7 @@ def dive_single(group_id: str, single_design_group: DesignGroup, cm_dir: str, se
         design_copy = new_design_group
     # organize cm
     shutil.move(os.path.join(cm_dir, cm_name), os.path.join(cm_dir, 'FINAL_{}'.format(base_cm_name)))
-    shutil.move(os.path.join(cm_dir, stockholm_file), os.path.join(cm_dir, 'FINAL_{}'.format(stockholm_file)))
+    shutil.move(stockholm_file, os.path.join(cm_dir, 'FINAL_{}.sto'.format(group_id)))
     return design_copy, count
 
 
@@ -180,6 +180,11 @@ def run_dive(base_dir: str, filter_evalue: float = 10.0, filter_path: str = None
             if filter_list is not None and \
                     design_group.identifier not in filter_list:
                 continue
+            # can't pass those files since bug might happened before print. need to see data in files too
+            # final_cm_path = os.path.join(base_dir, 'FINAL_{}.cm'.format(design_group.identifier))
+            # if os.path.exists(final_cm_path) and os.stat(final_cm_path).st_size > 0:
+            #     logging.info('Already done  group {}'.format(design_group.identifier))
+            #     continue
             logging.info('Dive group {}'.format(design_group.identifier))
             new_design_group, count = dive_single(design_group.identifier, design_group, base_dir, '/DB/fasta_db/nt/nt',
                                                   filter_evalue)
