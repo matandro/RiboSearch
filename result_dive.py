@@ -239,11 +239,11 @@ def run_dive(base_dir: str, filter_evalue: float = 10.0, filter_path: str =None,
                 final_all.write('{}\t{}\t{}\t{}\t{}\t{}\n'.format(new_design_group.identifier, identifier,
                                                               match.get('score'), match.get('E-value'),
                                                               match.get('sequence'), match.get('round')))
-            write_str.flush()
-            final_round.flush()
-            final_all.flush()
             logging.info(write_str)
             out_file.write('{}\n'.format(write_str))
+            out_file.flush()
+            final_round.flush()
+            final_all.flush()
     logging.info('All clusters done')
 
 
