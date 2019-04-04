@@ -76,6 +76,8 @@ def generate_clusters(match_file_path: str, design_file_path: str,
         seq_code_map = {}
         design_file.readline()
         for line in design_file:
+            if line.strip() == '':
+                continue
             items = line.strip().split('\t')
             if mode == OLD:
                 seq_code_map[items[0]] = {'sequence': items[2].strip(), 'structure': items[4].strip()}
@@ -86,6 +88,8 @@ def generate_clusters(match_file_path: str, design_file_path: str,
                 seq_code_map[code] = {'sequence': sequence, 'structure': structure}
         match_file.readline()
         for line in match_file:
+            if line.strip() == '':
+                continue
             items = line.strip().split('\t')
             design_id = items[0].strip()
             design_group = design_group_map.get(design_id, DesignGroup(design_id, seq_code_map.get(design_id)))
