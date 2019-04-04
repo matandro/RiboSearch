@@ -6,7 +6,7 @@ import sys
 from blast_sequence import blast_sequence
 
 import infernal
-import shapiro_tree_aligner
+from rnafbinv import shapiro_tree_aligner
 import search_runner
 
 
@@ -32,6 +32,7 @@ def search_blast():
     def gather_blast(db):
         short_db = db.rsplit('/', 1)[1]
         return "/DB/blast_db/{}/{}".format(short_db, short_db)
+
     database = gather_blast(values[db_index])
     sequence_info = blast_sequence(sequence, database, output_str="6 sacc sstart send sstrand", extra_options=['-perc_identity', '100'])
     # need to decide how to analyze results and what should be added
@@ -129,7 +130,7 @@ Using defaults""")
         cm_file = 'purine.cm'
         target_sequence = 'NNNNNNNNUNNNNNNNNNNNNNNNNNNNNNNNNUNNNUNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNN'
         target_structure = '((((((((...(.(((((.......))))).)........((((((.......))))))..))))))))'
-        min_score =  95.0
+        min_score = 95.0
         recalc= False
     target_tree, max_score = get_max_score(target_sequence, target_structure)
     logging.info("Optimal score is: {}".format(max_score))

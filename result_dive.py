@@ -13,6 +13,13 @@ import sys
 import shutil
 from copy import copy
 import logging
+from rnafbinv import vienna
+
+
+# workaround to the issue of search_runner having two different versions
+OLD = 1
+NEW = 2
+MODE = OLD
 
 
 def get_tax_id(organism_id: str) -> int:
@@ -59,30 +66,46 @@ class DesignGroup:
         self.matches[identifier] = infernal_datum
 
 
-def generate_clusters(match_file_path: str, design_file_path: str, is_filter_bacteria: bool=False) \
-        -> List[DesignGroup]:
+def generate_clusters(match_file_path: str, design_file_path: str,
+                      is_filter_bacteria: bool=False, mode: int=OLD) -> List[DesignGroup]:
+    vienna_folder = None
+    if mode == NEW:
+        vienna_folder = vienna.LiveRNAfold()
     design_group_map = {}
     with open(match_file_path, 'r') as match_file, open(design_file_path, 'r') as design_file:
         seq_code_map = {}
         design_file.readline()
         for line in design_file:
             items = line.strip().split('\t')
-            seq_code_map[items[0]] = {'sequence': items[2].strip(), 'structure': items[4].strip()}
+            if mode == OLD:
+                seq_code_map[items[0]] = {'sequence': items[2].strip(), 'structure': items[4].strip()}
+            else:
+                code = '{}_{}'.format(items[0].strip(), items[1].strip())
+                sequence = items[3].strip()
+                structure = vienna_folder.fold(sequence)
+                seq_code_map[code] = {'sequence': sequence, 'structure': structure}
         match_file.readline()
         for line in match_file:
             items = line.strip().split('\t')
             design_id = items[0].strip()
             design_group = design_group_map.get(design_id, DesignGroup(design_id, seq_code_map.get(design_id)))
-            if not is_filter_bacteria or not check_ancestor('Bacteria', get_tax_id(items[5].strip().split('/', 1)[0])):
-                design_group.add_match(items[5].strip(), {'identifier': items[5].strip(), 'sequence': items[2].strip(),
-                                                          'round': 0})
+            if mode == OLD:
+                if not is_filter_bacteria or not check_ancestor('Bacteria',
+                                                                get_tax_id(items[5].strip().split('/', 1)[0])):
+                    design_group.add_match(items[5].strip(), {'identifier': items[5].strip(),
+                                                              'sequence': items[2].strip(), 'round': 0})
+            else:
+                # new mode didnt save identifier, add just and replace on first search
+                design_group.add_match(str(len(design_group.matches)), {'identifier': len(design_group.matches),
+                                                                        'sequence': items[1].strip(), 'round': 0})
             design_group_map[design_id] = design_group
     return list(design_group_map.values())
 
 
 def dive_single(group_id: str, single_design_group: DesignGroup, cm_dir: str, seq_db_path: str,
-                filter_evalue: float = 10.0, cpus: int=12) -> Tuple[DesignGroup, int]:
+                filter_evalue: float = 10.0, cpus: int=12) -> Tuple[DesignGroup, int, Dict[int, List[str]]]:
     count = 0
+    items_in_round = {}
     found_new = True
     base_cm_name = '{}.cm'.format(group_id)
     if not os.path.exists(os.path.join(cm_dir, base_cm_name)):
@@ -93,6 +116,7 @@ def dive_single(group_id: str, single_design_group: DesignGroup, cm_dir: str, se
     stockholm_file = os.path.join(cm_dir, '{}.sto'.format(group_id))
     design_group_identifies = {'sequence': single_design_group.sequence, 'structure': single_design_group.structure}
     design_copy = copy(single_design_group)
+    items_in_round[0] = design_copy.matches.keys()
     while found_new:
         count += 1
         found_new = False
@@ -121,10 +145,11 @@ def dive_single(group_id: str, single_design_group: DesignGroup, cm_dir: str, se
                     single_match['round'] = old_res['round']
                 new_design_group.add_match(code, single_match)
         design_copy = new_design_group
+        items_in_round[count] = design_copy.matches.keys()
     # organize cm
     shutil.move(os.path.join(cm_dir, cm_name), os.path.join(cm_dir, 'FINAL_{}'.format(base_cm_name)))
     shutil.move(stockholm_file, os.path.join(cm_dir, 'FINAL_{}.sto'.format(group_id)))
-    return design_copy, count
+    return design_copy, count, items_in_round
 
 
 def test_taxonomy():
@@ -153,7 +178,7 @@ def has_non_bacteria(tax_list: List[str]) -> bool:
         return False
 
 
-def run_dive(base_dir: str, filter_evalue: float = 10.0, filter_path: str = None):
+def run_dive(base_dir: str, filter_evalue: float = 10.0, filter_path: str =None, mode: int=OLD):
     def check_filter():
         if filter_path is not None:
             with open(filter_path, 'r') as filter_file:
@@ -168,14 +193,17 @@ def run_dive(base_dir: str, filter_evalue: float = 10.0, filter_path: str = None
     filter_list = None
     logging.info('Reading clusters {} and {}'.format(os.path.join(base_dir, 'match_log'),
                                                      os.path.join(base_dir, 'design_log')))
-    all_design_groups = generate_clusters(os.path.join(base_dir, 'match_log'), os.path.join(base_dir, 'design_log'))
+    all_design_groups = generate_clusters(os.path.join(base_dir, 'match_log'), os.path.join(base_dir, 'design_log'),
+                                          mode=mode)
     logging.info('Read {} clusters, starting dive'.format(len(all_design_groups)))
     check_filter()
     with open(os.path.join(base_dir, 'FINAL_summary'), 'w') as out_file, \
-            open(os.path.join(base_dir, 'FINAL_all.txt'), 'w') as final_all:
+            open(os.path.join(base_dir, 'FINAL_all.txt'), 'w') as final_all, \
+            open(os.path.join(base_dir, 'FINAL_per_round'), 'w') as final_round:
         final_all.write('design_code\tidentifier\tscore\tE-value\tsequence\tRound\n')
-        out_file.write('design code\tOriginal # of matches\tDive # of matches\t# of cycles\thas non bacteria\tsequence'
+        out_file.write('design_code\tOriginal # of matches\tDive # of matches\t# of cycles\thas non bacteria\tsequence'
                        '\tstructure\n')
+        final_round.write('design_code\tround\t# of items\titem identifiers\n')
         for design_group in all_design_groups:
             if filter_list is not None and \
                     design_group.identifier not in filter_list:
@@ -186,8 +214,8 @@ def run_dive(base_dir: str, filter_evalue: float = 10.0, filter_path: str = None
             #     logging.info('Already done  group {}'.format(design_group.identifier))
             #     continue
             logging.info('Dive group {}'.format(design_group.identifier))
-            new_design_group, count = dive_single(design_group.identifier, design_group, base_dir, '/DB/fasta_db/nt/nt',
-                                                  filter_evalue)
+            new_design_group, count, items_per_round = dive_single(design_group.identifier, design_group,
+                                                                   base_dir, '/DB/fasta_db/nt/nt', filter_evalue)
             logging.info('Finished group {} matched {} results'.format(design_group.identifier,
                                                                        len(new_design_group.matches)))
             tax_name_list = [x.split('/')[0] for x in new_design_group.matches.keys()]
@@ -195,6 +223,9 @@ def run_dive(base_dir: str, filter_evalue: float = 10.0, filter_path: str = None
                                                             len(new_design_group.matches), count,
                                                             has_non_bacteria(tax_name_list), new_design_group.sequence,
                                                             new_design_group.structure)
+            for round, ident_list in items_per_round.items():
+                final_round.write('{}\t{}\t{}\t{}\n'.format(new_design_group.identifier, round, len(ident_list),
+                                                            ", ".join(ident_list)))
             for identifier, match in new_design_group.matches.items():
                 final_all.write('{}\t{}\t{}\t{}\t{}\t{}\n'.format(new_design_group.identifier, identifier,
                                                               match.get('score'), match.get('E-value'),
@@ -204,17 +235,13 @@ def run_dive(base_dir: str, filter_evalue: float = 10.0, filter_path: str = None
     logging.info('All clusters done')
 
 
-# workaround to the issue of search_runner having two different versions
-OLD = 1
-NEW = 2
-MODE = OLD
 if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO)
     # test_taxonomy()
     if len(sys.argv) == 1:
         base_dir = '/DB/Output/SandD'
         logging.info("No arguments, running on default ({}, 0.01, no filter)".format(base_dir))
-        run_dive(base_dir, 0.01)
+        run_dive(base_dir, 0.01, mode=MODE)
     elif len(sys.argv) < 3:
         logging.error("If arguments are given 2 are mandatory. result_dive.py <base_dir> <filter_amount>"
                       " [-f filter path, -m 'old|new']\nGot: {}".format(sys.argv))
@@ -236,4 +263,4 @@ if __name__ == "__main__":
                     "\nGot: {}".format(sys.argv))
                 sys.exit(-1)
             index += 1
-        run_dive(sys.argv[1], float(sys.argv[2]), filter_path=args_filter)
+        run_dive(sys.argv[1], float(sys.argv[2]), filter_path=args_filter, mode=MODE)
