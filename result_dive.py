@@ -69,40 +69,45 @@ class DesignGroup:
 def generate_clusters(match_file_path: str, design_file_path: str,
                       is_filter_bacteria: bool=False, mode: int=OLD) -> List[DesignGroup]:
     vienna_folder = None
-    if mode == NEW:
-        vienna_folder = vienna.LiveRNAfold()
-    design_group_map = {}
-    with open(match_file_path, 'r') as match_file, open(design_file_path, 'r') as design_file:
-        seq_code_map = {}
-        design_file.readline()
-        for line in design_file:
-            if line.strip() == '':
-                continue
-            items = line.strip().split('\t')
-            if mode == OLD:
-                seq_code_map[items[0]] = {'sequence': items[2].strip(), 'structure': items[4].strip()}
-            else:
-                code = '{}_{}'.format(items[0].strip(), items[1].strip())
-                sequence = items[3].strip()
-                structure = vienna_folder.fold(sequence)
-                seq_code_map[code] = {'sequence': sequence, 'structure': structure}
-        match_file.readline()
-        for line in match_file:
-            if line.strip() == '':
-                continue
-            items = line.strip().split('\t')
-            design_id = items[0].strip()
-            design_group = design_group_map.get(design_id, DesignGroup(design_id, seq_code_map.get(design_id)))
-            if mode == OLD:
-                if not is_filter_bacteria or not check_ancestor('Bacteria',
-                                                                get_tax_id(items[5].strip().split('/', 1)[0])):
-                    design_group.add_match(items[5].strip(), {'identifier': items[5].strip(),
-                                                              'sequence': items[2].strip(), 'round': 0})
-            else:
-                # new mode didnt save identifier, add just and replace on first search
-                design_group.add_match(str(len(design_group.matches)), {'identifier': len(design_group.matches),
-                                                                        'sequence': items[1].strip(), 'round': 0})
-            design_group_map[design_id] = design_group
+    try:
+        if mode == NEW:
+            vienna_folder = vienna.LiveRNAfold()
+            vienna_folder.start()
+        design_group_map = {}
+        with open(match_file_path, 'r') as match_file, open(design_file_path, 'r') as design_file:
+            seq_code_map = {}
+            design_file.readline()
+            for line in design_file:
+                if line.strip() == '':
+                    continue
+                items = line.strip().split('\t')
+                if mode == OLD:
+                    seq_code_map[items[0]] = {'sequence': items[2].strip(), 'structure': items[4].strip()}
+                else:
+                    code = '{}_{}'.format(items[0].strip(), items[1].strip())
+                    sequence = items[3].strip()
+                    structure = vienna_folder.fold(sequence)
+                    seq_code_map[code] = {'sequence': sequence, 'structure': structure}
+            match_file.readline()
+            for line in match_file:
+                if line.strip() == '':
+                    continue
+                items = line.strip().split('\t')
+                design_id = items[0].strip()
+                design_group = design_group_map.get(design_id, DesignGroup(design_id, seq_code_map.get(design_id)))
+                if mode == OLD:
+                    if not is_filter_bacteria or not check_ancestor('Bacteria',
+                                                                    get_tax_id(items[5].strip().split('/', 1)[0])):
+                        design_group.add_match(items[5].strip(), {'identifier': items[5].strip(),
+                                                                  'sequence': items[2].strip(), 'round': 0})
+                else:
+                    # new mode didnt save identifier, add just and replace on first search
+                    design_group.add_match(str(len(design_group.matches)), {'identifier': len(design_group.matches),
+                                                                            'sequence': items[1].strip(), 'round': 0})
+                design_group_map[design_id] = design_group
+    finally:
+        if vienna_folder is not None:
+            vienna_folder.close()
     return list(design_group_map.values())
 
 
