@@ -90,7 +90,7 @@ def generate_clusters(match_file_path: str, design_file_path: str,
                     # new doesnt go through a filter so we will filter it now
                     code = '{}_{}'.format(items[0].strip(), items[1].strip())
                     sequence = items[3].strip()
-                    structure = vienna_folder.fold(sequence)
+                    structure = vienna_folder.fold(sequence)['MFE']
                     source_tree = shapiro_tree_aligner.get_tree(structure, sequence)
                     _, score = shapiro_tree_aligner.align_trees(source_tree, target_tree)
                     if score < FILTER_THRESHOLD:
