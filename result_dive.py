@@ -257,6 +257,7 @@ if __name__ == "__main__":
                 index += 1
             elif extra[index] == '-m':
                 MODE = NEW if extra[index + 1] == 'new' else OLD
+                index += 1
             else:
                 logging.error(
                     "usage. result_dive.py <base_dir> <filter_amount> [-f filter path, -m 'old|new']"
