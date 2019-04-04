@@ -13,13 +13,14 @@ import sys
 import shutil
 from copy import copy
 import logging
-from rnafbinv import vienna
+from rnafbinv import vienna, shapiro_tree_aligner
 
 
 # workaround to the issue of search_runner having two different versions
 OLD = 1
 NEW = 2
 MODE = OLD
+FILTER_THRESHOLD = 300
 
 
 def get_tax_id(organism_id: str) -> int:
@@ -70,6 +71,8 @@ def generate_clusters(match_file_path: str, design_file_path: str,
                       is_filter_bacteria: bool=False, mode: int=OLD) -> List[DesignGroup]:
     vienna_folder = None
     try:
+        target_tree = shapiro_tree_aligner.get_tree('((((((((...(.(((((.......))))).)........((((((.......))))))..))))))))',
+                                                    'NNNNNNNNUNNNNNNNNNNNNNNNNNNNNNNNNUNNNUNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNN')
         if mode == NEW:
             vienna_folder = vienna.LiveRNAfold()
             vienna_folder.start()
@@ -84,16 +87,22 @@ def generate_clusters(match_file_path: str, design_file_path: str,
                 if mode == OLD:
                     seq_code_map[items[0]] = {'sequence': items[2].strip(), 'structure': items[4].strip()}
                 else:
+                    # new doesnt go through a filter so we will filter it now
                     code = '{}_{}'.format(items[0].strip(), items[1].strip())
                     sequence = items[3].strip()
                     structure = vienna_folder.fold(sequence)
-                    seq_code_map[code] = {'sequence': sequence, 'structure': structure}
+                    source_tree = shapiro_tree_aligner.get_tree(structure, sequence)
+                    _, score = shapiro_tree_aligner.align_trees(source_tree, target_tree)
+                    if score < FILTER_THRESHOLD:
+                        seq_code_map[code] = {'sequence': sequence, 'structure': structure}
             match_file.readline()
             for line in match_file:
                 if line.strip() == '':
                     continue
                 items = line.strip().split('\t')
                 design_id = items[0].strip()
+                if seq_code_map.get(design_id) is None:
+                    continue
                 design_group = design_group_map.get(design_id, DesignGroup(design_id, seq_code_map.get(design_id)))
                 if mode == OLD:
                     if not is_filter_bacteria or not check_ancestor('Bacteria',
