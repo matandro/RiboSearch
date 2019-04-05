@@ -14,6 +14,7 @@ CMSEARCH_EXE = "cmsearch"
 CMCALIBRATE_EXE = "cmcalibrate"
 CMALIGN_EXE = "cmalign"
 SHELL_SEQ_SCRIPT = "/opt/algorithm/RiboSearch/infernal_pull_seq.sh"
+ESL_FETCH = "/opt/algorithm/infernal/bin/esl-sfetch"
 #SHELL_SEQ_SCRIPT = "infernal_pull_seq.sh"
 STOCKHOLM_FORMAT = "# STOCKHOLM 1.0"
 FASTA_LINE_LENGTH = 80
@@ -108,13 +109,23 @@ def generate_single_seq_cm(sequence: str, outcm_path: str, structure: str=None, 
 
 def fetch_seq_tlbout(tlbout_path: str, fasta_orig: str) -> List[Dict[str, str]]:
     results = []
+    ssi_file = None
     try:
+        ssi_file = "{}.ssi".format(fasta_orig)
+        if os.path.exists(ssi_file):
+            # exists before then don't create and remove
+            ssi_file = None
+        else:
+            param_list = [ESL_FETCH, '--index', fasta_orig]
+            logging.info("generating index {}".format(param_list))
+            with Popen(param_list, stdout=PIPE, stdin=PIPE) as proc:
+                proc.communicate()
         temp_fasta_out = NTF(dir='.', delete=False)
         temp_fasta_out.close()
         param_list = ['sh', SHELL_SEQ_SCRIPT, tlbout_path, fasta_orig, temp_fasta_out.name]
         logging.info("Retrieving sequence {}".format(param_list))
         with Popen(param_list, stdout=PIPE, stdin=PIPE) as proc:
-            proc.wait()
+            proc.communicate()
         if os.path.exists(temp_fasta_out.name):
             for seq_record in SeqIO.parse(temp_fasta_out.name, "fasta"):
                 results.append({"target name": seq_record.id, "sequence": "{}".format(seq_record.seq)})
@@ -125,6 +136,8 @@ def fetch_seq_tlbout(tlbout_path: str, fasta_orig: str) -> List[Dict[str, str]]:
     finally:
         if temp_fasta_out is not None and os.path.exists(temp_fasta_out.name):
             os.remove(temp_fasta_out.name)
+        if os.path.exists(ssi_file):
+            os.remove(ssi_file)
     return results
 
 
