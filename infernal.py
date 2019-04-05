@@ -136,7 +136,7 @@ def fetch_seq_tlbout(tlbout_path: str, fasta_orig: str) -> List[Dict[str, str]]:
     finally:
         if temp_fasta_out is not None and os.path.exists(temp_fasta_out.name):
             os.remove(temp_fasta_out.name)
-        if os.path.exists(ssi_file):
+        if ssi_file is not None and os.path.exists(ssi_file):
             os.remove(ssi_file)
     return results
 

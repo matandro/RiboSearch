@@ -215,22 +215,26 @@ def run_dive(base_dir: str, filter_evalue: float = 10.0, filter_path: str =None,
                                           mode=mode)
     logging.info('Read {} clusters, starting dive'.format(len(all_design_groups)))
     check_filter()
-    with open(os.path.join(base_dir, 'FINAL_summary'), 'w') as out_file, \
-            open(os.path.join(base_dir, 'FINAL_all.txt'), 'w') as final_all, \
-            open(os.path.join(base_dir, 'FINAL_per_round'), 'w') as final_round:
-        final_all.write('design_code\tidentifier\tscore\tE-value\tsequence\tRound\n')
-        out_file.write('design_code\tOriginal # of matches\tDive # of matches\t# of cycles\thas non bacteria\tsequence'
-                       '\tstructure\n')
-        final_round.write('design_code\tround\t# of items\titem identifiers\n')
+    existed = os.path.exists(os.path.join(base_dir, 'FINAL_summary'))
+    with open(os.path.join(base_dir, 'FINAL_summary'), 'a+') as out_file, \
+            open(os.path.join(base_dir, 'FINAL_all.txt'), 'a+') as final_all, \
+            open(os.path.join(base_dir, 'FINAL_per_round'), 'a+') as final_round:
+        if not existed:
+            final_all.write('design_code\tidentifier\tscore\tE-value\tsequence\tRound\n')
+            final_all.flush()
+            out_file.write('design_code\tOriginal # of matches\tDive # of matches\t# of cycles\thas non bacteria\tsequence'
+                           '\tstructure\n')
+            out_file.flush()
+            final_round.write('design_code\tround\t# of items\titem identifiers\n')
+            final_round.flush()
         for design_group in all_design_groups:
             if filter_list is not None and \
                     design_group.identifier not in filter_list:
                 continue
-            # can't pass those files since bug might happened before print. need to see data in files too
-            # final_cm_path = os.path.join(base_dir, 'FINAL_{}.cm'.format(design_group.identifier))
-            # if os.path.exists(final_cm_path) and os.stat(final_cm_path).st_size > 0:
-            #     logging.info('Already done  group {}'.format(design_group.identifier))
-            #     continue
+            final_cm_path = os.path.join(base_dir, 'FINAL_{}.cm'.format(design_group.identifier))
+            if os.path.exists(final_cm_path) and os.stat(final_cm_path).st_size > 0:
+                logging.info('Already done  group {}'.format(design_group.identifier))
+                continue
             logging.info('Dive group {}'.format(design_group.identifier))
             new_design_group, count, items_per_round = dive_single(design_group.identifier, design_group,
                                                                    base_dir, '/DB/fasta_db/nt/nt', filter_evalue)
