@@ -131,7 +131,7 @@ def get_align_score(identifier: str, sequence: str, cm_path: str, target_tree):
         cm_tree = shapiro_tree_aligner.get_tree(cm_struct, new_sequence)
     finally:
         if fasta_file is not None:
-            os.remove(fasta_file)
+            os.remove(fasta_file.name)
 
 
 def dive_single(group_id: str, single_design_group: DesignGroup, cm_dir: str, seq_db_path: str, target_tree,
