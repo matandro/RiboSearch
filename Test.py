@@ -43,7 +43,6 @@ with open(test_path, "rU") as handle:
 
 import re
 
-
 def extract_gene(mstr):
     res = None
     match = re.match(r'.*gene=(?P<gene_id>[^\s]+).*', mstr)
@@ -65,4 +64,3 @@ with open(outfile, 'w') as outf:
                 header_set.add(fasta_line)
                 gene_name = extract_gene(fasta_line)
                 outf.write('{}\t{}\n'.format(fasta_line, '' if gene_name is None else gene_name))
-

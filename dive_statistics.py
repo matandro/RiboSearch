@@ -79,7 +79,7 @@ def analyze_sto(sto_file: str, name: str) -> Tuple[str, str, Dict[str, str]]:
     return structure, sequence, align
 
 
-# CMSEARCH for aligned structure
+# CMSEARCH for aligned structure (assuming seqdb_path is a fasta file with a single sequence
 def get_cm_struct(cm_file_path: str, seqdb_path: str, debug: bool=False) \
         -> Tuple[str, str]:
     structure = None
@@ -313,7 +313,7 @@ def generate_statistics(folder_path: str):
 
 if __name__ == '__main__':
     threshold = [5, 10, 25, 50]
-    base_folder = "/opt/home/matan/Dropbox/PHd/RiboSearch/SandD_finals"
+    base_folder = "/opt/home/matan/Dropbox/PHd/RiboSearch/IncManual"
     for cut in threshold:
         left_list = generate_filter(base_folder, cut)
     generate_visuals(base_folder)

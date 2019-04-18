@@ -14,12 +14,17 @@ import shutil
 from copy import copy
 import logging
 from rnafbinv import vienna, shapiro_tree_aligner
+import dive_statistics
+import argparse
+from enum import Enum
 
 
 # workaround to the issue of search_runner having two different versions
-OLD = 1
-NEW = 2
-MODE = OLD
+class MODE(Enum):
+    OLD = 1
+    NEW = 2
+
+
 FILTER_THRESHOLD = 300
 
 
@@ -38,7 +43,7 @@ def get_tax_id(organism_id: str) -> int:
     return None
 
 
-def check_ancestor(name: str, tax_id: int, rank: str=None) -> bool:
+def check_ancestor(name: str, tax_id: int, rank: str = None) -> bool:
     ncbi = NCBITaxa()
     ancestor_ids = ncbi.get_name_translator([name]).get(name, [])
     if not ancestor_ids:
@@ -67,12 +72,10 @@ class DesignGroup:
         self.matches[identifier] = infernal_datum
 
 
-def generate_clusters(match_file_path: str, design_file_path: str,
-                      is_filter_bacteria: bool=False, mode: int=OLD) -> List[DesignGroup]:
+def generate_clusters(match_file_path: str, design_file_path: str, target_tree,
+                      is_filter_bacteria: bool = False, mode: MODE = MODE.OLD) -> List[DesignGroup]:
     vienna_folder = None
     try:
-        target_tree = shapiro_tree_aligner.get_tree('((((((((...(.(((((.......))))).)........((((((.......))))))..))))))))',
-                                                    'NNNNNNNNUNNNNNNNNNNNNNNNNNNNNNNNNUNNNUNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNN')
         if mode == NEW:
             vienna_folder = vienna.LiveRNAfold()
             vienna_folder.start()
@@ -84,7 +87,7 @@ def generate_clusters(match_file_path: str, design_file_path: str,
                 if line.strip() == '':
                     continue
                 items = line.strip().split('\t')
-                if mode == OLD:
+                if mode == MODE.OLD:
                     seq_code_map[items[0]] = {'sequence': items[2].strip(), 'structure': items[4].strip()}
                 else:
                     # new doesnt go through a filter so we will filter it now
@@ -104,7 +107,7 @@ def generate_clusters(match_file_path: str, design_file_path: str,
                 if seq_code_map.get(design_id) is None:
                     continue
                 design_group = design_group_map.get(design_id, DesignGroup(design_id, seq_code_map.get(design_id)))
-                if mode == OLD:
+                if mode == MODE.OLD:
                     if not is_filter_bacteria or not check_ancestor('Bacteria',
                                                                     get_tax_id(items[5].strip().split('/', 1)[0])):
                         design_group.add_match(items[5].strip(), {'identifier': items[5].strip(),
@@ -120,8 +123,20 @@ def generate_clusters(match_file_path: str, design_file_path: str,
     return list(design_group_map.values())
 
 
-def dive_single(group_id: str, single_design_group: DesignGroup, cm_dir: str, seq_db_path: str,
-                filter_evalue: float = 10.0, cpus: int=12) -> Tuple[DesignGroup, int, Dict[int, List[str]]]:
+def get_align_score(identifier: str, sequence: str, cm_path: str, target_tree):
+    fasta_file = None
+    try:
+        fasta_file = infernal.generate_fasta({identifier: sequence})
+        cm_struct, new_sequence = dive_statistics.get_cm_struct(cm_path, fasta_file.name)
+        cm_tree = shapiro_tree_aligner.get_tree(cm_struct, new_sequence)
+    finally:
+        if fasta_file is not None:
+            os.remove(fasta_file)
+
+
+def dive_single(group_id: str, single_design_group: DesignGroup, cm_dir: str, seq_db_path: str, target_tree,
+                filter_align_score: float = 250, filter_evalue: float = 10.0, cpus: int = 12) -> \
+        Tuple[DesignGroup, int, Dict[int, List[str]]]:
     count = 0
     items_in_round = {}
     found_new = True
@@ -146,15 +161,17 @@ def dive_single(group_id: str, single_design_group: DesignGroup, cm_dir: str, se
         success = infernal.align_sequences(full_list,
                                            os.path.join(cm_dir, cm_name), stockholm_file)
         os.remove(os.path.join(cm_dir, cm_name))
-        success = infernal.generate_cm(stockholm_file, os.path.join(cm_dir, cm_name), cpus=cpus)
+        cm_path = os.path.join(cm_dir, cm_name)
+        success = infernal.generate_cm(stockholm_file, cm_path, cpus=cpus)
         # search on cm
-        search_res = infernal.search_cm(os.path.join(cm_dir, cm_name), seq_db_path, cpus=cpus)
+        search_res = infernal.search_cm(cm_path, seq_db_path, cpus=cpus)
         # identify items (see different matches) and compare size of match group
         new_design_group = DesignGroup(single_design_group.identifier, design_group_identifies)
         for single_match in search_res:
             code = single_match.get('identifier')
             seq = single_match.get('sequence')
-            if float(single_match.get('E-value')) < filter_evalue:
+            align_score = get_align_score(code, seq, cm_path, target_tree)
+            if float(single_match.get('E-value')) < filter_evalue and align_score < filter_align_score:
                 old_res = design_copy.matches.get(code)
                 if old_res is None:
                     single_match['round'] = count
@@ -196,25 +213,27 @@ def has_non_bacteria(tax_list: List[str]) -> bool:
         return False
 
 
-def run_dive(base_dir: str, filter_evalue: float = 10.0, filter_path: str =None, mode: int=OLD):
+def run_dive(base_dir: str, target_tree, filter_align_score: float = 250, filter_evalue: float = 10.0,
+             filter_path: str = None, mode: MODE = MODE.OLD, cpus: int = None):
     def check_filter():
+        show_list = []
         if filter_path is not None:
             with open(filter_path, 'r') as filter_file:
-                filter_list = [line.strip() for line in filter_file if line.strip() != '']
-                if not filter_list:
+                show_list = [line.strip() for line in filter_file if line.strip() != '']
+                if not show_list:
                     logging.error("filter file empty {}".format(filter_path))
                     exit(-1)
+        return show_list
 
     logging.basicConfig(level=logging.INFO)
     logging.info("Running run_dive with: Dir: {}, Max evalue: {}, Filter file: {}".format(base_dir, filter_evalue,
                                                                                           filter_path))
-    filter_list = None
     logging.info('Reading clusters {} and {}'.format(os.path.join(base_dir, 'match_log'),
                                                      os.path.join(base_dir, 'design_log')))
     all_design_groups = generate_clusters(os.path.join(base_dir, 'match_log'), os.path.join(base_dir, 'design_log'),
-                                          mode=mode)
+                                          target_tree, mode=mode)
     logging.info('Read {} clusters, starting dive'.format(len(all_design_groups)))
-    check_filter()
+    filter_list = check_filter()
     existed = os.path.exists(os.path.join(base_dir, 'FINAL_summary'))
     with open(os.path.join(base_dir, 'FINAL_summary'), 'a+') as out_file, \
             open(os.path.join(base_dir, 'FINAL_all.txt'), 'a+') as final_all, \
@@ -222,22 +241,26 @@ def run_dive(base_dir: str, filter_evalue: float = 10.0, filter_path: str =None,
         if not existed:
             final_all.write('design_code\tidentifier\tscore\tE-value\tsequence\tRound\n')
             final_all.flush()
-            out_file.write('design_code\tOriginal # of matches\tDive # of matches\t# of cycles\thas non bacteria\tsequence'
-                           '\tstructure\n')
+            out_file.write(
+                'design_code\tOriginal # of matches\tDive # of matches\t# of cycles\thas non bacteria\tsequence'
+                '\tstructure\n')
             out_file.flush()
             final_round.write('design_code\tround\t# of items\titem identifiers\n')
             final_round.flush()
         for design_group in all_design_groups:
             if filter_list is not None and \
                     design_group.identifier not in filter_list:
+                logging.info('+++++ {} not in filter file, continuing'.format(design_group.identifier))
                 continue
             final_cm_path = os.path.join(base_dir, 'FINAL_{}.cm'.format(design_group.identifier))
             if os.path.exists(final_cm_path) and os.stat(final_cm_path).st_size > 0:
-                logging.info('Already done  group {}'.format(design_group.identifier))
+                logging.info('+++++ Already done  group {}'.format(design_group.identifier))
                 continue
-            logging.info('Dive group {}'.format(design_group.identifier))
+            logging.info('+++++ Dive group {}'.format(design_group.identifier))
             new_design_group, count, items_per_round = dive_single(design_group.identifier, design_group,
-                                                                   base_dir, '/DB/fasta_db/nt/nt', filter_evalue)
+                                                                   base_dir, '/DB/fasta_db/nt/nt', target_tree,
+                                                                   filter_evalue=filter_evalue, cpus=cpus,
+                                                                   filter_align_score=filter_align_score)
             logging.info('Finished group {} matched {} results'.format(design_group.identifier,
                                                                        len(new_design_group.matches)))
             tax_name_list = [x.split('/')[0] for x in new_design_group.matches.keys()]
@@ -250,8 +273,8 @@ def run_dive(base_dir: str, filter_evalue: float = 10.0, filter_path: str =None,
                                                             ", ".join(ident_list)))
             for identifier, match in new_design_group.matches.items():
                 final_all.write('{}\t{}\t{}\t{}\t{}\t{}\n'.format(new_design_group.identifier, identifier,
-                                                              match.get('score'), match.get('E-value'),
-                                                              match.get('sequence'), match.get('round')))
+                                                                  match.get('score'), match.get('E-value'),
+                                                                  match.get('sequence'), match.get('round')))
             logging.info(write_str)
             out_file.write('{}\n'.format(write_str))
             out_file.flush()
@@ -264,29 +287,29 @@ if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO)
     # test_taxonomy()
     if len(sys.argv) == 1:
+        target_tree = shapiro_tree_aligner.get_tree(
+            "((((((((...(.(((((.......))))).)........((((((.......))))))..))))))))",
+            "NNNNNNNNUNNNNNNNNNNNNNNNNNNNNNNNNUNNNUNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNN")
         base_dir = '/DB/Output/SandD'
         logging.info("No arguments, running on default ({}, 0.01, no filter)".format(base_dir))
-        run_dive(base_dir, 0.01, mode=MODE)
-    elif len(sys.argv) < 3:
-        logging.error("If arguments are given 2 are mandatory. result_dive.py <base_dir> <filter_amount>"
-                      " [-f filter path, -m 'old|new']\nGot: {}".format(sys.argv))
-        sys.exit(-1)
+        run_dive(base_dir, target_tree, filter_evalue=0.01, mode=MODE)
     else:
-        logging.info("running with arguments: {}".format(sys.argv))
-        extra = sys.argv[3:]
-        index = 0
-        args_filter = None
-        while index < len(extra):
-            if extra[index] == '-f':
-                args_filter = extra[index + 1]
-                index += 1
-            elif extra[index] == '-m':
-                MODE = NEW if extra[index + 1] == 'new' else OLD
-                index += 1
-            else:
-                logging.error(
-                    "usage. result_dive.py <base_dir> <filter_amount> [-f filter path, -m 'old|new']"
-                    "\nGot: {}".format(sys.argv))
-                sys.exit(-1)
-            index += 1
-        run_dive(sys.argv[1], float(sys.argv[2]), filter_path=args_filter, mode=MODE)
+        parser = argparse.ArgumentParser(description="A tool that performs family generation to search_runner.py single"
+                                                     " results", formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+        parser.add_argument("base_dir", help="Path to directory containing the match_log and design_log files")
+        parser.add_argument("-e", "--evalue", type=float, help="cmsearch evalue cutoff for results", default=10.0)
+        parser.add_argument("-m", "--mode", type=float, help="modes: new for new search runner, old otherwise",
+                            default="old", choices=['old', 'new'])
+        parser.add_argument("-s", "--score", type=float, help="score cuttoff based on RNAfbinv alignment score",
+                            default=550)
+        parser.add_argument("-t", "--tree", type=float, help="sequence and structure seperated by _ of design targets",
+                            default="NNNNNNNNUNNNNNNNNNNNNNNNNNNNNNNNNUNNNUNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNN_"
+                                    "((((((((...(.(((((.......))))).)........((((((.......))))))..))))))))")
+        parser.add_argument("--cpu", type=int, help="maximum number of CPU to use for infernal programs")
+        parser.add_argument("-f", "--filter", type=str, help="path to file with newline separated design id's to work "
+                                                             "on. ignores all other designs")
+        parser.parse_args()
+        seq_struct = parser.tree.strip('"').strip("'").split('_')
+        target_tree = shapiro_tree_aligner.get_tree(seq_struct[1].strip(), seq_struct[0].strip())
+        run_dive(parser.base_dir, target_tree, filter_evalue=parser.evalue, filter_align_score=parser.score,
+                 cpus=parser.cpu, filter_path=parser.filter, mode=MODE[parser.mode.upper()])

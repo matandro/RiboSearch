@@ -150,7 +150,7 @@ def output_search_analyze_tlbout(output: str) -> List[Dict[str, str]]:
             single_res = {'target name': words[0], 'model from': words[5], 'model to': words[6],
                           'seq from': words[7], 'seq to': words[8], 'strand': words[9],
                           'score': words[14], 'E-value': words[15], 'description': words[17],
-                          'identifier': '{}/{}-{}({})'.format(words[0], words[7], words[8], words[9])}
+                          'identifier': '{}/{}-{}'.format(words[0], words[7], words[8])}
             search_list.append(single_res)
     return search_list
 
@@ -203,7 +203,7 @@ def output_search_analyze_normal(output: str) -> List[Dict[str, str]]:
             res = {'target name': res_name, 'score': res_info[3], 'E-value': res_info[2], 
                    'seq from': res_info[9], 'seq to': res_info[10], 'strand': res_info[11],
                    'model from': res_info[6], 'model to': res_info[7], 'sequence': res_seq,
-                   'identifier': '{}/{}-{}({})'.format(res_name, res_info[9], res_info[10], res_info[11])}
+                   'identifier': '{}/{}-{}'.format(res_name, res_info[9], res_info[10])}
             search_list.append(res)
     return search_list
 
@@ -220,7 +220,7 @@ def is_calibrated(cm_file_path: str) -> bool:
 
 class ResType(Enum):
     ERIC = 1
-    TLBOUT = 2
+    TBLOUT = 2
     MANUAL = 3
 
 
@@ -270,7 +270,7 @@ def search_cm(cm_file_path: str, seqdb_path: str, debug: bool=False,
                 else:
                     merge_eric(tlbout_results, results)
                     results = tlbout_results
-            elif res_type == ResType.TLBOUT:
+            elif res_type == ResType.TBLOUT:
                 results = tlbout_results
             logging.info("Finisied cm search {} results".format(len(results)))
     except Exception as e:

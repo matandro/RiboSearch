@@ -19,7 +19,7 @@ def is_novel(sequence, cm_file):
         for item in map(''.join, itertools.zip_longest(*[iter(sequence)]* 80, fillvalue='')):
             fasta_file.write('{}\n'.format(item))
         fasta_file.close()
-        cm_res = infernal.search_cm(cm_file, fasta_file.name, res_type=infernal.ResType.TLBOUT)
+        cm_res = infernal.search_cm(cm_file, fasta_file.name, res_type=infernal.ResType.TBLOUT)
         if cm_res is not None and len(cm_res) > 0:
             res = False
     finally:

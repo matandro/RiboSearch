@@ -12,7 +12,7 @@ import incaRNAtion
 import infernal
 import blast_sequence
 
-from rnafbinv import shapiro_tree_aligner, vienna
+from rnafbinv import shapiro_tree_aligner, vienna, RNAfbinvCL
 
 
 MAX_WORKER = 8
@@ -157,6 +157,7 @@ def blast_search(sequence, seq_code, db_list=None):
 def single_design(run_no, seed, seq_no):
     logging.info("Design - start - run {}, seq_no {}".format(run_no, seq_no))
     # send sequences to RNAfbinv
+    # TODO: use new version of RNAfbinv
     designed_sequence = rna_designer.run_rnafbinv(target_structure, target_sequence, iter_no=1000, seed=seed,
                                                   random_seed=random_gen.getrandbits(64))
     designed_structure_map = vienna.fold(designed_sequence)
@@ -273,7 +274,7 @@ if __name__ == "__main__":
     logging.info("Target score: {}. Target tree: {}".format(target_score, target_tree))
     output_dir = os.path.join(folder, "Output")
     # new method infernal has it's out index
-    #indexed_fasta_map = index_all(os.path.join(folder, "fasta_db"))
+    indexed_fasta_map = index_all(os.path.join(folder, "fasta_db"))
     # Start runs
     if len(sys.argv) == 6:
         # init log (result) files
