@@ -308,8 +308,8 @@ if __name__ == "__main__":
         parser.add_argument("--cpu", type=int, help="maximum number of CPU to use for infernal programs")
         parser.add_argument("-f", "--filter", type=str, help="path to file with newline separated design id's to work "
                                                              "on. ignores all other designs")
-        parser.parse_args()
-        seq_struct = parser.tree.strip('"').strip("'").split('_')
+        args = parser.parse_args()
+        seq_struct = args.tree.strip('"').strip("'").split('_')
         target_tree = shapiro_tree_aligner.get_tree(seq_struct[1].strip(), seq_struct[0].strip())
-        run_dive(parser.base_dir, target_tree, filter_evalue=parser.evalue, filter_align_score=parser.score,
-                 cpus=parser.cpu, filter_path=parser.filter, mode=MODE[parser.mode.upper()])
+        run_dive(args.base_dir, target_tree, filter_evalue=args.evalue, filter_align_score=args.score,
+                 cpus=args.cpu, filter_path=args.filter, mode=MODE[args.mode.upper()])
