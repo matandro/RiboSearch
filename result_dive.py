@@ -76,7 +76,7 @@ def generate_clusters(match_file_path: str, design_file_path: str, target_tree,
                       is_filter_bacteria: bool = False, mode: MODE = MODE.OLD) -> List[DesignGroup]:
     vienna_folder = None
     try:
-        if mode == NEW:
+        if mode == MODE.NEW:
             vienna_folder = vienna.LiveRNAfold()
             vienna_folder.start()
         design_group_map = {}
