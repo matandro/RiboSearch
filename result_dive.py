@@ -298,11 +298,11 @@ if __name__ == "__main__":
                                                      " results", formatter_class=argparse.ArgumentDefaultsHelpFormatter)
         parser.add_argument("base_dir", help="Path to directory containing the match_log and design_log files")
         parser.add_argument("-e", "--evalue", type=float, help="cmsearch evalue cutoff for results", default=10.0)
-        parser.add_argument("-m", "--mode", type=float, help="modes: new for new search runner, old otherwise",
-                            default="old", choices=['old', 'new'])
+        parser.add_argument("-m", "--mode", type=str, help="modes: new for new search runner, old otherwise",
+                            default='old', choices=['old', 'new'])
         parser.add_argument("-s", "--score", type=float, help="score cuttoff based on RNAfbinv alignment score",
                             default=550)
-        parser.add_argument("-t", "--tree", type=float, help="sequence and structure seperated by _ of design targets",
+        parser.add_argument("-t", "--tree", type=str, help="sequence and structure seperated by _ of design targets",
                             default="NNNNNNNNUNNNNNNNNNNNNNNNNNNNNNNNNUNNNUNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNN_"
                                     "((((((((...(.(((((.......))))).)........((((((.......))))))..))))))))")
         parser.add_argument("--cpu", type=int, help="maximum number of CPU to use for infernal programs")
