@@ -129,6 +129,8 @@ def get_align_score(identifier: str, sequence: str, cm_path: str, target_tree):
         fasta_file = infernal.generate_fasta({identifier: sequence})
         cm_struct, new_sequence = dive_statistics.get_cm_struct(cm_path, fasta_file.name)
         cm_tree = shapiro_tree_aligner.get_tree(cm_struct, new_sequence)
+        _, score = shapiro_tree_aligner.align_trees(cm_tree, target_tree)
+        return score
     finally:
         if fasta_file is not None:
             os.remove(fasta_file.name)
