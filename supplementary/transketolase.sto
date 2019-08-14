@@ -1,0 +1,130 @@
+# STOCKHOLM 1.0
+#=GF AU Infernal 1.1.2
+
+X73532.1/3367-3429(+)                 .UCUAUCGGG...CUUGGUGAGG........AUGGUCC...AACGCACCAA.CCUAUUGAAACUCUGGCUCACUUGA......GGG.C.UAUU.CC.AA...AC..AUGC.AUGU..
+#=GR X73532.1/3367-3429(+)         PP .*********...**********........*******...**********.*************************......***.*.****.**.**...**..****.****..
+NM_001178465.3/1421-1483(+)           .UCUAUCGGG...CUUGGUGAGG........AUGGUCC...AACGCACCAA.CCUAUUGAAACUCUGGCUCACUUGA......GGG.C.UAUU.CC.AA...AC..AUGC.AUGU..
+#=GR NM_001178465.3/1421-1483(+)   PP .*********...**********........*******...**********.*************************......***.*.****.**.**...**..****.****..
+XM_018880010.1/1319-1381(+)           .UCCAUUGGU...UUGGGUGAGG........AUGGUCC...UACCCACCAA.CCUAUUGAGACUUUGGCUCACUUUA......GAG.C.UAUC.CC.CA...AC..CUCC.AAGU..
+#=GR XM_018880010.1/1319-1381(+)   PP .*********...**********........*******...**********.*************************......***.*.****.**.**...**..****.****..
+XM_020194220.1/1557-1619(+)           .UCUAUUGGU...CUUGGUGAAG........AUGGCCC...AACUCAUCAA.CCUAUUGAAACUUUGGCUCACUUCA......GAG.C.UAUU.CC.AA...AC..UUGA.UGGU..
+#=GR XM_020194220.1/1557-1619(+)   PP .*********...**********........*******...**********.*************************......***.*.****.**.**...**..****.****..
+XM_003866255.1/1412-1474(+)           .UCCAUUGGU...UUGGGUGAAG........AUGGUCC...AACCCAUCAA.CCUAUUGAAACUUUGGCCCACUUGA......GAG.C.UAUU.CC.AA...AC..AUGU.CAGU..
+#=GR XM_003866255.1/1412-1474(+)   PP .*********...**********........*******...**********.*************************......***.*.****.**.**...**..****.****..
+XM_002548829.1/1412-1474(+)           .UCCAUUGGU...UUGGGUGAAG........AUGGUCC...AACCCAUCAA.CCUAUUGAAACUUUGGCUCAUUUCA......GAG.C.UAUU.CC.AA...AC..UUGU.CUGU..
+#=GR XM_002548829.1/1412-1474(+)   PP .*********...**********........*******...**********.*************************......***.*.****.**.**...**..****.****..
+XM_015613500.1/1415-1477(+)           .UCCAUCGGU...UUAGGUGAAG........AUGGUCC...AACCCAUCAA.CCUAUCGAAACUUUAGCUCACUUAA......GAG.C.UAUU.CC.AA...AC..UUAU.CUGU..
+#=GR XM_015613500.1/1415-1477(+)   PP .*********...**********........*******...**********.*************************......***.*.****.**.**...**..****.****..
+XM_020221510.1/1484-1546(+)           .UCUAUUGGU...UUGGGUGAAG........AUGGUCC...AACCCAUCAA.CCAAUUGAAACUUUGGCUCACUUGA......GAG.C.CAUU.CC.AA...AC..UUGU.CUGU..
+#=GR XM_020221510.1/1484-1546(+)   PP .*********...**********........*******...**********.*************************......***.*.****.**.**...**..****.****..
+XM_002417385.1/1412-1474(+)           .UCCAUUGGU...UUGGGUGAAG........AUGGUCC...AACCCAUCAA.CCUAUCGAAACUUUGGCUCAUUUCA......GAG.C.UAUU.CC.AA...AC..UUGU.CUGU..
+#=GR XM_002417385.1/1412-1474(+)   PP .*********...**********........*******...**********.*************************......***.*.****.**.**...**..****.****..
+U65983.1/1510-1572(+)                 .UCUAUCGGU...UUGGGUGAAG........AUGGUCC...AACCCAUCAA.CCUAUCGAAACCUUGGCUCACUUCA......GAG.C.UAUU.CC.AA...AC..CUAC.AAGU..
+#=GR U65983.1/1510-1572(+)         PP .*********...**********........*******...**********.*************************......***.*.****.**.**...**..****.****..
+XM_020221616.1/1558-1620(+)           .UCAAUUGGU...UUAGGUGAAG........AUGGUCC...AACUCAUCAA.CCUAUUGAAACUUUAGCUCAUUUAA......GAG.C.CAUU.CC.AA...AC..UUGU.CAGU..
+#=GR XM_020221616.1/1558-1620(+)   PP .*********...**********........*******...**********.*************************......***.*.****.**.**...**..****.****..
+XM_020213308.1/1738-1800(+)           .UCUAUCGGU...CUUGGUGAAG........AUGGUCC...AACUCAUCAA.CCUAUUGAGACCUUGGCCCACUUCA......GAG.C.CACU.CC.AA...AC..UUGA.AGGU..
+#=GR XM_020213308.1/1738-1800(+)   PP .*********...**********........*******...**********.*************************......***.*.****.**.**...**..****.****..
+FJ752553.1/2409-2471(+)               .UCGAUUGGU...CUGGGUGAGG........AUGGUCC...AACUCAUCAG.CCUAUCGAGACUCUGGCCCACUUGA......GAG.C.UCUU.CC.AA...AC..CUCA.UGGU..
+#=GR FJ752553.1/2409-2471(+)       PP .*********...**********........*******...**********.*************************......***.*.****.**.**...**..**99.999*..
+XM_002490216.1/1403-1465(+)           .UCGAUUGGU...CUGGGUGAGG........AUGGUCC...AACUCAUCAG.CCUAUCGAGACUCUGGCCCACUUGA......GAG.C.UCUU.CC.AA...AC..CUCA.UGGU..
+#=GR XM_002490216.1/1403-1465(+)   PP .*********...**********........*******...**********.*************************......***.*.****.**.**...**..**99.999*..
+FR839628.1/1683660-1683722(+)         .UCGAUUGGU...CUGGGUGAGG........AUGGUCC...AACUCAUCAG.CCUAUCGAGACUCUGGCCCACUUGA......GAG.C.UCUU.CC.AA...AC..CUCA.UGGU..
+#=GR FR839628.1/1683660-1683722(+) PP .*********...**********........*******...**********.*************************......***.*.****.**.**...**..**99.999*..
+XM_001527804.1/1415-1477(+)           .UCUAUUGGU...UUGGGUGAAG........AUGGACC...AACACAUCAA.CCUAUUGAGACUUUGGCUCACUUUA......GAG.C.UAUU.CC.AA...AC..UUGU.CAGU..
+#=GR XM_001527804.1/1415-1477(+)   PP .*********...**********........*******...**********.*************************......***.*.****.**.**...**..****.****..
+XM_011273957.1/1412-1474(+)           .UCUAUUGGU...UUAGGUGAAG........AUGGUCC...AACUCAUCAA.CCUAUUGAAACUUUAGCUCAUUUCA......GAG.C.UACA.CC.AA...AC..UUGA.AAGU..
+#=GR XM_011273957.1/1412-1474(+)   PP .*********...**********........*******...**********.*************************......***.*.****.**.**...**..****.****..
+XM_014079202.1/1409-1471(+)           .UCUAUUGGU...CUUGGUGAGG........ACGGACC...AACCCACCAG.CCUAUUGAGACCCUUGCUCACUUCA......GAG.C.CAUU.CC.AA...AC..CUGA.UGGU..
+#=GR XM_014079202.1/1409-1471(+)   PP .*********...**********........*******...**********.*************************......***.*.****.**.**...**..****.****..
+XM_020209386.1/1415-1477(+)           .UCUAUUGGC...UUAGGUGAAG........ACGGUCC...AACCCAUCAA.CCUAUUGAAACUUUGGCCCACUUCA......GAG.C.UAUU.CC.AAa.cGU..CUCC.GU--..
+#=GR XM_020209386.1/1415-1477(+)   PP .*******99...999*******........*******...**********.*************************......***.*.****.**.998.988..9999.99....
+CP017623.1/1827997-1828059(+)         .UCCAUUGGU...UUGGGUGAAG........AUGGUCC...AACCCAUCAA.CCUAUCGAAACUUUAGCUCAUUUCA......GAG.C.CAUU.CC.AA...AC..UUGU.CUGU..
+#=GR CP017623.1/1827997-1828059(+) PP .*********...**********........*******...**********.*************************......***.*.****.**.**...**..****.****..
+XM_712555.2/1412-1474(+)              .UCCAUUGGU...UUGGGUGAAG........AUGGUCC...AACCCAUCAA.CCUAUCGAAACUUUAGCUCAUUUCA......GAG.C.CAUU.CC.AA...AC..UUGU.CUGU..
+#=GR XM_712555.2/1412-1474(+)      PP .*********...**********........*******...**********.*************************......***.*.****.**.**...**..****.****..
+XM_002146137.1/1418-1480(+)           .UCCAUUGGU...CUUGGUGAAG........AUGGUCC...UACCCACCAA.CCUAUUGAGACUCUUGCACACUUCC......GUG.C.UAUG.CC.UA...AC..CUCA.UGGU..
+#=GR XM_002146137.1/1418-1480(+)   PP .*********...**********........*******...**********.*************************......***.*.****.**.**...**..**99.999*..
+XM_007835458.1/1418-1480(+)           .UCGAUUGGU...CUGGGUGAGG........AUGGUCC...UACUCACCAG.CCUAUCGAGACUCUGGCCCACUUCC......GUG.C.UCUG.CC.CA...AC..UGCA.UGGU..
+#=GR XM_007835458.1/1418-1480(+)   PP .*********...**********........*******...**********.*************************......***.*.****.**.**...**..9888.8899..
+XM_022822052.1/1418-1480(+)           .UCCAUCGGU...CUAGGUGAAG........AUGGUCC...AACCCAUCAA.CCUAUCGAAACUUUGGCCCACUUCA......GAG.C.UCUU.CC.AA...AC..UUGC.AAGU..
+#=GR XM_022822052.1/1418-1480(+)   PP .*********...**********........*******...**********.*************************......***.*.****.**.**...**..****.****..
+Z26486.1/1762-1824(+)                 .UCUAUCGGU...UUGGGUGAAG........ACGGUCC...AACCCAUCAA.CCUAUCGAAACUUUGGCUCAUUUCA......GAG.C.UACU.CC.AA...AC..AUCU.CUGU..
+#=GR Z26486.1/1762-1824(+)         PP .*********...**********........*******...**********.*************************......***.*.****.**.**...**..*99*.****..
+CP000496.1/2392732-2392794(+)         .UCUAUCGGU...UUGGGUGAAG........ACGGUCC...AACCCAUCAA.CCUAUCGAAACAUUGGCUCAUUUCA......GAG.C.UACU.CC.AA...AC..AUCU.CUGU..
+#=GR CP000496.1/2392732-2392794(+) PP .*********...**********........*******...**********.*************************......***.*.****.**.**...**..*99*.****..
+XM_001382648.1/1858-1920(+)           .UCUAUCGGU...UUGGGUGAAG........ACGGUCC...AACCCAUCAA.CCUAUCGAAACAUUGGCUCAUUUCA......GAG.C.UACU.CC.AA...AC..AUCU.CUGU..
+#=GR XM_001382648.1/1858-1920(+)   PP .*********...**********........*******...**********.*************************......***.*.****.**.**...**..*99*.****..
+XM_018854608.1/1645-1707(+)           .UCCAUUGGC...UUGGGUGAGG........AUGGCCC...UACUCACCAG.CCUAUCGAGACCUUGGCCCACUUCA......GAG.C.CACG.CC.CA...AC..AUGU.CUGU..
+#=GR XM_018854608.1/1645-1707(+)   PP .*********...**********........*******...**********.*************************......***.*.****.**.**...**..****.****..
+XM_020689903.1/1409-1471(+)           .UCUAUUGGU...UUGGGUGAAG........ACGGUCC...AACCCAUCAA.CCAAUUGAAACCUUGGCUCACUUUA......GAG.C.UACU.CC.AA...AC..UUGA.UGGU..
+#=GR XM_020689903.1/1409-1471(+)   PP .*********...**********........*******...**********.*************************......***.*.****.**.**...**..****.****..
+XM_002375770.1/1497-1559(+)           .UCCAUCGGU...CUGGGUGAGG........ACGGUCC...UACUCACCAG.CCUAUUGAGACCCUGGCUCACUUCC......GUG.C.UCUC.CC.CA...AC..UGCA.UGGU..
+#=GR XM_002375770.1/1497-1559(+)   PP .*********...**********........*******...**********.*************************......***.*.****.**.**...**..**99.99**..
+XM_014680637.1/1589-1651(+)           .UCCAUCGGU...CUGGGUGAGG........AUGGCCC...CACUCACCAG.CCUAUUGAGACUCUGGCUCACUUCC......GUG.C.CUUG.CC.UA...AC..UGUA.UGGU..
+#=GR XM_014680637.1/1589-1651(+)   PP .*********...**********........*******...**********.*************************......***.*.****.**.**...**..****.****..
+XM_022529576.1/1418-1480(+)           .UCCAUCGGU...CUGGGUGAGG........ACGGUCC...CACUCACCAG.CCUAUUGAGACCCUGGCUCACUUCC......GUG.C.UCUC.CC.CA...AC..UGCA.UGGU..
+#=GR XM_022529576.1/1418-1480(+)   PP .*********...**********........*******...**********.*************************......***.*.****.**.**...**..**99.99**..
+XM_002478422.1/1418-1480(+)           .UCCAUUGGU...CUUGGUGAGG........AUGGUCC...CACCCACCAG.CCUAUUGAGACUCUUGCACACUUCC......GUG.C.CCUG.CC.UA...AC..CUCA.UGGU..
+#=GR XM_002478422.1/1418-1480(+)   PP .*********...**********........*******...**********.*************************......***.*.****.**.**...**..**99.999*..
+XM_001264407.1/1418-1480(+)           .UCCAUCGGU...CUGGGUGAGG........ACGGUCC...UACCCACCAG.CCUAUCGAAACUCUGGCCCACUUCC......GUG.C.CCUC.CC.UA...AC..UGCA.UGGU..
+#=GR XM_001264407.1/1418-1480(+)   PP .*********...**********........*******...**********.*************************......***.*.****.**.**...**..**99.99**..
+XM_015547631.1/1501-1563(+)           .UCCAUCGGU...CUGGGUGAGG........ACGGUCC...CACUCACCAG.CCUAUUGAGACCCUGGCCCACUUCC......GUG.C.UCUC.CC.CA...AC..UGCA.UGGU..
+#=GR XM_015547631.1/1501-1563(+)   PP .*********...**********........*******...**********.*************************......***.*.****.**.**...**..**99.99**..
+XM_003709217.1/1575-1637(+)           .UCGAUUGGU...CUGGGUGAGG........ACGGCCC...UACCCACCAG.CCUAUUGAGACUCUGGCACACUUCC......GUG.C.UCUC.CC.CA...AC..UGCA.UGGU..
+#=GR XM_003709217.1/1575-1637(+)   PP .*********...**********........*******...**********.*************************......***.*.****.**.**...**..9888.8899..
+XM_001727478.2/1497-1559(+)           .UCCAUCGGU...CUGGGUGAGG........ACGGUCC...UACUCACCAG.CCUAUUGAGACCCUAGCUCACUUCC......GUG.C.UCUC.CC.CA...AC..UGCA.UGGU..
+#=GR XM_001727478.2/1497-1559(+)   PP .*********...**********........*******...**********.*************************......***.*.****.**.**...**..**99.99**..
+XM_747627.1/1418-1480(+)              .UCCAUCGGU...CUGGGUGAGG........ACGGUCC...CACCCACCAG.CCUAUCGAAACUCUGGCCCACUUCC......GUG.C.CCUC.CC.UA...AC..UGCA.UGGU..
+#=GR XM_747627.1/1418-1480(+)      PP .*********...**********........*******...**********.*************************......***.*.****.**.**...**..**99.99**..
+XM_018383574.1/2030-2093(+)           .UCUAUUGGU...CUUGGUGAGG........AUGGUCC...UACUCACCAG.CCUAUUGAGACUCUUGCCCACUUCC......GCG.C.UCUC.CC.CA...AC..UGUC.UUGUc.
+#=GR XM_018383574.1/2030-2093(+)   PP .*********...**********........*******...**********.*************************......***.*.****.**.**...**..****.***99.
+XM_018383575.1/2255-2318(+)           .UCUAUUGGU...CUUGGUGAGG........AUGGUCC...UACUCACCAG.CCUAUUGAGACUCUUGCCCACUUCC......GCG.C.UCUC.CC.CA...AC..UGUC.UUGUc.
+#=GR XM_018383575.1/2255-2318(+)   PP .*********...**********........*******...**********.*************************......***.*.****.**.**...**..****.***99.
+XM_018383576.1/2092-2155(+)           .UCUAUUGGU...CUUGGUGAGG........AUGGUCC...UACUCACCAG.CCUAUUGAGACUCUUGCCCACUUCC......GCG.C.UCUC.CC.CA...AC..UGUC.UUGUc.
+#=GR XM_018383576.1/2092-2155(+)   PP .*********...**********........*******...**********.*************************......***.*.****.**.**...**..****.***99.
+XM_018383577.1/2369-2432(+)           .UCUAUUGGU...CUUGGUGAGG........AUGGUCC...UACUCACCAG.CCUAUUGAGACUCUUGCCCACUUCC......GCG.C.UCUC.CC.CA...AC..UGUC.UUGUc.
+#=GR XM_018383577.1/2369-2432(+)   PP .*********...**********........*******...**********.*************************......***.*.****.**.**...**..****.***99.
+AJ550995.1/2559-2621(+)               .UCCAUCGGU...CUGGGUGAGG........ACGGUCC...UACUCACCAG.CCCAUUGAGACUCUGGCUCACUUCC......GUG.C.UCUG.CC.CA...AC..UGCA.UGGU..
+#=GR AJ550995.1/2559-2621(+)       PP .*********...**********........*******...**********.*************************......***.*.****.**.**...**..**99.99**..
+XM_001392735.2/1592-1654(+)           .UCCAUCGGU...CUGGGUGAGG........ACGGUCC...UACUCACCAG.CCCAUUGAGACUCUGGCUCACUUCC......GUG.C.UCUG.CC.CA...AC..UGCA.UGGU..
+#=GR XM_001392735.2/1592-1654(+)   PP .*********...**********........*******...**********.*************************......***.*.****.**.**...**..**99.99**..
+XM_016743332.1/1415-1477(+)           .UCCAUCGGU...CUGGGUGAGG........ACGGCCC...CACUCACCAG.CCUAUUGAGACUCUGGCUCACUUCC......GUG.C.CUUG.CC.CA...AC..UGCA.UGGU..
+#=GR XM_016743332.1/1415-1477(+)   PP .*********...**********........*******...**********.*************************......***.*.****.**.**...**..**99.99**..
+XM_013398764.1/1418-1480(+)           .UCUAUUGGU...CUGGGUGAGG........AUGGCCC...AACUCACCAA.CCGAUCGAAACUUUGGCACACUUCC......GAG.C.CCUG.CC.UA...AC..AUCC.AGGU..
+#=GR XM_013398764.1/1418-1480(+)   PP .*********...**********........*******...**********.*************************......***.*.****.**.**...**..999*.****..
+XM_009161583.1/1451-1513(+)           .UCGAUUGGU...CUGGGUGAGG........ACGGUCC...UACUCAUCAG.CCUAUCGAGACAUUGGCUCACUUCC......GAG.C.CCUC.CC.CA...AC..AUGA.UGGU..
+#=GR XM_009161583.1/1451-1513(+)   PP .*********...**********........*******...**********.*************************......***.*.****.**.**...**..****.****..
+XM_013167554.1/1592-1654(+)           .UCUAUUGGU...UUGGGUGAAG........AUGGUCC...UACUCACCAA.CCCAUUGAGACCUUCGCUCACUUCC......GCG.C.UAUG.CC.CAa.uAU..CUAC.UG--..
+#=GR XM_013167554.1/1592-1654(+)   PP .****9****...**********........*******...**********.*************************......***.*.****.**.**8.878..9998.77....
+XM_013572619.1/1418-1480(+)           .UCCAUCGGU...CUCGGUGAGG........AUGGUGC...CACUCACCAG.CCUAUUGAGACUCUUGCUCACUUCC......GCG.C.UCUC.CC.CA...AC..AUCA.UGGU..
+#=GR XM_013572619.1/1418-1480(+)   PP .*********...**********........*******...**********.*************************......***.*.****.**.**...*9..7777.7789..
+XM_018524529.1/1668-1730(+)           .UCCAUCGGU...CUUGGUGAGG........AUGGUCC...CACCCACCAG.CCUAUCGAGACUCUCGCCCACUUCC......GCG.C.UCUG.CC.UA...AC..AUGA.UGGU..
+#=GR XM_018524529.1/1668-1730(+)   PP .*********...**********........*******...**********.*************************......***.*.****.**.**...**..****.****..
+XM_018890249.1/1643-1706(+)           .UCUAUUGGU...CUUGGUGAGG........AUGGUCC...UACUCACCAG.CCUAUUGAGACGCUCGCUCACUUCC......GCG.C.CCUC.CC.CA...AC..UGCC.UCGUc.
+#=GR XM_018890249.1/1643-1706(+)   PP .*********...**********........*******...**********.*************************......***.*.****.**.**...**..****.***99.
+XM_013469015.1/1442-1504(+)           .UCCAUCGGU...CUGGGUGAGG........ACGGUCC...UACCCACCAG.CCGAUCGAGACUCUGGUGCACUUCC......GUG.C.CACG.CC.CA...AC..CUGA.UGGU..
+#=GR XM_013469015.1/1442-1504(+)   PP .*********...**********........*******...**********.*************************......***.*.****.**.**...**..****.****..
+XM_009651628.1/1418-1480(+)           .UCGAUCGGU...CUCGGUGAGG........ACGGUCC...CACUCACCAG.CCUAUUGAGACUCUUGCCCACUUCC......GUG.C.UCUC.CC.CA...AC..UGCA.UGGU..
+#=GR XM_009651628.1/1418-1480(+)   PP .*********...**********........*******...**********.*************************......***.*.****.**.**...**..**99.99**..
+XM_020260721.1/1418-1480(+)           .UCCAUCGGU...CUUGGUGAGG........ACGGUCC...UACUCACCAG.CCUAUUGAGACACUCGCACAUUUCC......GUG.C.UUUG.CC.UA...AC..UUGA.UGGU..
+#=GR XM_020260721.1/1418-1480(+)   PP .*********...**********........*******...**********.*************************......***.*.****.**.**...**..****.****..
+XM_007916023.1/1418-1480(+)           .UCCAUCGGU...CUGGGUGAGG........ACGGUCC...UACUCACCAG.CCUAUCGAGACUCUCGCUCACUUCC......GCG.C.UCUG.CC.CA...AC..UGCA.UGGU..
+#=GR XM_007916023.1/1418-1480(+)   PP .*********...**********........*******...**********.*************************......***.*.****.**.**...**..**99.99**..
+XM_018333720.1/1418-1480(+)           .UCAAUCGGU...CUGGGUGAGG........ACGGUCC...UACUCACCAG.CCCAUUGAGACUCUUGCCCACUUCC......GUG.C.CCUC.CC.CA...AC..UGUA.UGGU..
+#=GR XM_018333720.1/1418-1480(+)   PP .*********...**********........*******...**********.*************************......***.*.****.**.**...**..****.****..
+XM_016379528.1/1514-1576(+)           .UCAAUUGGC...AUGGGUGAGG........AUGGUCC...AACGCACCAG.CCGAUUGAACUUGCCGCUCUCUACC......GGA.C.GAUG.CC.GA...AC..UUCC.UCUA..
+#=GR XM_016379528.1/1514-1576(+)   PP .*********...**********........*******...**********.*************************......***.*.****.**.**...**..****.****..
+LK023324.1/1016640-1016703(+)         .UCCAUUGGU...CUUGGUGAAG........AUGGUCC...UACUCAUCAA.CCUAUUGAAACUUUGACCUUGACUC......GUG.C.UACU.CC.CA...AC..AUGUuGACU..
+#=GR LK023324.1/1016640-1016703(+) PP .*********...**********........*******...**********.***************9866555555......568.8.8888.77.77...77..666413456..
+XM_020278912.1/1418-1481(+)           .UCGAUUGGU...CUUGGUGAGG........ACGGCCC...GACGCACCAG.CCUAUCGAGACUCUUGCCCACUUCC......GUG.C.GCUG.CC.CA...AC..AUGA.UGGUc.
+#=GR XM_020278912.1/1418-1481(+)   PP .*********...**********........*******...**********.*************************......***.*.****.99.99...99..8887.77777.
+XM_008732021.1/1418-1480(+)           .UCCAUCGGC...UUGGGUGAAG........AUGGUCC...UACCCAUCAA.CCGAUUGAGACGUUGGUGCACUUCC......GAG.C.UCUU.CC.CA...AU..AUGA.UGGU..
+#=GR XM_008732021.1/1418-1480(+)   PP .********9...**********........*******...**********.*************************......***.*.****.**.**...99..9999.99**..
+XM_013434463.1/1418-1480(+)           .UCCAUCGGU...CUGGGUGAAG........AUGGCCC...UACUCACCAA.CCUAUCGAGACUUUGGUCCAUUUCC......GAG.C.ACUU.CC.CA...AC..AUGA.UGGU..
+#=GR XM_013434463.1/1418-1480(+)   PP .*********...**********........*******...**********.*************************......***.*.99**.**.**...**..****.****..
+XM_022650816.1/1418-1480(+)           .UCCAUCGGU...CUGGGUGAAG........AUGGCCC...UACUCACCAA.CCUAUCGAGACUUUGGUCCAUUUCC......GAG.C.ACUU.CC.CA...AC..AUGA.UGGU..
+#=GR XM_022650816.1/1418-1480(+)   PP .*********...**********........*******...**********.*************************......***.*.99**.**.**...**..****.****..
+#=GC SS_cons                          .::::(((((...-((((,,<<<........-<<<<__..._____>>>>-.>>>,,,,,,,,,,<<<<<<______......>>>.>.>>,,.)).))...))..))):.::::..
+#=GC RF                               .UCUAuCGGG...CuuGGUGaGG........AuGGuCC...AACGCaCCaA.CCuAUUGAAACUCugGCuCACUUGA......GgG.C.uaUU.CC.aa...CC..CGgC.AUGU..
+//

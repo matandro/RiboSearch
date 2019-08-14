@@ -1,0 +1,1148 @@
+Match ID	taxonomy	annotation ID	ype	distance	relation	product
+
+XM_021378898.1/6068-6132(+)	8996	XM_021378898.1:1..7193	region	0	inside e1061	['mRNA']
+XM_021378898.1/6068-6132(+)	8996	gene-MYO9B	gene	0	inside e1061	None
+XM_021378898.1/6068-6132(+)	8996	cds-XP_021234573.1	CDS	0	inside e739	['unconventional myosin-IXb isoform X1']
+
+XM_021378899.1/6296-6360(+)	8996	XM_021378899.1:1..7421	region	0	inside e1061	['mRNA']
+XM_021378899.1/6296-6360(+)	8996	gene-MYO9B	gene	0	inside e1061	None
+XM_021378899.1/6296-6360(+)	8996	cds-XP_021234574.1	CDS	0	inside e739	['unconventional myosin-IXb isoform X1']
+
+XM_021378900.1/5938-6002(+)	8996	XM_021378900.1:1..7063	region	0	inside e1061	['mRNA']
+XM_021378900.1/5938-6002(+)	8996	gene-MYO9B	gene	0	inside e1061	None
+XM_021378900.1/5938-6002(+)	8996	cds-XP_021234575.1	CDS	0	inside e739	['unconventional myosin-IXb isoform X1']
+
+XM_021378901.1/6068-6132(+)	8996	XM_021378901.1:1..7175	region	0	inside e1043	['mRNA']
+XM_021378901.1/6068-6132(+)	8996	gene-MYO9B	gene	0	inside e1043	None
+XM_021378901.1/6068-6132(+)	8996	cds-XP_021234576.1	CDS	0	inside e721	['unconventional myosin-IXb isoform X2']
+
+XM_021378903.1/5978-6042(+)	8996	XM_021378903.1:1..7103	region	0	inside e1061	['mRNA']
+XM_021378903.1/5978-6042(+)	8996	gene-MYO9B	gene	0	inside e1061	None
+XM_021378903.1/5978-6042(+)	8996	cds-XP_021234578.1	CDS	0	inside e739	['unconventional myosin-IXb isoform X4']
+
+XM_021378905.1/5957-6021(+)	8996	XM_021378905.1:1..7082	region	0	inside e1061	['mRNA']
+XM_021378905.1/5957-6021(+)	8996	gene-MYO9B	gene	0	inside e1061	None
+XM_021378905.1/5957-6021(+)	8996	cds-XP_021234580.1	CDS	0	inside e739	['unconventional myosin-IXb isoform X5']
+
+XM_021378907.1/5867-5931(+)	8996	XM_021378907.1:1..6992	region	0	inside e1061	['mRNA']
+XM_021378907.1/5867-5931(+)	8996	gene-MYO9B	gene	0	inside e1061	None
+XM_021378907.1/5867-5931(+)	8996	cds-XP_021234582.1	CDS	0	inside e739	['unconventional myosin-IXb isoform X7']
+
+XM_021378908.1/6068-6132(+)	8996	XM_021378908.1:1..6599	region	0	inside e467	['mRNA']
+XM_021378908.1/6068-6132(+)	8996	gene-MYO9B	gene	0	inside e467	None
+XM_021378908.1/6068-6132(+)	8996	cds-XP_021234583.1	CDS	0	inside e319	['unconventional myosin-IXb isoform X8']
+
+XM_021378909.1/6068-6132(+)	8996	XM_021378909.1:1..6559	region	0	inside e427	['mRNA']
+XM_021378909.1/6068-6132(+)	8996	gene-MYO9B	gene	0	inside e427	None
+XM_021378909.1/6068-6132(+)	8996	cds-XP_021234584.1	CDS	0	inside e286	['unconventional myosin-IXb isoform X9']
+
+XM_021378910.1/6068-6132(+)	8996	XM_021378910.1:1..6552	region	0	inside e420	['mRNA']
+XM_021378910.1/6068-6132(+)	8996	gene-MYO9B	gene	0	inside e420	None
+XM_021378910.1/6068-6132(+)	8996	cds-XP_021234585.1	CDS	0	inside e286	['unconventional myosin-IXb isoform X9']
+
+XM_021378911.1/5978-6042(+)	8996	XM_021378911.1:1..6469	region	0	inside e427	['mRNA']
+XM_021378911.1/5978-6042(+)	8996	gene-MYO9B	gene	0	inside e427	None
+XM_021378911.1/5978-6042(+)	8996	cds-XP_021234586.1	CDS	0	inside e286	['unconventional myosin-IXb isoform X10']
+
+XM_015886163.1/6035-6099(+)	93934	XM_015886163.1:1..7169	region	0	inside e1070	['mRNA']
+XM_015886163.1/6035-6099(+)	93934	gene-MYO9B	gene	0	inside e1070	None
+XM_015886163.1/6035-6099(+)	93934	cds-XP_015741649.1	CDS	0	inside e739	['unconventional myosin-IXb isoform X1']
+
+XM_015886164.1/5997-6061(+)	93934	XM_015886164.1:1..7131	region	0	inside e1070	['mRNA']
+XM_015886164.1/5997-6061(+)	93934	gene-MYO9B	gene	0	inside e1070	None
+XM_015886164.1/5997-6061(+)	93934	cds-XP_015741650.1	CDS	0	inside e739	['unconventional myosin-IXb isoform X1']
+
+XM_015886165.1/8509-8573(+)	93934	XM_015886165.1:1..9643	region	0	inside e1070	['mRNA']
+XM_015886165.1/8509-8573(+)	93934	gene-MYO9B	gene	0	inside e1070	None
+XM_015886165.1/8509-8573(+)	93934	cds-XP_015741651.1	CDS	0	inside e739	['unconventional myosin-IXb isoform X1']
+
+XM_015886167.1/6692-6756(+)	93934	XM_015886167.1:1..7826	region	0	inside e1070	['mRNA']
+XM_015886167.1/6692-6756(+)	93934	gene-MYO9B	gene	0	inside e1070	None
+XM_015886167.1/6692-6756(+)	93934	cds-XP_015741653.1	CDS	0	inside e739	['unconventional myosin-IXb isoform X1']
+
+XM_015886168.1/6034-6098(+)	93934	XM_015886168.1:1..7150	region	0	inside e1052	['mRNA']
+XM_015886168.1/6034-6098(+)	93934	gene-MYO9B	gene	0	inside e1052	None
+XM_015886168.1/6034-6098(+)	93934	cds-XP_015741654.1	CDS	0	inside e721	['unconventional myosin-IXb isoform X2']
+
+XM_015886170.1/5945-6009(+)	93934	XM_015886170.1:1..7079	region	0	inside e1070	['mRNA']
+XM_015886170.1/5945-6009(+)	93934	gene-MYO9B	gene	0	inside e1070	None
+XM_015886170.1/5945-6009(+)	93934	cds-XP_015741656.1	CDS	0	inside e739	['unconventional myosin-IXb isoform X4']
+
+XM_015886171.1/5924-5988(+)	93934	XM_015886171.1:1..7058	region	0	inside e1070	['mRNA']
+XM_015886171.1/5924-5988(+)	93934	gene-MYO9B	gene	0	inside e1070	None
+XM_015886171.1/5924-5988(+)	93934	cds-XP_015741657.1	CDS	0	inside e739	['unconventional myosin-IXb isoform X5']
+
+XM_015886173.1/5836-5900(+)	93934	XM_015886173.1:1..6970	region	0	inside e1070	['mRNA']
+XM_015886173.1/5836-5900(+)	93934	gene-MYO9B	gene	0	inside e1070	None
+XM_015886173.1/5836-5900(+)	93934	cds-XP_015741659.1	CDS	0	inside e739	['unconventional myosin-IXb isoform X7']
+
+XM_015886174.1/5833-5897(+)	93934	XM_015886174.1:1..6967	region	0	inside e1070	['mRNA']
+XM_015886174.1/5833-5897(+)	93934	gene-MYO9B	gene	0	inside e1070	None
+XM_015886174.1/5833-5897(+)	93934	cds-XP_015741660.1	CDS	0	inside e739	['unconventional myosin-IXb isoform X8']
+
+XM_015886175.1/6035-6099(+)	93934	XM_015886175.1:1..7145	region	0	inside e1046	['mRNA']
+XM_015886175.1/6035-6099(+)	93934	gene-MYO9B	gene	0	inside e1046	None
+XM_015886175.1/6035-6099(+)	93934	cds-XP_015741661.1	CDS	0	inside e286	['unconventional myosin-IXb isoform X9']
+
+XM_015886178.1/5041-5105(+)	93934	XM_015886178.1:1..6175	region	0	inside e1070	['mRNA']
+XM_015886178.1/5041-5105(+)	93934	gene-MYO9B	gene	0	inside e1070	None
+XM_015886178.1/5041-5105(+)	93934	cds-XP_015741664.1	CDS	0	inside e739	['unconventional myosin-IXb isoform X11']
+
+XM_015886179.1/8419-8483(+)	93934	XM_015886179.1:1..9529	region	0	inside e1046	['mRNA']
+XM_015886179.1/8419-8483(+)	93934	gene-MYO9B	gene	0	inside e1046	None
+XM_015886179.1/8419-8483(+)	93934	cds-XP_015741665.1	CDS	0	inside e286	['unconventional myosin-IXb isoform X12']
+
+XM_009923667.1/4786-4850(+)	8969	XM_009923667.1:1..6002	region	0	inside e1152	['mRNA']
+XM_009923667.1/4786-4850(+)	8969	gene-MYO9B	gene	0	inside e1152	None
+XM_009923667.1/4786-4850(+)	8969	cds-XP_009921969.1	CDS	0	inside e715	['unconventional myosin-IXb isoform X1']
+
+XM_009923669.1/4695-4759(+)	8969	XM_009923669.1:1..5911	region	0	inside e1152	['mRNA']
+XM_009923669.1/4695-4759(+)	8969	gene-MYO9B	gene	0	inside e1152	None
+XM_009923669.1/4695-4759(+)	8969	cds-XP_009921971.1	CDS	0	inside e715	['unconventional myosin-IXb isoform X3']
+
+XM_010562184.1/5954-6018(+)	52644	XM_010562184.1:1..7171	region	0	inside e1153	['mRNA']
+XM_010562184.1/5954-6018(+)	52644	gene-MYO9B	gene	0	inside e1153	None
+XM_010562184.1/5954-6018(+)	52644	cds-XP_010560486.1	CDS	0	inside e715	['unconventional myosin-IXb isoform X1']
+
+XM_010562186.1/5864-5928(+)	52644	XM_010562186.1:1..7081	region	0	inside e1153	['mRNA']
+XM_010562186.1/5864-5928(+)	52644	gene-MYO9B	gene	0	inside e1153	None
+XM_010562186.1/5864-5928(+)	52644	cds-XP_010560488.1	CDS	0	inside e715	['unconventional myosin-IXb isoform X3']
+
+XM_010562188.1/5954-6018(+)	52644	XM_010562188.1:1..6396	region	0	inside e378	['mRNA']
+XM_010562188.1/5954-6018(+)	52644	gene-MYO9B	gene	0	inside e378	None
+XM_010562188.1/5954-6018(+)	52644	cds-XP_010560490.1	CDS	0	inside e286	['unconventional myosin-IXb isoform X5']
+
+XM_010562190.1/5864-5928(+)	52644	XM_010562190.1:1..6306	region	0	inside e378	['mRNA']
+XM_010562190.1/5864-5928(+)	52644	gene-MYO9B	gene	0	inside e378	None
+XM_010562190.1/5864-5928(+)	52644	cds-XP_010560492.1	CDS	0	inside e286	['unconventional myosin-IXb isoform X7']
+
+XM_009284029.2/6157-6221(+)	9233	XM_009284029.2:1..7378	region	0	inside e1157	['mRNA']
+XM_009284029.2/6157-6221(+)	9233	gene-MYO9B	gene	0	inside e1157	None
+XM_009284029.2/6157-6221(+)	9233	cds-XP_009282304.1	CDS	0	inside e715	['unconventional myosin-IXb']
+
+XM_013304676.1/5900-5964(+)	8954	XM_013304676.1:1..7151	region	0	inside e1187	['mRNA']
+XM_013304676.1/5900-5964(+)	8954	gene-MYO9B	gene	0	inside e1187	None
+XM_013304676.1/5900-5964(+)	8954	cds-XP_013160130.1	CDS	0	inside e715	['unconventional myosin-IXb isoform X1']
+
+XM_013304678.1/5768-5832(+)	8954	XM_013304678.1:1..7019	region	0	inside e1187	['mRNA']
+XM_013304678.1/5768-5832(+)	8954	gene-MYO9B	gene	0	inside e1187	None
+XM_013304678.1/5768-5832(+)	8954	cds-XP_013160132.1	CDS	0	inside e715	['unconventional myosin-IXb isoform X3']
+
+XM_005244128.2/5900-5964(+)	8954	XM_005244128.2:1..6331	region	0	inside e367	['mRNA']
+XM_005244128.2/5900-5964(+)	8954	gene-MYO9B	gene	0	inside e367	None
+XM_005244128.2/5900-5964(+)	8954	cds-XP_005244185.1	CDS	0	inside e286	['unconventional myosin-IXb isoform X4']
+
+XM_013304679.1/5900-5964(+)	8954	XM_013304679.1:1..6334	region	0	inside e370	['mRNA']
+XM_013304679.1/5900-5964(+)	8954	gene-MYO9B	gene	0	inside e370	None
+XM_013304679.1/5900-5964(+)	8954	cds-XP_013160133.1	CDS	0	inside e286	['unconventional myosin-IXb isoform X5']
+
+XM_014284280.1/5900-5964(+)	345164	XM_014284280.1:1..7151	region	0	inside e1187	['mRNA']
+XM_014284280.1/5900-5964(+)	345164	gene-MYO9B	gene	0	inside e1187	None
+XM_014284280.1/5900-5964(+)	345164	cds-XP_014139755.1	CDS	0	inside e715	['unconventional myosin-IXb isoform X1']
+
+XM_014284282.1/5768-5832(+)	345164	XM_014284282.1:1..7019	region	0	inside e1187	['mRNA']
+XM_014284282.1/5768-5832(+)	345164	gene-MYO9B	gene	0	inside e1187	None
+XM_014284282.1/5768-5832(+)	345164	cds-XP_014139757.1	CDS	0	inside e715	['unconventional myosin-IXb isoform X3']
+
+XM_005444261.2/5900-5964(+)	345164	XM_005444261.2:1..6331	region	0	inside e367	['mRNA']
+XM_005444261.2/5900-5964(+)	345164	gene-MYO9B	gene	0	inside e367	None
+XM_005444261.2/5900-5964(+)	345164	cds-XP_005444318.1	CDS	0	inside e286	['unconventional myosin-IXb isoform X4']
+
+XM_014284283.1/5900-5964(+)	345164	XM_014284283.1:1..6710	region	0	inside e746	['mRNA']
+XM_014284283.1/5900-5964(+)	345164	gene-MYO9B	gene	0	inside e746	None
+XM_014284283.1/5900-5964(+)	345164	cds-XP_014139758.1	CDS	0	inside e286	['unconventional myosin-IXb isoform X5']
+
+XM_011595867.1/6064-6128(+)	216574	XM_011595867.1:1..7329	region	0	inside e1201	['mRNA']
+XM_011595867.1/6064-6128(+)	216574	gene-MYO9B	gene	0	inside e1201	None
+XM_011595867.1/6064-6128(+)	216574	cds-XP_011594169.1	CDS	0	inside e715	['unconventional myosin-IXb isoform X1']
+
+XM_011595869.1/5974-6038(+)	216574	XM_011595869.1:1..7239	region	0	inside e1201	['mRNA']
+XM_011595869.1/5974-6038(+)	216574	gene-MYO9B	gene	0	inside e1201	None
+XM_011595869.1/5974-6038(+)	216574	cds-XP_011594171.1	CDS	0	inside e715	['unconventional myosin-IXb isoform X3']
+
+XM_011595871.1/6064-6128(+)	216574	XM_011595871.1:1..6506	region	0	inside e378	['mRNA']
+XM_011595871.1/6064-6128(+)	216574	gene-MYO9B	gene	0	inside e378	None
+XM_011595871.1/6064-6128(+)	216574	cds-XP_011594173.1	CDS	0	inside e286	['unconventional myosin-IXb isoform X5']
+
+XM_011595873.1/5974-6038(+)	216574	XM_011595873.1:1..6416	region	0	inside e378	['mRNA']
+XM_011595873.1/5974-6038(+)	216574	gene-MYO9B	gene	0	inside e378	None
+XM_011595873.1/5974-6038(+)	216574	cds-XP_011594175.1	CDS	0	inside e286	['unconventional myosin-IXb isoform X7']
+
+XM_013108153.2/6894-6958(+)	8839	XM_013108153.2:1..8145	region	0	inside e1187	['mRNA']
+XM_013108153.2/6894-6958(+)	8839	gene-MYO9B	gene	0	inside e1187	None
+XM_013108153.2/6894-6958(+)	8839	cds-XP_012963607.1	CDS	0	inside e721	['unconventional myosin-IXb isoform X1']
+
+XM_021278440.1/6789-6853(+)	8839	XM_021278440.1:1..8040	region	0	inside e1187	['mRNA']
+XM_021278440.1/6789-6853(+)	8839	gene-MYO9B	gene	0	inside e1187	None
+XM_021278440.1/6789-6853(+)	8839	cds-XP_021134115.1	CDS	0	inside e721	['unconventional myosin-IXb isoform X1']
+
+XM_013108154.2/6046-6110(+)	8839	XM_013108154.2:1..7297	region	0	inside e1187	['mRNA']
+XM_013108154.2/6046-6110(+)	8839	gene-MYO9B	gene	0	inside e1187	None
+XM_013108154.2/6046-6110(+)	8839	cds-XP_012963608.1	CDS	0	inside e721	['unconventional myosin-IXb isoform X1']
+
+XM_021278441.1/6953-7017(+)	8839	XM_021278441.1:1..8204	region	0	inside e1187	['mRNA']
+XM_021278441.1/6953-7017(+)	8839	gene-MYO9B	gene	0	inside e1187	None
+XM_021278441.1/6953-7017(+)	8839	cds-XP_021134116.1	CDS	0	inside e721	['unconventional myosin-IXb isoform X1']
+
+XM_013108155.2/6848-6912(+)	8839	XM_013108155.2:1..8099	region	0	inside e1187	['mRNA']
+XM_013108155.2/6848-6912(+)	8839	gene-MYO9B	gene	0	inside e1187	None
+XM_013108155.2/6848-6912(+)	8839	cds-XP_012963609.1	CDS	0	inside e721	['unconventional myosin-IXb isoform X1']
+
+XM_021278443.1/6803-6867(+)	8839	XM_021278443.1:1..8054	region	0	inside e1187	['mRNA']
+XM_021278443.1/6803-6867(+)	8839	gene-MYO9B	gene	0	inside e1187	None
+XM_021278443.1/6803-6867(+)	8839	cds-XP_021134118.1	CDS	0	inside e721	['unconventional myosin-IXb isoform X3']
+
+XM_021278444.1/6783-6847(+)	8839	XM_021278444.1:1..8034	region	0	inside e1187	['mRNA']
+XM_021278444.1/6783-6847(+)	8839	gene-MYO9B	gene	0	inside e1187	None
+XM_021278444.1/6783-6847(+)	8839	cds-XP_021134119.1	CDS	0	inside e721	['unconventional myosin-IXb isoform X4']
+
+XM_021278446.1/6692-6756(+)	8839	XM_021278446.1:1..7943	region	0	inside e1187	['mRNA']
+XM_021278446.1/6692-6756(+)	8839	gene-MYO9B	gene	0	inside e1187	None
+XM_021278446.1/6692-6756(+)	8839	cds-XP_021134121.1	CDS	0	inside e721	['unconventional myosin-IXb isoform X6']
+
+XM_013108158.2/6893-6957(+)	8839	XM_013108158.2:1..7384	region	0	inside e427	['mRNA']
+XM_013108158.2/6893-6957(+)	8839	gene-MYO9B	gene	0	inside e427	None
+XM_013108158.2/6893-6957(+)	8839	cds-XP_012963612.1	CDS	0	inside e286	['unconventional myosin-IXb isoform X7']
+
+XM_005029075.3/6803-6867(+)	8839	XM_005029075.3:1..7294	region	0	inside e427	['mRNA']
+XM_005029075.3/6803-6867(+)	8839	gene-MYO9B	gene	0	inside e427	None
+XM_005029075.3/6803-6867(+)	8839	cds-XP_005029132.1	CDS	0	inside e286	['unconventional myosin-IXb isoform X8']
+
+XM_010077997.1/5743-5807(+)	240206	XM_010077997.1:1..6093	region	0	inside e286	['mRNA']
+XM_010077997.1/5743-5807(+)	240206	gene-LOC104460928	gene	0	inside e286	None
+XM_010077997.1/5743-5807(+)	240206	cds-XP_010076299.1	CDS	0	inside e286	['LOW QUALITY PROTEIN: unconventional myosin-IXb-like']
+
+XM_010198597.1/5959-6023(+)	57412	XM_010198597.1:1..6170	region	0	inside e147	['mRNA']
+XM_010198597.1/5959-6023(+)	57412	gene-LOC104552678	gene	0	inside e147	None
+XM_010198597.1/5959-6023(+)	57412	cds-XP_010196899.1	CDS	0	inside e147	['LOW QUALITY PROTEIN: unconventional myosin-IXb-like']
+
+XM_015300058.1/6025-6089(+)	9031	XM_015300058.1:1..7117	region	0	inside e1028	['mRNA']
+XM_015300058.1/6025-6089(+)	9031	gene-MYO9B	gene	0	inside e1028	None
+XM_015300058.1/6025-6089(+)	9031	cds-XP_015155544.1	CDS	0	inside e721	['unconventional myosin-IXb isoform X1']
+
+XM_015300059.1/6015-6079(+)	9031	XM_015300059.1:1..7107	region	0	inside e1028	['mRNA']
+XM_015300059.1/6015-6079(+)	9031	gene-MYO9B	gene	0	inside e1028	None
+XM_015300059.1/6015-6079(+)	9031	cds-XP_015155545.1	CDS	0	inside e721	['unconventional myosin-IXb isoform X1']
+
+XM_015300060.1/6470-6534(+)	9031	XM_015300060.1:1..7562	region	0	inside e1028	['mRNA']
+XM_015300060.1/6470-6534(+)	9031	gene-MYO9B	gene	0	inside e1028	None
+XM_015300060.1/6470-6534(+)	9031	cds-XP_015155546.1	CDS	0	inside e721	['unconventional myosin-IXb isoform X1']
+
+XM_015300061.1/5939-6003(+)	9031	XM_015300061.1:1..7031	region	0	inside e1028	['mRNA']
+XM_015300061.1/5939-6003(+)	9031	gene-MYO9B	gene	0	inside e1028	None
+XM_015300061.1/5939-6003(+)	9031	cds-XP_015155547.1	CDS	0	inside e721	['unconventional myosin-IXb isoform X1']
+
+XM_015300063.1/5935-5999(+)	9031	XM_015300063.1:1..7027	region	0	inside e1028	['mRNA']
+XM_015300063.1/5935-5999(+)	9031	gene-MYO9B	gene	0	inside e1028	None
+XM_015300063.1/5935-5999(+)	9031	cds-XP_015155549.1	CDS	0	inside e721	['unconventional myosin-IXb isoform X3']
+
+XM_015300064.1/5914-5978(+)	9031	XM_015300064.1:1..7006	region	0	inside e1028	['mRNA']
+XM_015300064.1/5914-5978(+)	9031	gene-MYO9B	gene	0	inside e1028	None
+XM_015300064.1/5914-5978(+)	9031	cds-XP_015155550.1	CDS	0	inside e721	['unconventional myosin-IXb isoform X4']
+
+XM_015300067.1/5827-5891(+)	9031	XM_015300067.1:1..6919	region	0	inside e1028	['mRNA']
+XM_015300067.1/5827-5891(+)	9031	gene-MYO9B	gene	0	inside e1028	None
+XM_015300067.1/5827-5891(+)	9031	cds-XP_015155553.1	CDS	0	inside e721	['unconventional myosin-IXb isoform X6']
+
+XM_015300068.1/5824-5888(+)	9031	XM_015300068.1:1..6916	region	0	inside e1028	['mRNA']
+XM_015300068.1/5824-5888(+)	9031	gene-MYO9B	gene	0	inside e1028	None
+XM_015300068.1/5824-5888(+)	9031	cds-XP_015155554.1	CDS	0	inside e721	['unconventional myosin-IXb isoform X7']
+
+XM_015300069.1/6025-6089(+)	9031	XM_015300069.1:1..6693	region	0	inside e604	['mRNA']
+XM_015300069.1/6025-6089(+)	9031	gene-MYO9B	gene	0	inside e604	None
+XM_015300069.1/6025-6089(+)	9031	cds-XP_015155555.1	CDS	0	inside e286	['unconventional myosin-IXb isoform X8']
+
+XM_015300070.1/5935-5999(+)	9031	XM_015300070.1:1..6603	region	0	inside e604	['mRNA']
+XM_015300070.1/5935-5999(+)	9031	gene-MYO9B	gene	0	inside e604	None
+XM_015300070.1/5935-5999(+)	9031	cds-XP_015155556.1	CDS	0	inside e286	['unconventional myosin-IXb isoform X9']
+
+XM_010214442.1/5662-5726(+)	94827	XM_010214442.1:1..6926	region	0	inside e1200	['mRNA']
+XM_010214442.1/5662-5726(+)	94827	gene-MYO9B	gene	0	inside e1200	None
+XM_010214442.1/5662-5726(+)	94827	cds-XP_010212744.1	CDS	0	inside e712	['unconventional myosin-IXb']
+
+XM_009636762.1/5686-5750(+)	188379	XM_009636762.1:1..6453	region	0	inside e703	['mRNA']
+XM_009636762.1/5686-5750(+)	188379	gene-MYO9B	gene	0	inside e703	None
+XM_009636762.1/5686-5750(+)	188379	cds-XP_009635057.1	CDS	0	inside e703	['unconventional myosin-IXb']
+
+XM_009984567.1/5764-5828(+)	121530	XM_009984567.1:1..6114	region	0	inside e286	['mRNA']
+XM_009984567.1/5764-5828(+)	121530	gene-MYO9B	gene	0	inside e286	None
+XM_009984567.1/5764-5828(+)	121530	cds-XP_009982869.1	CDS	0	inside e286	['LOW QUALITY PROTEIN: unconventional myosin-IXb']
+
+XM_010021656.1/5740-5804(+)	176057	XM_010021656.1:1..6519	region	0	inside e715	['mRNA']
+XM_010021656.1/5740-5804(+)	176057	gene-MYO9B	gene	0	inside e715	None
+XM_010021656.1/5740-5804(+)	176057	cds-XP_010019958.1	CDS	0	inside e715	['LOW QUALITY PROTEIN: unconventional myosin-IXb']
+
+XM_009082175.1/5080-5144(+)	57068	XM_009082175.1:1..5856	region	0	inside e712	['mRNA']
+XM_009082175.1/5080-5144(+)	57068	gene-LOC103809347	gene	0	inside e712	None
+XM_009082175.1/5080-5144(+)	57068	cds-XP_009080423.1	CDS	0	inside e712	['LOW QUALITY PROTEIN: unconventional myosin-IXb-like']
+
+XM_009950527.1/5773-5837(+)	188344	XM_009950527.1:1..6552	region	0	inside e715	['mRNA']
+XM_009950527.1/5773-5837(+)	188344	gene-MYO9B	gene	0	inside e715	None
+XM_009950527.1/5773-5837(+)	188344	cds-XP_009948829.1	CDS	0	inside e715	['LOW QUALITY PROTEIN: unconventional myosin-IXb']
+
+XM_014952869.1/5997-6061(+)	198806	XM_014952869.1:1..7253	region	0	inside e1192	['mRNA']
+XM_014952869.1/5997-6061(+)	198806	gene-MYO9B	gene	0	inside e1192	None
+XM_014952869.1/5997-6061(+)	198806	cds-XP_014808355.1	CDS	0	inside e715	['unconventional myosin-IXb isoform X1']
+
+XM_014952870.1/5976-6040(+)	198806	XM_014952870.1:1..7232	region	0	inside e1192	['mRNA']
+XM_014952870.1/5976-6040(+)	198806	gene-MYO9B	gene	0	inside e1192	None
+XM_014952870.1/5976-6040(+)	198806	cds-XP_014808356.1	CDS	0	inside e715	['unconventional myosin-IXb isoform X2']
+
+XM_014952872.1/5889-5953(+)	198806	XM_014952872.1:1..7145	region	0	inside e1192	['mRNA']
+XM_014952872.1/5889-5953(+)	198806	gene-MYO9B	gene	0	inside e1192	None
+XM_014952872.1/5889-5953(+)	198806	cds-XP_014808358.1	CDS	0	inside e715	['unconventional myosin-IXb isoform X4']
+
+XM_014952873.1/5886-5950(+)	198806	XM_014952873.1:1..7142	region	0	inside e1192	['mRNA']
+XM_014952873.1/5886-5950(+)	198806	gene-MYO9B	gene	0	inside e1192	None
+XM_014952873.1/5886-5950(+)	198806	cds-XP_014808359.1	CDS	0	inside e715	['unconventional myosin-IXb isoform X5']
+
+XM_014952874.1/5997-6061(+)	198806	XM_014952874.1:1..6733	region	0	inside e672	['mRNA']
+XM_014952874.1/5997-6061(+)	198806	gene-MYO9B	gene	0	inside e672	None
+XM_014952874.1/5997-6061(+)	198806	cds-XP_014808360.1	CDS	0	inside e286	['unconventional myosin-IXb isoform X6']
+
+XM_008171594.1/5983-6047(+)	8478	XM_008171594.1:1..6333	region	0	inside e286	['mRNA']
+XM_008171594.1/5983-6047(+)	8478	gene-MYO9B	gene	0	inside e286	None
+XM_008171594.1/5983-6047(+)	8478	cds-XP_008169816.1	CDS	0	inside e286	['unconventional myosin-IXb']
+
+XR_509217.1/6079-6143(+)	8478	XR_509217.1:1..6188	region	0	inside e45	['transcribed RNA']
+XR_509217.1/6079-6143(+)	8478	gene-MYO9B	gene	0	inside e45	None
+XR_509217.1/6079-6143(+)	8478	rna-MYO9B	transcript	0	inside e45	"['myosin IXB, transcript variant X2']"
+XR_509217.1/6079-6143(+)	8478	exon-MYO9B-1	exon	0	inside e45	"['myosin IXB, transcript variant X2']"
+
+XM_018921787.1/6122-6186(+)	9135	XM_018921787.1:1..7374	region	0	inside e1188	['mRNA']
+XM_018921787.1/6122-6186(+)	9135	gene-MYO9B	gene	0	inside e1188	None
+XM_018921787.1/6122-6186(+)	9135	cds-XP_018777332.1	CDS	0	inside e712	['unconventional myosin-IXb isoform X1']
+
+XM_018921788.1/6119-6183(+)	9135	XM_018921788.1:1..7371	region	0	inside e1188	['mRNA']
+XM_018921788.1/6119-6183(+)	9135	gene-MYO9B	gene	0	inside e1188	None
+XM_018921788.1/6119-6183(+)	9135	cds-XP_018777333.1	CDS	0	inside e712	['unconventional myosin-IXb isoform X2']
+
+XM_018921790.1/6032-6096(+)	9135	XM_018921790.1:1..7284	region	0	inside e1188	['mRNA']
+XM_018921790.1/6032-6096(+)	9135	gene-MYO9B	gene	0	inside e1188	None
+XM_018921790.1/6032-6096(+)	9135	cds-XP_018777335.1	CDS	0	inside e712	['unconventional myosin-IXb isoform X4']
+
+XM_018921791.1/6011-6075(+)	9135	XM_018921791.1:1..7263	region	0	inside e1188	['mRNA']
+XM_018921791.1/6011-6075(+)	9135	gene-MYO9B	gene	0	inside e1188	None
+XM_018921791.1/6011-6075(+)	9135	cds-XP_018777336.1	CDS	0	inside e712	['unconventional myosin-IXb isoform X5']
+
+XM_018921793.1/5920-5984(+)	9135	XM_018921793.1:1..7172	region	0	inside e1188	['mRNA']
+XM_018921793.1/5920-5984(+)	9135	gene-MYO9B	gene	0	inside e1188	None
+XM_018921793.1/5920-5984(+)	9135	cds-XP_018777338.1	CDS	0	inside e712	['unconventional myosin-IXb isoform X7']
+
+XM_018921794.1/6123-6187(+)	9135	XM_018921794.1:1..7387	region	0	inside e1200	['mRNA']
+XM_018921794.1/6123-6187(+)	9135	gene-MYO9B	gene	0	inside e1200	None
+XM_018921794.1/6123-6187(+)	9135	cds-XP_018777339.1	CDS	0	inside e286	['unconventional myosin-IXb isoform X8']
+
+XM_018921797.1/6033-6097(+)	9135	XM_018921797.1:1..7297	region	0	inside e1200	['mRNA']
+XM_018921797.1/6033-6097(+)	9135	gene-MYO9B	gene	0	inside e1200	None
+XM_018921797.1/6033-6097(+)	9135	cds-XP_018777342.1	CDS	0	inside e286	['unconventional myosin-IXb isoform X11']
+
+XM_014882973.1/6152-6216(+)	9172	XM_014882973.1:1..7385	region	0	inside e1169	['mRNA']
+XM_014882973.1/6152-6216(+)	9172	gene-MYO9B	gene	0	inside e1169	None
+XM_014882973.1/6152-6216(+)	9172	cds-XP_014738459.1	CDS	0	inside e712	['unconventional myosin-IXb isoform X1']
+
+XM_014882975.1/6028-6092(+)	9172	XM_014882975.1:1..7261	region	0	inside e1169	['mRNA']
+XM_014882975.1/6028-6092(+)	9172	gene-MYO9B	gene	0	inside e1169	None
+XM_014882975.1/6028-6092(+)	9172	cds-XP_014738461.1	CDS	0	inside e712	['unconventional myosin-IXb isoform X2']
+
+XM_014882977.1/5938-6002(+)	9172	XM_014882977.1:1..7171	region	0	inside e1169	['mRNA']
+XM_014882977.1/5938-6002(+)	9172	gene-MYO9B	gene	0	inside e1169	None
+XM_014882977.1/5938-6002(+)	9172	cds-XP_014738463.1	CDS	0	inside e712	['unconventional myosin-IXb isoform X4']
+
+XM_014882978.1/5917-5981(+)	9172	XM_014882978.1:1..7150	region	0	inside e1169	['mRNA']
+XM_014882978.1/5917-5981(+)	9172	gene-MYO9B	gene	0	inside e1169	None
+XM_014882978.1/5917-5981(+)	9172	cds-XP_014738464.1	CDS	0	inside e712	['unconventional myosin-IXb isoform X5']
+
+XM_014882981.1/5827-5891(+)	9172	XM_014882981.1:1..7060	region	0	inside e1169	['mRNA']
+XM_014882981.1/5827-5891(+)	9172	gene-MYO9B	gene	0	inside e1169	None
+XM_014882981.1/5827-5891(+)	9172	cds-XP_014738467.1	CDS	0	inside e712	['unconventional myosin-IXb isoform X7']
+
+XM_014882982.1/6028-6092(+)	9172	XM_014882982.1:1..7273	region	0	inside e1181	['mRNA']
+XM_014882982.1/6028-6092(+)	9172	gene-MYO9B	gene	0	inside e1181	None
+XM_014882982.1/6028-6092(+)	9172	cds-XP_014738468.1	CDS	0	inside e286	['unconventional myosin-IXb isoform X8']
+
+XM_014882984.1/5938-6002(+)	9172	XM_014882984.1:1..7183	region	0	inside e1181	['mRNA']
+XM_014882984.1/5938-6002(+)	9172	gene-MYO9B	gene	0	inside e1181	None
+XM_014882984.1/5938-6002(+)	9172	cds-XP_014738470.1	CDS	0	inside e286	['unconventional myosin-IXb isoform X10']
+
+XM_005141501.1/5947-6011(+)	13146	XM_005141501.1:1..7123	region	0	inside e1112	['mRNA']
+XM_005141501.1/5947-6011(+)	13146	gene-LOC101875586	gene	0	inside e1112	None
+XM_005141501.1/5947-6011(+)	13146	cds-XP_005141558.1	CDS	0	inside e715	['LOW QUALITY PROTEIN: unconventional myosin-IXb']
+
+XM_014273618.1/5939-6003(+)	44394	XM_014273618.1:1..7140	region	0	inside e1137	['mRNA']
+XM_014273618.1/5939-6003(+)	44394	gene-MYO9B	gene	0	inside e1137	None
+XM_014273618.1/5939-6003(+)	44394	cds-XP_014129093.1	CDS	0	inside e709	['unconventional myosin-IXb isoform X1']
+
+XM_014273619.1/6026-6090(+)	44394	XM_014273619.1:1..7251	region	0	inside e1161	['mRNA']
+XM_014273619.1/6026-6090(+)	44394	gene-MYO9B	gene	0	inside e1161	None
+XM_014273619.1/6026-6090(+)	44394	cds-XP_014129094.1	CDS	0	inside e283	['unconventional myosin-IXb isoform X2']
+
+XM_014273621.1/5936-6000(+)	44394	XM_014273621.1:1..7161	region	0	inside e1161	['mRNA']
+XM_014273621.1/5936-6000(+)	44394	gene-MYO9B	gene	0	inside e1161	None
+XM_014273621.1/5936-6000(+)	44394	cds-XP_014129096.1	CDS	0	inside e283	['unconventional myosin-IXb isoform X4']
+
+XM_017743848.1/6058-6122(+)	85066	XM_017743848.1:1..7288	region	0	inside e1166	['mRNA']
+XM_017743848.1/6058-6122(+)	85066	gene-MYO9B	gene	0	inside e1166	None
+XM_017743848.1/6058-6122(+)	85066	cds-XP_017599337.1	CDS	0	inside e712	['unconventional myosin-IXb isoform X1']
+
+XM_017743849.1/6037-6101(+)	85066	XM_017743849.1:1..6813	region	0	inside e712	['mRNA']
+XM_017743849.1/6037-6101(+)	85066	gene-MYO9B	gene	0	inside e712	None
+XM_017743849.1/6037-6101(+)	85066	cds-XP_017599338.1	CDS	0	inside e712	['unconventional myosin-IXb isoform X2']
+
+XM_017743851.1/5968-6032(+)	85066	XM_017743851.1:1..7198	region	0	inside e1166	['mRNA']
+XM_017743851.1/5968-6032(+)	85066	gene-MYO9B	gene	0	inside e1166	None
+XM_017743851.1/5968-6032(+)	85066	cds-XP_017599340.1	CDS	0	inside e712	['unconventional myosin-IXb isoform X4']
+
+XM_017743852.1/5947-6011(+)	85066	XM_017743852.1:1..7177	region	0	inside e1166	['mRNA']
+XM_017743852.1/5947-6011(+)	85066	gene-MYO9B	gene	0	inside e1166	None
+XM_017743852.1/5947-6011(+)	85066	cds-XP_017599341.1	CDS	0	inside e712	['unconventional myosin-IXb isoform X5']
+
+XM_017743853.1/5947-6011(+)	85066	XM_017743853.1:1..7177	region	0	inside e1166	['mRNA']
+XM_017743853.1/5947-6011(+)	85066	gene-MYO9B	gene	0	inside e1166	None
+XM_017743853.1/5947-6011(+)	85066	cds-XP_017599342.1	CDS	0	inside e712	['unconventional myosin-IXb isoform X6']
+
+XM_017743854.1/5926-5990(+)	85066	XM_017743854.1:1..7156	region	0	inside e1166	['mRNA']
+XM_017743854.1/5926-5990(+)	85066	gene-MYO9B	gene	0	inside e1166	None
+XM_017743854.1/5926-5990(+)	85066	cds-XP_017599343.1	CDS	0	inside e712	['unconventional myosin-IXb isoform X7']
+
+XM_017743856.1/5860-5924(+)	85066	XM_017743856.1:1..7090	region	0	inside e1166	['mRNA']
+XM_017743856.1/5860-5924(+)	85066	gene-MYO9B	gene	0	inside e1166	None
+XM_017743856.1/5860-5924(+)	85066	cds-XP_017599345.1	CDS	0	inside e712	['unconventional myosin-IXb isoform X9']
+
+XM_017743857.1/5857-5921(+)	85066	XM_017743857.1:1..7087	region	0	inside e1166	['mRNA']
+XM_017743857.1/5857-5921(+)	85066	gene-MYO9B	gene	0	inside e1166	None
+XM_017743857.1/5857-5921(+)	85066	cds-XP_017599346.1	CDS	0	inside e712	['unconventional myosin-IXb isoform X10']
+
+XM_017743858.1/6058-6122(+)	85066	XM_017743858.1:1..6719	region	0	inside e597	['mRNA']
+XM_017743858.1/6058-6122(+)	85066	gene-MYO9B	gene	0	inside e597	None
+XM_017743858.1/6058-6122(+)	85066	cds-XP_017599347.1	CDS	0	inside e286	['unconventional myosin-IXb isoform X11']
+
+XR_001865144.1/6572-6636(+)	85066	XR_001865144.1:1..6775	region	0	inside e139	['transcribed RNA']
+XR_001865144.1/6572-6636(+)	85066	gene-MYO9B	gene	0	inside e139	None
+XR_001865144.1/6572-6636(+)	85066	rna-MYO9B	transcript	0	inside e139	"['myosin IXB, transcript variant X12']"
+XR_001865144.1/6572-6636(+)	85066	exon-MYO9B-1	exon	0	inside e139	"['myosin IXB, transcript variant X12']"
+
+XM_017743860.1/5934-5998(+)	85066	XM_017743860.1:1..6595	region	0	inside e597	['mRNA']
+XM_017743860.1/5934-5998(+)	85066	gene-MYO9B	gene	0	inside e597	None
+XM_017743860.1/5934-5998(+)	85066	cds-XP_017599349.1	CDS	0	inside e286	['unconventional myosin-IXb isoform X13']
+
+XM_019293169.2/6056-6120(+)	932674	XM_019293169.2:1..7286	region	0	inside e1166	['mRNA']
+XM_019293169.2/6056-6120(+)	932674	gene-MYO9B	gene	0	inside e1166	None
+XM_019293169.2/6056-6120(+)	932674	cds-XP_019148714.1	CDS	0	inside e712	['unconventional myosin-IXb isoform X1']
+
+XM_019293170.2/6063-6127(+)	932674	XM_019293170.2:1..7293	region	0	inside e1166	['mRNA']
+XM_019293170.2/6063-6127(+)	932674	gene-MYO9B	gene	0	inside e1166	None
+XM_019293170.2/6063-6127(+)	932674	cds-XP_019148715.1	CDS	0	inside e712	['unconventional myosin-IXb isoform X1']
+
+XM_010411527.3/6035-6099(+)	932674	XM_010411527.3:1..7265	region	0	inside e1166	['mRNA']
+XM_010411527.3/6035-6099(+)	932674	gene-MYO9B	gene	0	inside e1166	None
+XM_010411527.3/6035-6099(+)	932674	cds-XP_010409829.1	CDS	0	inside e712	['unconventional myosin-IXb isoform X2']
+
+XM_019293172.2/5966-6030(+)	932674	XM_019293172.2:1..7196	region	0	inside e1166	['mRNA']
+XM_019293172.2/5966-6030(+)	932674	gene-MYO9B	gene	0	inside e1166	None
+XM_019293172.2/5966-6030(+)	932674	cds-XP_019148717.1	CDS	0	inside e712	['unconventional myosin-IXb isoform X4']
+
+XM_010411529.3/5945-6009(+)	932674	XM_010411529.3:1..7175	region	0	inside e1166	['mRNA']
+XM_010411529.3/5945-6009(+)	932674	gene-MYO9B	gene	0	inside e1166	None
+XM_010411529.3/5945-6009(+)	932674	cds-XP_010409831.1	CDS	0	inside e712	['unconventional myosin-IXb isoform X5']
+
+XM_019293173.2/5945-6009(+)	932674	XM_019293173.2:1..7175	region	0	inside e1166	['mRNA']
+XM_019293173.2/5945-6009(+)	932674	gene-MYO9B	gene	0	inside e1166	None
+XM_019293173.2/5945-6009(+)	932674	cds-XP_019148718.1	CDS	0	inside e712	['unconventional myosin-IXb isoform X6']
+
+XM_019293175.2/5858-5922(+)	932674	XM_019293175.2:1..7088	region	0	inside e1166	['mRNA']
+XM_019293175.2/5858-5922(+)	932674	gene-MYO9B	gene	0	inside e1166	None
+XM_019293175.2/5858-5922(+)	932674	cds-XP_019148720.1	CDS	0	inside e712	['unconventional myosin-IXb isoform X8']
+
+XM_019293176.2/5855-5919(+)	932674	XM_019293176.2:1..7085	region	0	inside e1166	['mRNA']
+XM_019293176.2/5855-5919(+)	932674	gene-MYO9B	gene	0	inside e1166	None
+XM_019293176.2/5855-5919(+)	932674	cds-XP_019148721.1	CDS	0	inside e712	['unconventional myosin-IXb isoform X9']
+
+XM_019293177.2/6056-6120(+)	932674	XM_019293177.2:1..6499	region	0	inside e379	['mRNA']
+XM_019293177.2/6056-6120(+)	932674	gene-MYO9B	gene	0	inside e379	None
+XM_019293177.2/6056-6120(+)	932674	cds-XP_019148722.1	CDS	0	inside e286	['unconventional myosin-IXb isoform X10']
+
+XM_010411535.3/5945-6009(+)	932674	XM_010411535.3:1..6388	region	0	inside e379	['mRNA']
+XM_010411535.3/5945-6009(+)	932674	gene-MYO9B	gene	0	inside e379	None
+XM_010411535.3/5945-6009(+)	932674	cds-XP_010409837.1	CDS	0	inside e286	['unconventional myosin-IXb isoform X11']
+
+XM_017836418.1/6169-6233(+)	321398	XM_017836418.1:1..7389	region	0	inside e1156	['mRNA']
+XM_017836418.1/6169-6233(+)	321398	gene-MYO9B	gene	0	inside e1156	None
+XM_017836418.1/6169-6233(+)	321398	cds-XP_017691907.1	CDS	0	inside e712	['unconventional myosin-IXb isoform X1']
+
+XM_017836419.1/6031-6095(+)	321398	XM_017836419.1:1..7251	region	0	inside e1156	['mRNA']
+XM_017836419.1/6031-6095(+)	321398	gene-MYO9B	gene	0	inside e1156	None
+XM_017836419.1/6031-6095(+)	321398	cds-XP_017691908.1	CDS	0	inside e712	['unconventional myosin-IXb isoform X1']
+
+XM_017836422.1/6079-6143(+)	321398	XM_017836422.1:1..7299	region	0	inside e1156	['mRNA']
+XM_017836422.1/6079-6143(+)	321398	gene-MYO9B	gene	0	inside e1156	None
+XM_017836422.1/6079-6143(+)	321398	cds-XP_017691911.1	CDS	0	inside e712	['unconventional myosin-IXb isoform X3']
+
+XM_017836423.1/5971-6035(+)	321398	XM_017836423.1:1..7191	region	0	inside e1156	['mRNA']
+XM_017836423.1/5971-6035(+)	321398	gene-MYO9B	gene	0	inside e1156	None
+XM_017836423.1/5971-6035(+)	321398	cds-XP_017691912.1	CDS	0	inside e712	['unconventional myosin-IXb isoform X4']
+
+XM_017836424.1/5968-6032(+)	321398	XM_017836424.1:1..7188	region	0	inside e1156	['mRNA']
+XM_017836424.1/5968-6032(+)	321398	gene-MYO9B	gene	0	inside e1156	None
+XM_017836424.1/5968-6032(+)	321398	cds-XP_017691913.1	CDS	0	inside e712	['unconventional myosin-IXb isoform X5']
+
+XM_017836425.1/6169-6233(+)	321398	XM_017836425.1:1..6632	region	0	inside e399	['mRNA']
+XM_017836425.1/6169-6233(+)	321398	gene-MYO9B	gene	0	inside e399	None
+XM_017836425.1/6169-6233(+)	321398	cds-XP_017691914.1	CDS	0	inside e286	['unconventional myosin-IXb isoform X6']
+
+XM_017836427.1/6079-6143(+)	321398	XM_017836427.1:1..6542	region	0	inside e399	['mRNA']
+XM_017836427.1/6079-6143(+)	321398	gene-MYO9B	gene	0	inside e399	None
+XM_017836427.1/6079-6143(+)	321398	cds-XP_017691916.1	CDS	0	inside e286	['unconventional myosin-IXb isoform X8']
+
+XM_016304498.1/6004-6068(+)	59894	XM_016304498.1:1..7220	region	0	inside e1152	['mRNA']
+XM_016304498.1/6004-6068(+)	59894	gene-MYO9B	gene	0	inside e1152	None
+XM_016304498.1/6004-6068(+)	59894	cds-XP_016159984.1	CDS	0	inside e712	['unconventional myosin-IXb isoform X1']
+
+XM_016304501.1/5914-5978(+)	59894	XM_016304501.1:1..7130	region	0	inside e1152	['mRNA']
+XM_016304501.1/5914-5978(+)	59894	gene-MYO9B	gene	0	inside e1152	None
+XM_016304501.1/5914-5978(+)	59894	cds-XP_016159987.1	CDS	0	inside e712	['unconventional myosin-IXb isoform X4']
+
+XM_016304502.1/5893-5957(+)	59894	XM_016304502.1:1..7109	region	0	inside e1152	['mRNA']
+XM_016304502.1/5893-5957(+)	59894	gene-MYO9B	gene	0	inside e1152	None
+XM_016304502.1/5893-5957(+)	59894	cds-XP_016159988.1	CDS	0	inside e712	['unconventional myosin-IXb isoform X5']
+
+XM_016304504.1/5803-5867(+)	59894	XM_016304504.1:1..7019	region	0	inside e1152	['mRNA']
+XM_016304504.1/5803-5867(+)	59894	gene-MYO9B	gene	0	inside e1152	None
+XM_016304504.1/5803-5867(+)	59894	cds-XP_016159990.1	CDS	0	inside e712	['unconventional myosin-IXb isoform X7']
+
+XM_016304505.1/6004-6068(+)	59894	XM_016304505.1:1..6447	region	0	inside e379	['mRNA']
+XM_016304505.1/6004-6068(+)	59894	gene-MYO9B	gene	0	inside e379	None
+XM_016304505.1/6004-6068(+)	59894	cds-XP_016159991.1	CDS	0	inside e286	['unconventional myosin-IXb isoform X8']
+
+XM_016304507.1/5914-5978(+)	59894	XM_016304507.1:1..6357	region	0	inside e379	['mRNA']
+XM_016304507.1/5914-5978(+)	59894	gene-MYO9B	gene	0	inside e379	None
+XM_016304507.1/5914-5978(+)	59894	cds-XP_016159993.1	CDS	0	inside e286	['unconventional myosin-IXb isoform X10']
+
+XM_014310590.1/5962-6026(+)	48883	XM_014310590.1:1..7200	region	0	inside e1174	['mRNA']
+XM_014310590.1/5962-6026(+)	48883	gene-MYO9B	gene	0	inside e1174	None
+XM_014310590.1/5962-6026(+)	48883	cds-XP_014166065.1	CDS	0	inside e283	['unconventional myosin-IXb']
+
+XM_012571208.1/4601-4665(+)	59729	XM_012571208.1:1..5775	region	0	inside e1110	['mRNA']
+XM_012571208.1/4601-4665(+)	59729	gene-MYO9B	gene	0	inside e1110	None
+XM_012571208.1/4601-4665(+)	59729	cds-XP_012426662.1	CDS	0	inside e658	['unconventional myosin-IXb']
+
+XM_006126811.2/5840-5904(+)	13735	XM_006126811.2:1..7620	region	0	inside e1716	['mRNA']
+XM_006126811.2/5840-5904(+)	13735	gene-MYO9B	gene	0	inside e1716	None
+XM_006126811.2/5840-5904(+)	13735	cds-XP_006126873.1	CDS	0	inside e718	['unconventional myosin-IXb isoform X1']
+
+XM_006126812.2/5822-5886(+)	13735	XM_006126812.2:1..7602	region	0	inside e1716	['mRNA']
+XM_006126812.2/5822-5886(+)	13735	gene-MYO9B	gene	0	inside e1716	None
+XM_006126812.2/5822-5886(+)	13735	cds-XP_006126874.1	CDS	0	inside e718	['unconventional myosin-IXb isoform X2']
+
+XM_006126814.2/5735-5799(+)	13735	XM_006126814.2:1..7515	region	0	inside e1716	['mRNA']
+XM_006126814.2/5735-5799(+)	13735	gene-MYO9B	gene	0	inside e1716	None
+XM_006126814.2/5735-5799(+)	13735	cds-XP_006126876.1	CDS	0	inside e718	['unconventional myosin-IXb isoform X4']
+
+XM_006126815.2/5732-5796(+)	13735	XM_006126815.2:1..7512	region	0	inside e1716	['mRNA']
+XM_006126815.2/5732-5796(+)	13735	gene-MYO9B	gene	0	inside e1716	None
+XM_006126815.2/5732-5796(+)	13735	cds-XP_006126877.1	CDS	0	inside e718	['unconventional myosin-IXb isoform X5']
+
+XM_006126816.2/5840-5904(+)	13735	XM_006126816.2:1..6568	region	0	inside e664	['mRNA']
+XM_006126816.2/5840-5904(+)	13735	gene-MYO9B	gene	0	inside e664	None
+XM_006126816.2/5840-5904(+)	13735	cds-XP_006126878.1	CDS	0	inside e286	['unconventional myosin-IXb isoform X6']
+
+XM_014259963.1/6061-6125(+)	181119	XM_014259963.1:1..7298	region	0	inside e1173	['mRNA']
+XM_014259963.1/6061-6125(+)	181119	gene-MYO9B	gene	0	inside e1173	None
+XM_014259963.1/6061-6125(+)	181119	cds-XP_014115438.1	CDS	0	inside e712	['unconventional myosin-IXb isoform X1']
+
+XM_014259965.1/5971-6035(+)	181119	XM_014259965.1:1..7208	region	0	inside e1173	['mRNA']
+XM_014259965.1/5971-6035(+)	181119	gene-MYO9B	gene	0	inside e1173	None
+XM_014259965.1/5971-6035(+)	181119	cds-XP_014115440.1	CDS	0	inside e712	['unconventional myosin-IXb isoform X3']
+
+XM_014259966.1/5950-6014(+)	181119	XM_014259966.1:1..7187	region	0	inside e1173	['mRNA']
+XM_014259966.1/5950-6014(+)	181119	gene-MYO9B	gene	0	inside e1173	None
+XM_014259966.1/5950-6014(+)	181119	cds-XP_014115441.1	CDS	0	inside e712	['unconventional myosin-IXb isoform X4']
+
+XM_014259968.1/5860-5924(+)	181119	XM_014259968.1:1..7097	region	0	inside e1173	['mRNA']
+XM_014259968.1/5860-5924(+)	181119	gene-MYO9B	gene	0	inside e1173	None
+XM_014259968.1/5860-5924(+)	181119	cds-XP_014115443.1	CDS	0	inside e712	['unconventional myosin-IXb isoform X6']
+
+XM_014259969.1/6061-6125(+)	181119	XM_014259969.1:1..7310	region	0	inside e1185	['mRNA']
+XM_014259969.1/6061-6125(+)	181119	gene-MYO9B	gene	0	inside e1185	None
+XM_014259969.1/6061-6125(+)	181119	cds-XP_014115444.1	CDS	0	inside e286	['unconventional myosin-IXb isoform X7']
+
+XM_005531235.2/5971-6035(+)	181119	XM_005531235.2:1..7220	region	0	inside e1185	['mRNA']
+XM_005531235.2/5971-6035(+)	181119	gene-MYO9B	gene	0	inside e1185	None
+XM_005531235.2/5971-6035(+)	181119	cds-XP_005531292.1	CDS	0	inside e286	['unconventional myosin-IXb isoform X8']
+
+XM_015651818.1/6087-6151(+)	9157	XM_015651818.1:1..7340	region	0	inside e1189	['mRNA']
+XM_015651818.1/6087-6151(+)	9157	gene-MYO9B	gene	0	inside e1189	None
+XM_015651818.1/6087-6151(+)	9157	cds-XP_015507304.1	CDS	0	inside e712	['unconventional myosin-IXb isoform X1']
+
+XM_015651820.1/5997-6061(+)	9157	XM_015651820.1:1..7250	region	0	inside e1189	['mRNA']
+XM_015651820.1/5997-6061(+)	9157	gene-MYO9B	gene	0	inside e1189	None
+XM_015651820.1/5997-6061(+)	9157	cds-XP_015507306.1	CDS	0	inside e712	['unconventional myosin-IXb isoform X3']
+
+XM_015651821.1/5976-6040(+)	9157	XM_015651821.1:1..7229	region	0	inside e1189	['mRNA']
+XM_015651821.1/5976-6040(+)	9157	gene-MYO9B	gene	0	inside e1189	None
+XM_015651821.1/5976-6040(+)	9157	cds-XP_015507307.1	CDS	0	inside e712	['unconventional myosin-IXb isoform X4']
+
+XM_015651823.1/5886-5950(+)	9157	XM_015651823.1:1..7139	region	0	inside e1189	['mRNA']
+XM_015651823.1/5886-5950(+)	9157	gene-MYO9B	gene	0	inside e1189	None
+XM_015651823.1/5886-5950(+)	9157	cds-XP_015507309.1	CDS	0	inside e712	['unconventional myosin-IXb isoform X6']
+
+XM_015651824.1/6087-6151(+)	9157	XM_015651824.1:1..6858	region	0	inside e707	['mRNA']
+XM_015651824.1/6087-6151(+)	9157	gene-MYO9B	gene	0	inside e707	None
+XM_015651824.1/6087-6151(+)	9157	cds-XP_015507310.1	CDS	0	inside e286	['unconventional myosin-IXb isoform X7']
+
+XM_015651829.1/5997-6061(+)	9157	XM_015651829.1:1..6768	region	0	inside e707	['mRNA']
+XM_015651829.1/5997-6061(+)	9157	gene-MYO9B	gene	0	inside e707	None
+XM_015651829.1/5997-6061(+)	9157	cds-XP_015507315.1	CDS	0	inside e286	['unconventional myosin-IXb isoform X10']
+
+XM_019009130.1/6104-6168(+)	9157	XM_019009130.1:1..7357	region	0	inside e1189	['mRNA']
+XM_019009130.1/6104-6168(+)	9157	gene-MYO9B	gene	0	inside e1189	None
+XM_019009130.1/6104-6168(+)	9157	cds-XP_018864675.1	CDS	0	inside e712	['unconventional myosin-IXb isoform X1']
+
+XM_019009131.1/6204-6268(+)	9157	XM_019009131.1:1..7457	region	0	inside e1189	['mRNA']
+XM_019009131.1/6204-6268(+)	9157	gene-MYO9B	gene	0	inside e1189	None
+XM_019009131.1/6204-6268(+)	9157	cds-XP_018864676.1	CDS	0	inside e712	['unconventional myosin-IXb isoform X1']
+
+XM_014522364.1/5840-5904(+)	38654	XM_014522364.1:1..7085	region	0	inside e1181	['mRNA']
+XM_014522364.1/5840-5904(+)	38654	gene-MYO9B	gene	0	inside e1181	None
+XM_014522364.1/5840-5904(+)	38654	cds-XP_014377850.1	CDS	0	inside e730	['unconventional myosin-IXb isoform X1']
+
+XM_014522365.1/5816-5880(+)	38654	XM_014522365.1:1..7061	region	0	inside e1181	['mRNA']
+XM_014522365.1/5816-5880(+)	38654	gene-MYO9B	gene	0	inside e1181	None
+XM_014522365.1/5816-5880(+)	38654	cds-XP_014377851.1	CDS	0	inside e730	['unconventional myosin-IXb isoform X2']
+
+XM_014522366.1/5696-5760(+)	38654	XM_014522366.1:1..6941	region	0	inside e1181	['mRNA']
+XM_014522366.1/5696-5760(+)	38654	gene-MYO9B	gene	0	inside e1181	None
+XM_014522366.1/5696-5760(+)	38654	cds-XP_014377852.1	CDS	0	inside e730	['unconventional myosin-IXb isoform X4']
+
+XM_014522367.1/5840-5904(+)	38654	XM_014522367.1:1..6282	region	0	inside e378	['mRNA']
+XM_014522367.1/5840-5904(+)	38654	gene-MYO9B	gene	0	inside e378	None
+XM_014522367.1/5840-5904(+)	38654	cds-XP_014377853.1	CDS	0	inside e289	['unconventional myosin-IXb isoform X5']
+
+XM_014603464.2/5842-5906(+)	8496	XM_014603464.2:1..7086	region	0	inside e1180	['mRNA']
+XM_014603464.2/5842-5906(+)	8496	gene-MYO9B	gene	0	inside e1180	None
+XM_014603464.2/5842-5906(+)	8496	cds-XP_014458950.1	CDS	0	inside e730	['unconventional myosin-IXb isoform X1']
+
+XM_014603465.2/5818-5882(+)	8496	XM_014603465.2:1..7062	region	0	inside e1180	['mRNA']
+XM_014603465.2/5818-5882(+)	8496	gene-MYO9B	gene	0	inside e1180	None
+XM_014603465.2/5818-5882(+)	8496	cds-XP_014458951.1	CDS	0	inside e730	['unconventional myosin-IXb isoform X2']
+
+XM_014603467.2/5698-5762(+)	8496	XM_014603467.2:1..6942	region	0	inside e1180	['mRNA']
+XM_014603467.2/5698-5762(+)	8496	gene-MYO9B	gene	0	inside e1180	None
+XM_014603467.2/5698-5762(+)	8496	cds-XP_014458953.1	CDS	0	inside e730	['unconventional myosin-IXb isoform X4']
+
+XM_014603468.2/5842-5906(+)	8496	XM_014603468.2:1..6288	region	0	inside e382	['mRNA']
+XM_014603468.2/5842-5906(+)	8496	gene-MYO9B	gene	0	inside e382	None
+XM_014603468.2/5842-5906(+)	8496	cds-XP_014458954.1	CDS	0	inside e289	['unconventional myosin-IXb isoform X5']
+
+XM_019513648.1/5908-5972(+)	94835	XM_019513648.1:1..7154	region	0	inside e1182	['mRNA']
+XM_019513648.1/5908-5972(+)	94835	gene-MYO9B	gene	0	inside e1182	None
+XM_019513648.1/5908-5972(+)	94835	cds-XP_019369193.1	CDS	0	inside e730	['unconventional myosin-IXb']
+
+XM_019538371.1/5904-5968(+)	8502	XM_019538371.1:1..7143	region	0	inside e1175	['mRNA']
+XM_019538371.1/5904-5968(+)	8502	gene-MYO9B	gene	0	inside e1175	None
+XM_019538371.1/5904-5968(+)	8502	cds-XP_019393916.1	CDS	0	inside e730	['unconventional myosin-IXb isoform X1']
+
+XM_019538372.1/5962-6026(+)	8502	XM_019538372.1:1..7201	region	0	inside e1175	['mRNA']
+XM_019538372.1/5962-6026(+)	8502	gene-MYO9B	gene	0	inside e1175	None
+XM_019538372.1/5962-6026(+)	8502	cds-XP_019393917.1	CDS	0	inside e730	['unconventional myosin-IXb isoform X1']
+
+XM_019538373.1/5998-6062(+)	8502	XM_019538373.1:1..7237	region	0	inside e1175	['mRNA']
+XM_019538373.1/5998-6062(+)	8502	gene-MYO9B	gene	0	inside e1175	None
+XM_019538373.1/5998-6062(+)	8502	cds-XP_019393918.1	CDS	0	inside e730	['unconventional myosin-IXb isoform X1']
+
+XM_019538374.1/5880-5944(+)	8502	XM_019538374.1:1..7119	region	0	inside e1175	['mRNA']
+XM_019538374.1/5880-5944(+)	8502	gene-MYO9B	gene	0	inside e1175	None
+XM_019538374.1/5880-5944(+)	8502	cds-XP_019393919.1	CDS	0	inside e730	['unconventional myosin-IXb isoform X2']
+
+XM_019538376.1/5905-5969(+)	8502	XM_019538376.1:1..6351	region	0	inside e382	['mRNA']
+XM_019538376.1/5905-5969(+)	8502	gene-MYO9B	gene	0	inside e382	None
+XM_019538376.1/5905-5969(+)	8502	cds-XP_019393921.1	CDS	0	inside e289	['unconventional myosin-IXb isoform X4']
+
+XM_004384418.1/5662-5726(+)	127582	XM_004384418.1:1..6006	region	0	inside e280	['mRNA']
+XM_004384418.1/5662-5726(+)	127582	gene-LOC101350331	gene	0	inside e280	None
+XM_004384418.1/5662-5726(+)	127582	cds-XP_004384475.1	CDS	0	inside e280	['unconventional myosin-IXb']
+
+XM_006877133.1/6076-6140(+)	185453	XM_006877133.1:1..6846	region	0	inside e706	['mRNA']
+XM_006877133.1/6076-6140(+)	185453	gene-MYO9B	gene	0	inside e706	None
+XM_006877133.1/6076-6140(+)	185453	cds-XP_006877195.1	CDS	0	inside e706	['unconventional myosin-IXb']
+
+XM_006898320.1/5737-5801(+)	28737	XM_006898320.1:1..6513	region	0	inside e712	['mRNA']
+XM_006898320.1/5737-5801(+)	28737	gene-MYO9B	gene	0	inside e712	None
+XM_006898320.1/5737-5801(+)	28737	cds-XP_006898382.1	CDS	0	inside e712	['LOW QUALITY PROTEIN: unconventional myosin-IXb']
+
+XM_008124223.1/5815-5879(+)	28377	XM_008124223.1:1..6471	region	0	inside e592	['mRNA']
+XM_008124223.1/5815-5879(+)	28377	gene-myo9b	gene	0	inside e592	None
+XM_008124223.1/5815-5879(+)	28377	cds-XP_008122430.1	CDS	0	inside e268	['unconventional myosin-IXb']
+
+XM_010593468.1/5694-5758(+)	9785	XM_010593468.1:1..6694	region	0	inside e936	['mRNA']
+XM_010593468.1/5694-5758(+)	9785	gene-MYO9B	gene	0	inside e936	None
+XM_010593468.1/5694-5758(+)	9785	cds-XP_010591770.1	CDS	0	inside e694	['unconventional myosin-IXb']
+
+XM_007945457.1/5590-5654(+)	1230840	XM_007945457.1:1..5949	region	0	inside e295	['mRNA']
+XM_007945457.1/5590-5654(+)	1230840	gene-MYO9B	gene	0	inside e295	None
+XM_007945457.1/5590-5654(+)	1230840	cds-XP_007943648.1	CDS	0	inside e295	['unconventional myosin-IXb']
+
+XM_016008155.1/5801-5865(+)	230844	XM_016008155.1:1..7322	region	0	inside e1457	['mRNA']
+XM_016008155.1/5801-5865(+)	230844	gene-Myo9b	gene	0	inside e1457	None
+XM_016008155.1/5801-5865(+)	230844	cds-XP_015863641.1	CDS	0	inside e691	['unconventional myosin-IXb isoform X1']
+
+XM_016008156.1/5798-5862(+)	230844	XM_016008156.1:1..7319	region	0	inside e1457	['mRNA']
+XM_016008156.1/5798-5862(+)	230844	gene-Myo9b	gene	0	inside e1457	None
+XM_016008156.1/5798-5862(+)	230844	cds-XP_015863642.1	CDS	0	inside e691	['unconventional myosin-IXb isoform X2']
+
+XM_016008157.1/5798-5862(+)	230844	XM_016008157.1:1..7319	region	0	inside e1457	['mRNA']
+XM_016008157.1/5798-5862(+)	230844	gene-Myo9b	gene	0	inside e1457	None
+XM_016008157.1/5798-5862(+)	230844	cds-XP_015863643.1	CDS	0	inside e691	['unconventional myosin-IXb isoform X3']
+
+XM_016008158.1/5795-5859(+)	230844	XM_016008158.1:1..7316	region	0	inside e1457	['mRNA']
+XM_016008158.1/5795-5859(+)	230844	gene-Myo9b	gene	0	inside e1457	None
+XM_016008158.1/5795-5859(+)	230844	cds-XP_015863644.1	CDS	0	inside e691	['unconventional myosin-IXb isoform X4']
+
+XM_016008159.1/5792-5856(+)	230844	XM_016008159.1:1..7313	region	0	inside e1457	['mRNA']
+XM_016008159.1/5792-5856(+)	230844	gene-Myo9b	gene	0	inside e1457	None
+XM_016008159.1/5792-5856(+)	230844	cds-XP_015863645.1	CDS	0	inside e691	['unconventional myosin-IXb isoform X5']
+
+XM_016008161.1/5711-5775(+)	230844	XM_016008161.1:1..7232	region	0	inside e1457	['mRNA']
+XM_016008161.1/5711-5775(+)	230844	gene-Myo9b	gene	0	inside e1457	None
+XM_016008161.1/5711-5775(+)	230844	cds-XP_015863647.1	CDS	0	inside e691	['unconventional myosin-IXb isoform X7']
+
+XM_016008162.1/5708-5772(+)	230844	XM_016008162.1:1..7229	region	0	inside e1457	['mRNA']
+XM_016008162.1/5708-5772(+)	230844	gene-Myo9b	gene	0	inside e1457	None
+XM_016008162.1/5708-5772(+)	230844	cds-XP_015863648.1	CDS	0	inside e691	['unconventional myosin-IXb isoform X8']
+
+XM_016008163.1/5702-5766(+)	230844	XM_016008163.1:1..7223	region	0	inside e1457	['mRNA']
+XM_016008163.1/5702-5766(+)	230844	gene-Myo9b	gene	0	inside e1457	None
+XM_016008163.1/5702-5766(+)	230844	cds-XP_015863649.1	CDS	0	inside e691	['unconventional myosin-IXb isoform X9']
+
+XM_016008164.1/5699-5763(+)	230844	XM_016008164.1:1..7220	region	0	inside e1457	['mRNA']
+XM_016008164.1/5699-5763(+)	230844	gene-Myo9b	gene	0	inside e1457	None
+XM_016008164.1/5699-5763(+)	230844	cds-XP_015863650.1	CDS	0	inside e691	['unconventional myosin-IXb isoform X10']
+
+XM_016008165.1/5687-5751(+)	230844	XM_016008165.1:1..7208	region	0	inside e1457	['mRNA']
+XM_016008165.1/5687-5751(+)	230844	gene-Myo9b	gene	0	inside e1457	None
+XM_016008165.1/5687-5751(+)	230844	cds-XP_015863651.1	CDS	0	inside e691	['unconventional myosin-IXb isoform X11']
+
+XM_016008169.1/5801-5865(+)	230844	XM_016008169.1:1..6282	region	0	inside e417	['mRNA']
+XM_016008169.1/5801-5865(+)	230844	gene-Myo9b	gene	0	inside e417	None
+XM_016008169.1/5801-5865(+)	230844	cds-XP_015863655.1	CDS	0	inside e280	['unconventional myosin-IXb isoform X15']
+
+XM_021223607.1/4432-4496(+)	10036	XM_021223607.1:1..6518	region	0	inside e2022	['mRNA']
+XM_021223607.1/4432-4496(+)	10036	gene-Myo9b	gene	0	inside e2022	None
+XM_021223607.1/4432-4496(+)	10036	cds-XP_021079266.1	CDS	0	inside e691	['unconventional myosin-IXb']
+
+AJ888904.1/5855-5919(+)	10116	AJ888904.1:1..7441	region	0	inside e1522	['mRNA']
+AJ888904.1/5855-5919(+)	10116	gene-myo9b	gene	0	inside e1522	None
+AJ888904.1/5855-5919(+)	10116	cds-CAI61984.1	CDS	0	inside e274	['myosin 9b']
+
+X77609.1/5750-5814(+)	10116	X77609.1:1..7336	region	0	inside e1522	['mRNA']
+X77609.1/5750-5814(+)	10116	gene-myr5	gene	0	inside e1522	None
+X77609.1/5750-5814(+)	10116	cds-CAA54700.1	CDS	0	inside e274	['myosin heavy chain']
+
+AJ888905.1/5840-5904(+)	10116	AJ888905.1:1..7426	region	0	inside e1522	['mRNA']
+AJ888905.1/5840-5904(+)	10116	gene-myo9b	gene	0	inside e1522	None
+AJ888905.1/5840-5904(+)	10116	cds-CAI61985.1	CDS	0	inside e274	['myosin 9b']
+
+NM_001271066.1/5855-5919(+)	10116	NM_001271066.1:1..7092	region	0	inside e1173	['mRNA']
+NM_001271066.1/5855-5919(+)	10116	gene-Myo9b	gene	0	inside e1173	None
+NM_001271066.1/5855-5919(+)	10116	id-Myo9b-2	exon	-4870	near	None
+NM_001271066.1/5855-5919(+)	10116	cds-NP_001257995.1	CDS	0	inside e277	['unconventional myosin-IXb isoform 1']
+NM_001271066.1/5855-5919(+)	10116	id-Myo9b-3	exon	-4775	near	None
+NM_001271066.1/5855-5919(+)	10116	id-Myo9b-4	exon	-4712	near	None
+NM_001271066.1/5855-5919(+)	10116	id-Myo9b-5	exon	-4612	near	None
+NM_001271066.1/5855-5919(+)	10116	id-Myo9b-6	exon	-4511	near	None
+NM_001271066.1/5855-5919(+)	10116	id-Myo9b-7	exon	-4381	near	None
+NM_001271066.1/5855-5919(+)	10116	id-Myo9b-8	exon	-4291	near	None
+NM_001271066.1/5855-5919(+)	10116	id-Myo9b-9	exon	-4174	near	None
+NM_001271066.1/5855-5919(+)	10116	id-Myo9b-10	exon	-4039	near	None
+NM_001271066.1/5855-5919(+)	10116	id-Myo9b-11	exon	-3917	near	None
+NM_001271066.1/5855-5919(+)	10116	id-Myo9b-12	exon	-3775	near	None
+NM_001271066.1/5855-5919(+)	10116	id-Myo9b-44	STS	-3341	near	None
+NM_001271066.1/5855-5919(+)	10116	id-Myo9b-13	exon	-3570	near	None
+NM_001271066.1/5855-5919(+)	10116	id-Myo9b-14	exon	-3488	near	None
+NM_001271066.1/5855-5919(+)	10116	id-Myo9b-15	exon	-3398	near	None
+NM_001271066.1/5855-5919(+)	10116	id-Myo9b-16	exon	-3383	near	None
+NM_001271066.1/5855-5919(+)	10116	id-Myo9b-17	exon	-3269	near	None
+NM_001271066.1/5855-5919(+)	10116	id-Myo9b-18	exon	-3229	near	None
+NM_001271066.1/5855-5919(+)	10116	id-Myo9b-19	exon	-3106	near	None
+NM_001271066.1/5855-5919(+)	10116	id-Myo9b-20	exon	-3025	near	None
+NM_001271066.1/5855-5919(+)	10116	id-Myo9b-21	exon	-2914	near	None
+NM_001271066.1/5855-5919(+)	10116	id-Myo9b-22	exon	-2791	near	None
+NM_001271066.1/5855-5919(+)	10116	id-Myo9b-23	exon	-2474	near	None
+NM_001271066.1/5855-5919(+)	10116	id-Myo9b-24	exon	-1640	near	None
+NM_001271066.1/5855-5919(+)	10116	id-Myo9b-45	STS	-2137	near	None
+NM_001271066.1/5855-5919(+)	10116	id-Myo9b-25	exon	-1585	near	None
+NM_001271066.1/5855-5919(+)	10116	id-Myo9b-26	exon	-1463	near	None
+NM_001271066.1/5855-5919(+)	10116	id-Myo9b-27	exon	-1335	near	None
+NM_001271066.1/5855-5919(+)	10116	id-Myo9b-28	exon	-1159	near	None
+NM_001271066.1/5855-5919(+)	10116	id-Myo9b-29	exon	-1060	near	None
+NM_001271066.1/5855-5919(+)	10116	id-Myo9b-30	exon	-886	near	None
+NM_001271066.1/5855-5919(+)	10116	id-Myo9b-31	exon	-847	near	None
+NM_001271066.1/5855-5919(+)	10116	id-Myo9b-32	exon	-735	near	None
+NM_001271066.1/5855-5919(+)	10116	id-Myo9b-33	exon	-661	near	None
+NM_001271066.1/5855-5919(+)	10116	id-Myo9b-34	exon	-468	near	None
+NM_001271066.1/5855-5919(+)	10116	id-Myo9b-35	exon	-339	near	None
+NM_001271066.1/5855-5919(+)	10116	id-Myo9b-36	exon	-233	near	None
+NM_001271066.1/5855-5919(+)	10116	id-Myo9b-37	exon	-101	near	None
+NM_001271066.1/5855-5919(+)	10116	id-Myo9b-38	exon	0	partial e164	None
+NM_001271066.1/5855-5919(+)	10116	id-Myo9b-46	STS	0	inside s46	None
+NM_001271066.1/5855-5919(+)	10116	id-Myo9b-39	exon	0	partial e40	None
+NM_001271066.1/5855-5919(+)	10116	id-Myo9b-40	exon	8	near	None
+NM_001271066.1/5855-5919(+)	10116	id-Myo9b-41	exon	142	near	None
+NM_001271066.1/5855-5919(+)	10116	id-Myo9b-47	STS	224	near	None
+NM_001271066.1/5855-5919(+)	10116	id-Myo9b-42	exon	274	near	None
+NM_001271066.1/5855-5919(+)	10116	id-Myo9b-48	STS	857	near	None
+
+NM_012984.3/5750-5814(+)	10116	NM_012984.3:1..6987	region	0	inside e1173	['mRNA']
+NM_012984.3/5750-5814(+)	10116	gene-Myo9b	gene	0	inside e1173	None
+NM_012984.3/5750-5814(+)	10116	id-Myo9b-2	exon	-4765	near	None
+NM_012984.3/5750-5814(+)	10116	cds-NP_037116.2	CDS	0	inside e277	['unconventional myosin-IXb isoform 3']
+NM_012984.3/5750-5814(+)	10116	id-Myo9b-3	exon	-4670	near	None
+NM_012984.3/5750-5814(+)	10116	id-Myo9b-4	exon	-4607	near	None
+NM_012984.3/5750-5814(+)	10116	id-Myo9b-5	exon	-4507	near	None
+NM_012984.3/5750-5814(+)	10116	id-Myo9b-6	exon	-4406	near	None
+NM_012984.3/5750-5814(+)	10116	id-Myo9b-7	exon	-4276	near	None
+NM_012984.3/5750-5814(+)	10116	id-Myo9b-8	exon	-4186	near	None
+NM_012984.3/5750-5814(+)	10116	id-Myo9b-9	exon	-4069	near	None
+NM_012984.3/5750-5814(+)	10116	id-Myo9b-10	exon	-3934	near	None
+NM_012984.3/5750-5814(+)	10116	id-Myo9b-11	exon	-3812	near	None
+NM_012984.3/5750-5814(+)	10116	id-Myo9b-12	exon	-3670	near	None
+NM_012984.3/5750-5814(+)	10116	id-Myo9b-42	STS	-3341	near	None
+NM_012984.3/5750-5814(+)	10116	id-Myo9b-13	exon	-3465	near	None
+NM_012984.3/5750-5814(+)	10116	id-Myo9b-14	exon	-3383	near	None
+NM_012984.3/5750-5814(+)	10116	id-Myo9b-15	exon	-3269	near	None
+NM_012984.3/5750-5814(+)	10116	id-Myo9b-16	exon	-3229	near	None
+NM_012984.3/5750-5814(+)	10116	id-Myo9b-17	exon	-3106	near	None
+NM_012984.3/5750-5814(+)	10116	id-Myo9b-18	exon	-3025	near	None
+NM_012984.3/5750-5814(+)	10116	id-Myo9b-19	exon	-2914	near	None
+NM_012984.3/5750-5814(+)	10116	id-Myo9b-20	exon	-2791	near	None
+NM_012984.3/5750-5814(+)	10116	id-Myo9b-21	exon	-2474	near	None
+NM_012984.3/5750-5814(+)	10116	id-Myo9b-22	exon	-1640	near	None
+NM_012984.3/5750-5814(+)	10116	id-Myo9b-43	STS	-2137	near	None
+NM_012984.3/5750-5814(+)	10116	id-Myo9b-23	exon	-1585	near	None
+NM_012984.3/5750-5814(+)	10116	id-Myo9b-24	exon	-1463	near	None
+NM_012984.3/5750-5814(+)	10116	id-Myo9b-25	exon	-1335	near	None
+NM_012984.3/5750-5814(+)	10116	id-Myo9b-26	exon	-1159	near	None
+NM_012984.3/5750-5814(+)	10116	id-Myo9b-27	exon	-1060	near	None
+NM_012984.3/5750-5814(+)	10116	id-Myo9b-28	exon	-886	near	None
+NM_012984.3/5750-5814(+)	10116	id-Myo9b-29	exon	-847	near	None
+NM_012984.3/5750-5814(+)	10116	id-Myo9b-30	exon	-735	near	None
+NM_012984.3/5750-5814(+)	10116	id-Myo9b-31	exon	-661	near	None
+NM_012984.3/5750-5814(+)	10116	id-Myo9b-32	exon	-468	near	None
+NM_012984.3/5750-5814(+)	10116	id-Myo9b-33	exon	-339	near	None
+NM_012984.3/5750-5814(+)	10116	id-Myo9b-34	exon	-233	near	None
+NM_012984.3/5750-5814(+)	10116	id-Myo9b-35	exon	-101	near	None
+NM_012984.3/5750-5814(+)	10116	id-Myo9b-36	exon	0	partial e164	None
+NM_012984.3/5750-5814(+)	10116	id-Myo9b-44	STS	0	inside s46	None
+NM_012984.3/5750-5814(+)	10116	id-Myo9b-37	exon	0	partial e40	None
+NM_012984.3/5750-5814(+)	10116	id-Myo9b-38	exon	8	near	None
+NM_012984.3/5750-5814(+)	10116	id-Myo9b-39	exon	142	near	None
+NM_012984.3/5750-5814(+)	10116	id-Myo9b-45	STS	224	near	None
+NM_012984.3/5750-5814(+)	10116	id-Myo9b-40	exon	274	near	None
+NM_012984.3/5750-5814(+)	10116	id-Myo9b-46	STS	857	near	None
+
+NM_001271067.1/5840-5904(+)	10116	NM_001271067.1:1..7077	region	0	inside e1173	['mRNA']
+NM_001271067.1/5840-5904(+)	10116	gene-Myo9b	gene	0	inside e1173	None
+NM_001271067.1/5840-5904(+)	10116	id-Myo9b-2	exon	-4855	near	None
+NM_001271067.1/5840-5904(+)	10116	cds-NP_001257996.1	CDS	0	inside e277	['unconventional myosin-IXb isoform 2']
+NM_001271067.1/5840-5904(+)	10116	id-Myo9b-3	exon	-4760	near	None
+NM_001271067.1/5840-5904(+)	10116	id-Myo9b-4	exon	-4697	near	None
+NM_001271067.1/5840-5904(+)	10116	id-Myo9b-5	exon	-4597	near	None
+NM_001271067.1/5840-5904(+)	10116	id-Myo9b-6	exon	-4496	near	None
+NM_001271067.1/5840-5904(+)	10116	id-Myo9b-7	exon	-4366	near	None
+NM_001271067.1/5840-5904(+)	10116	id-Myo9b-8	exon	-4276	near	None
+NM_001271067.1/5840-5904(+)	10116	id-Myo9b-9	exon	-4159	near	None
+NM_001271067.1/5840-5904(+)	10116	id-Myo9b-10	exon	-4024	near	None
+NM_001271067.1/5840-5904(+)	10116	id-Myo9b-11	exon	-3902	near	None
+NM_001271067.1/5840-5904(+)	10116	id-Myo9b-12	exon	-3760	near	None
+NM_001271067.1/5840-5904(+)	10116	id-Myo9b-43	STS	-3341	near	None
+NM_001271067.1/5840-5904(+)	10116	id-Myo9b-13	exon	-3555	near	None
+NM_001271067.1/5840-5904(+)	10116	id-Myo9b-14	exon	-3473	near	None
+NM_001271067.1/5840-5904(+)	10116	id-Myo9b-15	exon	-3383	near	None
+NM_001271067.1/5840-5904(+)	10116	id-Myo9b-16	exon	-3269	near	None
+NM_001271067.1/5840-5904(+)	10116	id-Myo9b-17	exon	-3229	near	None
+NM_001271067.1/5840-5904(+)	10116	id-Myo9b-18	exon	-3106	near	None
+NM_001271067.1/5840-5904(+)	10116	id-Myo9b-19	exon	-3025	near	None
+NM_001271067.1/5840-5904(+)	10116	id-Myo9b-20	exon	-2914	near	None
+NM_001271067.1/5840-5904(+)	10116	id-Myo9b-21	exon	-2791	near	None
+NM_001271067.1/5840-5904(+)	10116	id-Myo9b-22	exon	-2474	near	None
+NM_001271067.1/5840-5904(+)	10116	id-Myo9b-23	exon	-1640	near	None
+NM_001271067.1/5840-5904(+)	10116	id-Myo9b-44	STS	-2137	near	None
+NM_001271067.1/5840-5904(+)	10116	id-Myo9b-24	exon	-1585	near	None
+NM_001271067.1/5840-5904(+)	10116	id-Myo9b-25	exon	-1463	near	None
+NM_001271067.1/5840-5904(+)	10116	id-Myo9b-26	exon	-1335	near	None
+NM_001271067.1/5840-5904(+)	10116	id-Myo9b-27	exon	-1159	near	None
+NM_001271067.1/5840-5904(+)	10116	id-Myo9b-28	exon	-1060	near	None
+NM_001271067.1/5840-5904(+)	10116	id-Myo9b-29	exon	-886	near	None
+NM_001271067.1/5840-5904(+)	10116	id-Myo9b-30	exon	-847	near	None
+NM_001271067.1/5840-5904(+)	10116	id-Myo9b-31	exon	-735	near	None
+NM_001271067.1/5840-5904(+)	10116	id-Myo9b-32	exon	-661	near	None
+NM_001271067.1/5840-5904(+)	10116	id-Myo9b-33	exon	-468	near	None
+NM_001271067.1/5840-5904(+)	10116	id-Myo9b-34	exon	-339	near	None
+NM_001271067.1/5840-5904(+)	10116	id-Myo9b-35	exon	-233	near	None
+NM_001271067.1/5840-5904(+)	10116	id-Myo9b-36	exon	-101	near	None
+NM_001271067.1/5840-5904(+)	10116	id-Myo9b-37	exon	0	partial e164	None
+NM_001271067.1/5840-5904(+)	10116	id-Myo9b-45	STS	0	inside s46	None
+NM_001271067.1/5840-5904(+)	10116	id-Myo9b-38	exon	0	partial e40	None
+NM_001271067.1/5840-5904(+)	10116	id-Myo9b-39	exon	8	near	None
+NM_001271067.1/5840-5904(+)	10116	id-Myo9b-40	exon	142	near	None
+NM_001271067.1/5840-5904(+)	10116	id-Myo9b-46	STS	224	near	None
+NM_001271067.1/5840-5904(+)	10116	id-Myo9b-41	exon	274	near	None
+NM_001271067.1/5840-5904(+)	10116	id-Myo9b-47	STS	857	near	None
+
+XM_006252824.3/5887-5951(+)	10116	XM_006252824.3:1..7407	region	0	inside e1456	['mRNA']
+XM_006252824.3/5887-5951(+)	10116	gene-Myo9b	gene	0	inside e1456	None
+XM_006252824.3/5887-5951(+)	10116	cds-XP_006252886.1	CDS	0	inside e688	['unconventional myosin-IXb isoform X1']
+
+XM_017599999.1/7029-7093(+)	10116	XM_017599999.1:1..8549	region	0	inside e1456	['mRNA']
+XM_017599999.1/7029-7093(+)	10116	gene-Myo9b	gene	0	inside e1456	None
+XM_017599999.1/7029-7093(+)	10116	cds-XP_017455488.1	CDS	0	inside e688	['unconventional myosin-IXb isoform X1']
+
+XM_006252825.3/5884-5948(+)	10116	XM_006252825.3:1..7404	region	0	inside e1456	['mRNA']
+XM_006252825.3/5884-5948(+)	10116	gene-Myo9b	gene	0	inside e1456	None
+XM_006252825.3/5884-5948(+)	10116	cds-XP_006252887.1	CDS	0	inside e688	['unconventional myosin-IXb isoform X2']
+
+XM_006252826.3/5884-5948(+)	10116	XM_006252826.3:1..7404	region	0	inside e1456	['mRNA']
+XM_006252826.3/5884-5948(+)	10116	gene-Myo9b	gene	0	inside e1456	None
+XM_006252826.3/5884-5948(+)	10116	cds-XP_006252888.1	CDS	0	inside e688	['unconventional myosin-IXb isoform X3']
+
+XM_006252827.3/5881-5945(+)	10116	XM_006252827.3:1..7401	region	0	inside e1456	['mRNA']
+XM_006252827.3/5881-5945(+)	10116	gene-Myo9b	gene	0	inside e1456	None
+XM_006252827.3/5881-5945(+)	10116	cds-XP_006252889.1	CDS	0	inside e688	['unconventional myosin-IXb isoform X4']
+
+XM_006252828.3/5878-5942(+)	10116	XM_006252828.3:1..7398	region	0	inside e1456	['mRNA']
+XM_006252828.3/5878-5942(+)	10116	gene-Myo9b	gene	0	inside e1456	None
+XM_006252828.3/5878-5942(+)	10116	cds-XP_006252890.1	CDS	0	inside e688	['unconventional myosin-IXb isoform X5']
+
+XM_006252830.3/5797-5861(+)	10116	XM_006252830.3:1..7317	region	0	inside e1456	['mRNA']
+XM_006252830.3/5797-5861(+)	10116	gene-Myo9b	gene	0	inside e1456	None
+XM_006252830.3/5797-5861(+)	10116	cds-XP_006252892.1	CDS	0	inside e688	['unconventional myosin-IXb isoform X7']
+
+XM_006252831.3/5794-5858(+)	10116	XM_006252831.3:1..7314	region	0	inside e1456	['mRNA']
+XM_006252831.3/5794-5858(+)	10116	gene-Myo9b	gene	0	inside e1456	None
+XM_006252831.3/5794-5858(+)	10116	cds-XP_006252893.1	CDS	0	inside e688	['unconventional myosin-IXb isoform X8']
+
+XM_006252832.3/5788-5852(+)	10116	XM_006252832.3:1..7308	region	0	inside e1456	['mRNA']
+XM_006252832.3/5788-5852(+)	10116	gene-Myo9b	gene	0	inside e1456	None
+XM_006252832.3/5788-5852(+)	10116	cds-XP_006252894.1	CDS	0	inside e688	['unconventional myosin-IXb isoform X9']
+
+XM_006252833.3/5785-5849(+)	10116	XM_006252833.3:1..7305	region	0	inside e1456	['mRNA']
+XM_006252833.3/5785-5849(+)	10116	gene-Myo9b	gene	0	inside e1456	None
+XM_006252833.3/5785-5849(+)	10116	cds-XP_006252895.1	CDS	0	inside e688	['unconventional myosin-IXb isoform X10']
+
+XM_006252834.3/5773-5837(+)	10116	XM_006252834.3:1..7293	region	0	inside e1456	['mRNA']
+XM_006252834.3/5773-5837(+)	10116	gene-Myo9b	gene	0	inside e1456	None
+XM_006252834.3/5773-5837(+)	10116	cds-XP_006252896.1	CDS	0	inside e688	['unconventional myosin-IXb isoform X11']
+
+XM_006252838.3/5683-5747(+)	10116	XM_006252838.3:1..7203	region	0	inside e1456	['mRNA']
+XM_006252838.3/5683-5747(+)	10116	gene-Myo9b	gene	0	inside e1456	None
+XM_006252838.3/5683-5747(+)	10116	cds-XP_006252900.1	CDS	0	inside e688	['unconventional myosin-IXb isoform X15']
+
+XM_006252839.3/5887-5951(+)	10116	XM_006252839.3:1..7301	region	0	inside e1350	['mRNA']
+XM_006252839.3/5887-5951(+)	10116	gene-Myo9b	gene	0	inside e1350	None
+XM_006252839.3/5887-5951(+)	10116	cds-XP_006252901.1	CDS	0	inside e274	['unconventional myosin-IXb isoform X16']
+
+XM_004698121.1/5763-5827(+)	9371	XM_004698121.1:1..6527	region	0	inside e700	['mRNA']
+XM_004698121.1/5763-5827(+)	9371	gene-MYO9B	gene	0	inside e700	None
+XM_004698121.1/5763-5827(+)	9371	cds-XP_004698178.1	CDS	0	inside e700	['unconventional myosin-IXb']
+
+XM_013028293.1/5726-5790(+)	10020	XM_013028293.1:1..5836	region	0	inside e46	['mRNA']
+XM_013028293.1/5726-5790(+)	10020	gene-Myo9b	gene	0	inside e46	None
+XM_013028293.1/5726-5790(+)	10020	cds-XP_012883747.1	CDS	0	inside e46	['unconventional myosin-IXb']
+
+XM_004595551.1/5695-5759(+)	9978	XM_004595551.1:1..6042	region	0	inside e283	['mRNA']
+XM_004595551.1/5695-5759(+)	9978	gene-MYO9B	gene	0	inside e283	None
+XM_004595551.1/5695-5759(+)	9978	cds-XP_004595608.1	CDS	0	inside e283	['unconventional myosin-IXb']
+
+XM_015426684.1/5723-5787(+)	146911	XM_015426684.1:1..6076	region	0	inside e289	['mRNA']
+XM_015426684.1/5723-5787(+)	146911	gene-MYO9B	gene	0	inside e289	None
+XM_015426684.1/5723-5787(+)	146911	cds-XP_015282170.1	CDS	0	inside e289	['unconventional myosin-IXb']
+
+XM_013350720.1/5722-5786(+)	79684	XM_013350720.1:1..7698	region	0	inside e1912	['mRNA']
+XM_013350720.1/5722-5786(+)	79684	gene-Myo9b	gene	0	inside e1912	None
+XM_013350720.1/5722-5786(+)	79684	cds-XP_013206174.1	CDS	0	inside e682	['unconventional myosin-IXb isoform X1']
+XM_013350720.1/5722-5786(+)	79684	id-Myo9b	STS	-3383	near	None
+
+XM_013350722.1/5722-5786(+)	79684	XM_013350722.1:1..6120	region	0	inside e334	['mRNA']
+XM_013350722.1/5722-5786(+)	79684	gene-Myo9b	gene	0	inside e334	None
+XM_013350722.1/5722-5786(+)	79684	cds-XP_013206176.1	CDS	0	inside e280	['unconventional myosin-IXb isoform X3']
+XM_013350722.1/5722-5786(+)	79684	id-Myo9b	STS	-3383	near	None
+
+XM_016974020.1/5813-5877(+)	10029	XM_016974020.1:1..6293	region	0	inside e416	['mRNA']
+XM_016974020.1/5813-5877(+)	10029	gene-Myo9b	gene	0	inside e416	None
+XM_016974020.1/5813-5877(+)	10029	cds-XP_016829509.1	CDS	0	inside e280	['unconventional myosin-IXb isoform X6']
+
+XM_016974021.1/5810-5874(+)	10029	XM_016974021.1:1..6290	region	0	inside e416	['mRNA']
+XM_016974021.1/5810-5874(+)	10029	gene-Myo9b	gene	0	inside e416	None
+XM_016974021.1/5810-5874(+)	10029	cds-XP_016829510.1	CDS	0	inside e280	['unconventional myosin-IXb isoform X7']
+
+XM_016974022.1/5810-5874(+)	10029	XM_016974022.1:1..6290	region	0	inside e416	['mRNA']
+XM_016974022.1/5810-5874(+)	10029	gene-Myo9b	gene	0	inside e416	None
+XM_016974022.1/5810-5874(+)	10029	cds-XP_016829511.1	CDS	0	inside e280	['unconventional myosin-IXb isoform X3']
+
+XM_016974023.1/5789-5853(+)	10029	XM_016974023.1:1..6269	region	0	inside e416	['mRNA']
+XM_016974023.1/5789-5853(+)	10029	gene-Myo9b	gene	0	inside e416	None
+XM_016974023.1/5789-5853(+)	10029	cds-XP_016829512.1	CDS	0	inside e280	['unconventional myosin-IXb isoform X4']
+
+XM_007637980.2/5786-5850(+)	10029	XM_007637980.2:1..6266	region	0	inside e416	['mRNA']
+XM_007637980.2/5786-5850(+)	10029	gene-Myo9b	gene	0	inside e416	None
+XM_007637980.2/5786-5850(+)	10029	cds-XP_007636170.1	CDS	0	inside e280	['unconventional myosin-IXb isoform X8']
+
+XM_007637984.2/5786-5850(+)	10029	XM_007637984.2:1..6266	region	0	inside e416	['mRNA']
+XM_007637984.2/5786-5850(+)	10029	gene-Myo9b	gene	0	inside e416	None
+XM_007637984.2/5786-5850(+)	10029	cds-XP_007636174.1	CDS	0	inside e280	['unconventional myosin-IXb isoform X6']
+
+XM_016974024.1/5714-5778(+)	10029	XM_016974024.1:1..6194	region	0	inside e416	['mRNA']
+XM_016974024.1/5714-5778(+)	10029	gene-Myo9b	gene	0	inside e416	None
+XM_016974024.1/5714-5778(+)	10029	cds-XP_016829513.1	CDS	0	inside e280	['unconventional myosin-IXb isoform X7']
+
+XM_016974025.1/5699-5763(+)	10029	XM_016974025.1:1..6179	region	0	inside e416	['mRNA']
+XM_016974025.1/5699-5763(+)	10029	gene-Myo9b	gene	0	inside e416	None
+XM_016974025.1/5699-5763(+)	10029	cds-XP_016829514.1	CDS	0	inside e280	['unconventional myosin-IXb isoform X8']
+
+XM_016974026.1/5699-5763(+)	10029	XM_016974026.1:1..6179	region	0	inside e416	['mRNA']
+XM_016974026.1/5699-5763(+)	10029	gene-Myo9b	gene	0	inside e416	None
+XM_016974026.1/5699-5763(+)	10029	cds-XP_016829515.1	CDS	0	inside e280	['unconventional myosin-IXb isoform X9']
+
+XM_007637992.2/5696-5760(+)	10029	XM_007637992.2:1..6176	region	0	inside e416	['mRNA']
+XM_007637992.2/5696-5760(+)	10029	gene-Myo9b	gene	0	inside e416	None
+XM_007637992.2/5696-5760(+)	10029	cds-XP_007636182.1	CDS	0	inside e280	['unconventional myosin-IXb isoform X16']
+
+XM_007637999.2/5696-5760(+)	10029	XM_007637999.2:1..6176	region	0	inside e416	['mRNA']
+XM_007637999.2/5696-5760(+)	10029	gene-Myo9b	gene	0	inside e416	None
+XM_007637999.2/5696-5760(+)	10029	cds-XP_007636189.1	CDS	0	inside e280	['unconventional myosin-IXb isoform X11']
+
+XM_007638006.2/5693-5757(+)	10029	XM_007638006.2:1..6173	region	0	inside e416	['mRNA']
+XM_007638006.2/5693-5757(+)	10029	gene-Myo9b	gene	0	inside e416	None
+XM_007638006.2/5693-5757(+)	10029	cds-XP_007636196.1	CDS	0	inside e280	['unconventional myosin-IXb isoform X17']
+
+XM_007638012.2/5690-5754(+)	10029	XM_007638012.2:1..6170	region	0	inside e416	['mRNA']
+XM_007638012.2/5690-5754(+)	10029	gene-Myo9b	gene	0	inside e416	None
+XM_007638012.2/5690-5754(+)	10029	cds-XP_007636202.1	CDS	0	inside e280	['unconventional myosin-IXb isoform X13']
+
+XM_016974027.1/5675-5739(+)	10029	XM_016974027.1:1..6155	region	0	inside e416	['mRNA']
+XM_016974027.1/5675-5739(+)	10029	gene-Myo9b	gene	0	inside e416	None
+XM_016974027.1/5675-5739(+)	10029	cds-XP_016829516.1	CDS	0	inside e280	['unconventional myosin-IXb isoform X14']
+
+XM_007638019.2/5600-5664(+)	10029	XM_007638019.2:1..6080	region	0	inside e416	['mRNA']
+XM_007638019.2/5600-5664(+)	10029	gene-Myo9b	gene	0	inside e416	None
+XM_007638019.2/5600-5664(+)	10029	cds-XP_007636209.1	CDS	0	inside e280	['unconventional myosin-IXb isoform X15']
+
+XM_016974028.1/5597-5661(+)	10029	XM_016974028.1:1..6077	region	0	inside e416	['mRNA']
+XM_016974028.1/5597-5661(+)	10029	gene-Myo9b	gene	0	inside e416	None
+XM_016974028.1/5597-5661(+)	10029	cds-XP_016829517.1	CDS	0	inside e280	['unconventional myosin-IXb isoform X16']
+
+XM_016974029.1/5585-5649(+)	10029	XM_016974029.1:1..6065	region	0	inside e416	['mRNA']
+XM_016974029.1/5585-5649(+)	10029	gene-Myo9b	gene	0	inside e416	None
+XM_016974029.1/5585-5649(+)	10029	cds-XP_016829518.1	CDS	0	inside e280	['unconventional myosin-IXb isoform X17']
+
+XM_016974030.1/5582-5646(+)	10029	XM_016974030.1:1..6062	region	0	inside e416	['mRNA']
+XM_016974030.1/5582-5646(+)	10029	gene-Myo9b	gene	0	inside e416	None
+XM_016974030.1/5582-5646(+)	10029	cds-XP_016829519.1	CDS	0	inside e280	['unconventional myosin-IXb isoform X18']
+
+XM_007629108.2/5717-5781(+)	10029	XM_007629108.2:1..6803	region	0	inside e1022	['mRNA']
+XM_007629108.2/5717-5781(+)	10029	gene-Myo9b	gene	0	inside e1022	None
+XM_007629108.2/5717-5781(+)	10029	cds-XP_007627298.1	CDS	0	inside e691	['LOW QUALITY PROTEIN: unconventional myosin-IXb isoform X19']
+
+XM_021219868.1/5865-5929(+)	10093	XM_021219868.1:1..6889	region	0	inside e960	['mRNA']
+XM_021219868.1/5865-5929(+)	10093	gene-Myo9b	gene	0	inside e960	None
+XM_021219868.1/5865-5929(+)	10093	cds-XP_021075527.1	CDS	0	inside e682	['unconventional myosin-IXb isoform X1']
+
+XM_021169309.1/5854-5918(+)	10089	XM_021169309.1:1..6249	region	0	inside e331	['mRNA']
+XM_021169309.1/5854-5918(+)	10089	gene-Myo9b	gene	0	inside e331	None
+XM_021169309.1/5854-5918(+)	10089	cds-XP_021024968.1	CDS	0	inside e271	['unconventional myosin-IXb isoform X1']
+
+XM_021169310.1/5851-5915(+)	10089	XM_021169310.1:1..6246	region	0	inside e331	['mRNA']
+XM_021169310.1/5851-5915(+)	10089	gene-Myo9b	gene	0	inside e331	None
+XM_021169310.1/5851-5915(+)	10089	cds-XP_021024969.1	CDS	0	inside e271	['unconventional myosin-IXb isoform X2']
+
+XM_021169311.1/5848-5912(+)	10089	XM_021169311.1:1..6243	region	0	inside e331	['mRNA']
+XM_021169311.1/5848-5912(+)	10089	gene-Myo9b	gene	0	inside e331	None
+XM_021169311.1/5848-5912(+)	10089	cds-XP_021024970.1	CDS	0	inside e271	['unconventional myosin-IXb isoform X3']
+
+XM_021169313.1/5878-5942(+)	10089	XM_021169313.1:1..7389	region	0	inside e1447	['mRNA']
+XM_021169313.1/5878-5942(+)	10089	gene-Myo9b	gene	0	inside e1447	None
+XM_021169313.1/5878-5942(+)	10089	cds-XP_021024972.1	CDS	0	inside e682	['unconventional myosin-IXb isoform X6']
+
+XM_020284484.1/5785-5849(+)	30608	XM_020284484.1:1..7520	region	0	inside e1671	['mRNA']
+XM_020284484.1/5785-5849(+)	30608	gene-MYO9B	gene	0	inside e1671	None
+XM_020284484.1/5785-5849(+)	30608	cds-XP_020140073.1	CDS	0	inside e694	['LOW QUALITY PROTEIN: unconventional myosin-IXb']
+
+XM_021660619.1/5880-5944(+)	10047	XM_021660619.1:1..7495	region	0	inside e1551	['mRNA']
+XM_021660619.1/5880-5944(+)	10047	gene-Myo9b	gene	0	inside e1551	None
+XM_021660619.1/5880-5944(+)	10047	cds-XP_021516294.1	CDS	0	inside e691	['unconventional myosin-IXb isoform X1']
+
+XM_021660620.1/5877-5941(+)	10047	XM_021660620.1:1..7492	region	0	inside e1551	['mRNA']
+XM_021660620.1/5877-5941(+)	10047	gene-Myo9b	gene	0	inside e1551	None
+XM_021660620.1/5877-5941(+)	10047	cds-XP_021516295.1	CDS	0	inside e691	['unconventional myosin-IXb isoform X2']
+
+XM_021660621.1/5874-5938(+)	10047	XM_021660621.1:1..7489	region	0	inside e1551	['mRNA']
+XM_021660621.1/5874-5938(+)	10047	gene-Myo9b	gene	0	inside e1551	None
+XM_021660621.1/5874-5938(+)	10047	cds-XP_021516296.1	CDS	0	inside e691	['unconventional myosin-IXb isoform X3']
+
+XM_021660622.1/5865-5929(+)	10047	XM_021660622.1:1..7480	region	0	inside e1551	['mRNA']
+XM_021660622.1/5865-5929(+)	10047	gene-Myo9b	gene	0	inside e1551	None
+XM_021660622.1/5865-5929(+)	10047	cds-XP_021516297.1	CDS	0	inside e691	['unconventional myosin-IXb isoform X4']
+
+XM_021660623.1/5859-5923(+)	10047	XM_021660623.1:1..7474	region	0	inside e1551	['mRNA']
+XM_021660623.1/5859-5923(+)	10047	gene-Myo9b	gene	0	inside e1551	None
+XM_021660623.1/5859-5923(+)	10047	cds-XP_021516298.1	CDS	0	inside e691	['unconventional myosin-IXb isoform X5']
+
+XM_021660625.1/5790-5854(+)	10047	XM_021660625.1:1..7405	region	0	inside e1551	['mRNA']
+XM_021660625.1/5790-5854(+)	10047	gene-Myo9b	gene	0	inside e1551	None
+XM_021660625.1/5790-5854(+)	10047	cds-XP_021516300.1	CDS	0	inside e691	['unconventional myosin-IXb isoform X7']
+
+XM_021660626.1/5775-5839(+)	10047	XM_021660626.1:1..7390	region	0	inside e1551	['mRNA']
+XM_021660626.1/5775-5839(+)	10047	gene-Myo9b	gene	0	inside e1551	None
+XM_021660626.1/5775-5839(+)	10047	cds-XP_021516301.1	CDS	0	inside e691	['unconventional myosin-IXb isoform X8']
+
+XM_021660627.1/5772-5836(+)	10047	XM_021660627.1:1..7387	region	0	inside e1551	['mRNA']
+XM_021660627.1/5772-5836(+)	10047	gene-Myo9b	gene	0	inside e1551	None
+XM_021660627.1/5772-5836(+)	10047	cds-XP_021516302.1	CDS	0	inside e691	['unconventional myosin-IXb isoform X9']
+
+XM_021660628.1/5769-5833(+)	10047	XM_021660628.1:1..7384	region	0	inside e1551	['mRNA']
+XM_021660628.1/5769-5833(+)	10047	gene-Myo9b	gene	0	inside e1551	None
+XM_021660628.1/5769-5833(+)	10047	cds-XP_021516303.1	CDS	0	inside e691	['unconventional myosin-IXb isoform X10']
+
+XM_021660629.1/5766-5830(+)	10047	XM_021660629.1:1..7381	region	0	inside e1551	['mRNA']
+XM_021660629.1/5766-5830(+)	10047	gene-Myo9b	gene	0	inside e1551	None
+XM_021660629.1/5766-5830(+)	10047	cds-XP_021516304.1	CDS	0	inside e691	['unconventional myosin-IXb isoform X11']
+
+XM_021660631.1/5766-5830(+)	10047	XM_021660631.1:1..7381	region	0	inside e1551	['mRNA']
+XM_021660631.1/5766-5830(+)	10047	gene-Myo9b	gene	0	inside e1551	None
+XM_021660631.1/5766-5830(+)	10047	cds-XP_021516306.1	CDS	0	inside e691	['unconventional myosin-IXb isoform X12']
+
+XM_021660632.1/5751-5815(+)	10047	XM_021660632.1:1..7366	region	0	inside e1551	['mRNA']
+XM_021660632.1/5751-5815(+)	10047	gene-Myo9b	gene	0	inside e1551	None
+XM_021660632.1/5751-5815(+)	10047	cds-XP_021516307.1	CDS	0	inside e691	['unconventional myosin-IXb isoform X13']
+
+XM_021660636.1/5676-5740(+)	10047	XM_021660636.1:1..7291	region	0	inside e1551	['mRNA']
+XM_021660636.1/5676-5740(+)	10047	gene-Myo9b	gene	0	inside e1551	None
+XM_021660636.1/5676-5740(+)	10047	cds-XP_021516311.1	CDS	0	inside e691	['unconventional myosin-IXb isoform X17']
+
+XM_021660637.1/5661-5725(+)	10047	XM_021660637.1:1..7276	region	0	inside e1551	['mRNA']
+XM_021660637.1/5661-5725(+)	10047	gene-Myo9b	gene	0	inside e1551	None
+XM_021660637.1/5661-5725(+)	10047	cds-XP_021516312.1	CDS	0	inside e691	['unconventional myosin-IXb isoform X18']
+
+XM_021660638.1/5880-5944(+)	10047	XM_021660638.1:1..6388	region	0	inside e444	['mRNA']
+XM_021660638.1/5880-5944(+)	10047	gene-Myo9b	gene	0	inside e444	None
+XM_021660638.1/5880-5944(+)	10047	cds-XP_021516313.1	CDS	0	inside e355	['unconventional myosin-IXb isoform X19']
+
+XM_021660639.1/5880-5944(+)	10047	XM_021660639.1:1..6304	region	0	inside e360	['mRNA']
+XM_021660639.1/5880-5944(+)	10047	gene-Myo9b	gene	0	inside e360	None
+XM_021660639.1/5880-5944(+)	10047	cds-XP_021516314.1	CDS	0	inside e280	['unconventional myosin-IXb isoform X20']
+
+XM_008253167.2/5785-5849(+)	9986	XM_008253167.2:1..7323	region	0	inside e1474	['mRNA']
+XM_008253167.2/5785-5849(+)	9986	gene-MYO9B	gene	0	inside e1474	None
+XM_008253167.2/5785-5849(+)	9986	cds-XP_008251389.2	CDS	0	inside e673	['unconventional myosin-IXb isoform X1']
+
+XM_017340227.1/5782-5846(+)	9986	XM_017340227.1:1..7320	region	0	inside e1474	['mRNA']
+XM_017340227.1/5782-5846(+)	9986	gene-MYO9B	gene	0	inside e1474	None
+XM_017340227.1/5782-5846(+)	9986	cds-XP_017195716.1	CDS	0	inside e673	['unconventional myosin-IXb isoform X2']
+
+XM_017340228.1/5671-5735(+)	9986	XM_017340228.1:1..7209	region	0	inside e1474	['mRNA']
+XM_017340228.1/5671-5735(+)	9986	gene-MYO9B	gene	0	inside e1474	None
+XM_017340228.1/5671-5735(+)	9986	cds-XP_017195717.1	CDS	0	inside e673	['unconventional myosin-IXb isoform X3']
+
+XM_017340229.1/5668-5732(+)	9986	XM_017340229.1:1..7206	region	0	inside e1474	['mRNA']
+XM_017340229.1/5668-5732(+)	9986	gene-MYO9B	gene	0	inside e1474	None
+XM_017340229.1/5668-5732(+)	9986	cds-XP_017195718.1	CDS	0	inside e673	['unconventional myosin-IXb isoform X4']

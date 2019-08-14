@@ -30,18 +30,22 @@ def generate_fasta(sequences: Dict[str, str]) -> NTF:
     return tmp_file
 
 
-def align_sequences(sequences: Dict[str, str], cm_path: str, out_align_path: str, timeout: int=None) -> bool:
+def align_sequences(sequences: Dict[str, str], cm_path: str, out_align_path: str, in_align_path: str=None,
+                    timeout: int=None) -> bool:
     result = False
     tmp_sequences_fasta = generate_fasta(sequences)
     try:
-        param_list = [os.path.join(INFENRAL_PATH, CMALIGN_EXE), '-g', '-o', out_align_path, cm_path,
-                      tmp_sequences_fasta.name]
+        param_list = [os.path.join(INFENRAL_PATH, CMALIGN_EXE), '-g', '-o', out_align_path]
+        if in_align_path is not None:
+            param_list += ['--mapali', in_align_path]
+        param_list += [cm_path, tmp_sequences_fasta.name]
         logging.info("Aligning sequences to CM file {}".format(cm_path))
         with Popen(param_list, stdout=PIPE, stdin=PIPE) as proc:
             _, stderr_out = proc.communicate(timeout=timeout)
             if stderr_out is not None:
                 logging.error(stderr_out)
-        if os.path.exists(out_align_path):
+            exit_code = proc.wait()
+        if os.path.exists(out_align_path) and exit_code == 0:
             result = True
     except Exception as e:
         if os.path.exists(out_align_path):
@@ -64,22 +68,24 @@ def generate_stockholm(sequence: str, structure: str=None) -> NTF:
     return tmp_file
 
 
-def generate_cm(stockholm_path: str, outcm_path: str, cpus: int=None) -> bool:
+def generate_cm(stockholm_path: str, outcm_path: str, cpus: int=None, force: bool=False) -> bool:
     result = False
     try:
-        if not os.path.exists(outcm_path):
-            param_list = [os.path.join(INFENRAL_PATH, CMBUILD_EXE), '-F', outcm_path,
-                          stockholm_path]
+        if not os.path.exists(outcm_path) or force:
+            param_list = [os.path.join(INFENRAL_PATH, CMBUILD_EXE), '-F']
+            if cpus is not None:
+                param_list += ['--cpu', str(cpus)]
+            param_list += [outcm_path, stockholm_path]
             logging.info("Generating CM file {} for file: {}".format(outcm_path, stockholm_path))
             with Popen(param_list, stdout=PIPE, stdin=PIPE) as proc:
                 ret_code = proc.wait()
                 if ret_code < 0:
                     raise Exception("cmbuild ended with error code {}".format(ret_code))
+        if not is_calibrated(outcm_path):
             param_list = [os.path.join(INFENRAL_PATH, CMCALIBRATE_EXE)]
             if cpus is not None:
                 param_list += ['--cpu', str(cpus)]
             param_list.append(outcm_path)
-        if not is_calibrated(outcm_path):
             logging.info("Calibrating CM file {}".format(outcm_path))
             with Popen(param_list, stdout=PIPE, stdin=PIPE) as proc:
                 proc.communicate()
@@ -229,12 +235,12 @@ def search_cm(cm_file_path: str, seqdb_path: str, debug: bool=False,
     def merge_eric(table_results: List[Dict[str, str]], eric_results: List[Dict[str, str]]):
         for eric_res, table_res in zip(eric_results, table_results):
             eric_target = eric_res.get("target name")
-            target, loc_str = eric_target.split('/', 1)
+            target, loc_str = eric_target.rsplit('/', 1)
             seq_from, seq_to = loc_str.split('-', 1)
             if table_res.get('target name') != target or table_res.get('seq from') != seq_from \
                     or table_res.get('seq to') != seq_to:
                 logging.error("Rows do not match: table - {} eric - {}".format(table_res, eric_res))
-            else:
+            if table_res.get('target name') == target:
                 table_res['sequence'] = eric_res.get('sequence')
 
     results = None

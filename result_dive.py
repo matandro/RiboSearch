@@ -17,6 +17,7 @@ from rnafbinv import vienna, shapiro_tree_aligner
 import dive_statistics
 import argparse
 from enum import Enum
+import time
 
 
 # workaround to the issue of search_runner having two different versions
@@ -26,20 +27,40 @@ class MODE(Enum):
 
 
 FILTER_THRESHOLD = 300
+mapped_map = {}
 
-
-def get_tax_id(organism_id: str) -> int:
-    req = requests.post('https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi',
-                        data={'id': organism_id, 'db': 'nuccore', 'retmode': 'xml', 'rettype': 'fasta'})
-    root = etree.fromstring(req.text)
-    child_stack = [root]
-    while child_stack:
-        current = child_stack.pop()
-        if current.tag == 'TSeq_taxid':
-            return int(current.text)
-        else:
-            for child in current:
-                child_stack.append(child)
+def get_tax_id(organism_id: str, max_retry: int=5) -> int:
+    result = mapped_map.get(organism_id)
+    if result is not None:
+        return result
+    works = False
+    attempt = 0
+    while not works:
+        attempt += 1
+        try:
+            req = requests.post('https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi',
+                                data={'id': organism_id, 'db': 'nuccore', 'retmode': 'xml', 'rettype': 'fasta'})
+            if req.status_code < 200 or req.status_code > 300:
+                raise requests.exceptions.RequestException("Bad response code {}".format(req.status_code))
+            root = etree.fromstring(req.text)
+            works = True
+            child_stack = [root]
+            while child_stack:
+                current = child_stack.pop()
+                if current.tag == 'TSeq_taxid':
+                    mapped_map[organism_id] = int(current.text)
+                    return int(current.text)
+                else:
+                    for child in current:
+                        child_stack.append(child)
+        except requests.exceptions.RequestException as re:
+            print("get_tax_id request exception for organism {}\n{}".format(organism_id, re))
+            if attempt > max_retry:
+                break
+            else:
+                time.sleep(5)
+        except Exception as e:
+            print("FETAL ERROR FOR {}\n{}".format(organism_id, e))
     return None
 
 
@@ -303,10 +324,11 @@ if __name__ == "__main__":
         parser.add_argument("-m", "--mode", type=str, help="modes: new for new search runner, old otherwise",
                             default='old', choices=['old', 'new'])
         parser.add_argument("-s", "--score", type=float, help="score cuttoff based on RNAfbinv alignment score",
-                            default=550)
+                            default=250)
         parser.add_argument("-t", "--tree", type=str, help="sequence and structure seperated by _ of design targets",
                             default="NNNNNNNNUNNNNNNNNNNNNNNNNNNNNNNNNUNNNUNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNN_"
                                     "((((((((...(.(((((.......))))).)........((((((.......))))))..))))))))")
+        parser.add_argument("-n", type=int, help="Work on design target with at least n minimal matches", default=5)
         parser.add_argument("--cpu", type=int, help="maximum number of CPU to use for infernal programs")
         parser.add_argument("-f", "--filter", type=str, help="path to file with newline separated design id's to work "
                                                              "on. ignores all other designs")
