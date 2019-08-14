@@ -1,9 +1,9 @@
 # Purine riboswitch family dossier
 This folder contains additional information on the purine riboswitch candidates in my PhD thesis.
 The three families are as such:
-5.4.3 Eukaryote transketolase candidate - transketolase*
-5.4.4 Eukaryote myosin IX candidate - myois*
-5.4.5 Eukaryote mammalian candidate - mammalia*
+5.4.3  Eukaryote transketolase candidate - transketolase*
+5.4.4  Eukaryote myosin IX candidate - myois*
+5.4.5  Eukaryote mammalian candidate - mammalia*
 
 Each family has the following files:
 - *.cm - The covarience model file for the family, can be used by Infernal
